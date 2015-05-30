@@ -5,13 +5,13 @@
 #pragma once
 
 namespace AlienNightmare {
-	struct Position {
-		GLfloat x, y, z;
+    struct Position {
+	    GLfloat x, y, z;
 
-		Position() : x(0), y(0), z(0) { };
+	    Position() : x(0), y(0), z(0) { };
 
-		Position(GLfloat x, GLfloat y, GLfloat z) : x(x), y(y), z(z) { };
-	};
+	    Position(GLfloat x, GLfloat y, GLfloat z) : x(x), y(y), z(z) { };
+    };
 
     struct Size {
 	    GLfloat width, height, depth;

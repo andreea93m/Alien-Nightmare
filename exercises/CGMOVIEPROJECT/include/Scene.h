@@ -24,18 +24,19 @@ namespace AlienNightmare {
     class Scene {
     public:
 
-
     protected:
 	    const Size size;
 	    const Position position;
 
 	    void drawFloor(GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha);
+
 	    void drawDemo(float movieTime);
 
     public:
 	    Scene(Position position, Size size);
 
 	    virtual void render(float movieTime) = 0;
+
 	    virtual void update() = 0;
     };
 }

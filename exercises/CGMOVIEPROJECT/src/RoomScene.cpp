@@ -5,7 +5,7 @@
 #include "../include/RoomScene.h"
 
 AlienNightmare::RoomScene::RoomScene(Position position, Size size)
-		:Scene(position, size) { }
+		: Scene(position, size) { }
 
 void AlienNightmare::RoomScene::render(float movieTime) {
 	glPushMatrix();

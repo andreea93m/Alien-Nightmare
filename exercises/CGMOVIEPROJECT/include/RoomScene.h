@@ -13,6 +13,7 @@ namespace AlienNightmare {
 	    RoomScene(Position position, Size size);
 
 	    virtual void render(float movieTime);
+
 	    virtual void update();
     };
 }
