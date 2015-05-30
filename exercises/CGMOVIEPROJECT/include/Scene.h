@@ -16,20 +16,14 @@
 # include <GL/glu.h>	// OpenGL Utility header
 # include <GL/glut.h>	// GLUT header
 
+#include "GLhelpers.h"
+
 #endif
 
 namespace AlienNightmare {
     class Scene {
     public:
-	    struct Size {
-		    GLfloat width, height, depth;
-		    Size(GLfloat width, GLfloat height, GLfloat depth) : width(width), height(height), depth(depth) { }
-	    };
 
-	    struct Position {
-		    GLfloat x, y, z;
-		    Position(GLfloat x, GLfloat y, GLfloat z) : x(x), y(y), z(z) { }
-	    };
 
     protected:
 	    const Size size;

@@ -54,9 +54,9 @@ std::vector<Scene *> scenes;
 */
 void init() {
 	// you may adapt all this to your needs!
-	scenes.push_back(new CaveScene(Scene::Position(-16, 0, 0), Scene::Size(10, 10, 10)));
-	scenes.push_back(new ChaseScene(Scene::Position(-5, 0, 0), Scene::Size(10, 10, 10)));
-	scenes.push_back(new RoomScene(Scene::Position(6, 0, 0), Scene::Size(10, 10, 10)));
+	scenes.push_back(new CaveScene(Position(-16, 0, 0), Size(10, 10, 10)));
+	scenes.push_back(new ChaseScene(Position(-5, 0, 0), Size(10, 10, 10)));
+	scenes.push_back(new RoomScene(Position(6, 0, 0), Size(10, 10, 10)));
 
 	// enable stuff
 	glEnable(GL_DEPTH_TEST);

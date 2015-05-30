@@ -4,7 +4,7 @@
 
 #include "../include/RoomScene.h"
 
-AlienNightmare::RoomScene::RoomScene(AlienNightmare::Scene::Position position, AlienNightmare::Scene::Size size)
+AlienNightmare::RoomScene::RoomScene(Position position, Size size)
 		:Scene(position, size) { }
 
 void AlienNightmare::RoomScene::render(float movieTime) {

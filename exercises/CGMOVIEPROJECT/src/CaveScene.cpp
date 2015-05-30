@@ -4,7 +4,7 @@
 
 #include "../include/CaveScene.h"
 
-AlienNightmare::CaveScene::CaveScene(AlienNightmare::Scene::Position position, AlienNightmare::Scene::Size size)
+AlienNightmare::CaveScene::CaveScene(Position position, Size size)
 		: Scene(position, size) { }
 
 void AlienNightmare::CaveScene::render(float movieTime) {
