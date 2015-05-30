@@ -20,11 +20,18 @@
 # include <GL/glut.h>	// GLUT header
 #endif
 
+#include <vector>
+
 #include <oogl/gl_error.h>
 #include <oogl/timer.h>
 #include <oogl/Model.h>
 
+#include "include/Scene.h"
+#include "include/CaveScene.h"
+#include "include/ChaseScene.h"
+#include "include/RoomScene.h"
 
+using namespace AlienNightmare;
 
 // global variables
 float movieTime = 0.0f;
@@ -38,7 +45,7 @@ bool useFreeCamera = true;
 bool wireframe = false;
 bool culling = false;
 
-
+std::vector<Scene *> scenes;
 
 /**
 * called ONCE after we have a valid window with an opengl context
@@ -46,6 +53,9 @@ bool culling = false;
 void init()
 {
 	// you may adapt all this to your needs!
+    scenes.push_back(new CaveScene());
+    scenes.push_back(new ChaseScene());
+    scenes.push_back(new RoomScene());
 
 	// enable stuff
 	glEnable(GL_DEPTH_TEST);
@@ -78,67 +88,11 @@ void init()
 void renderScene()
 {
 	//TODO: draw your scenes here
+    for(int i = 0; i < scenes.size(); ++i) {
+        scenes[i]->render(movieTime);
+    }
 
 	// draw stuff! (you may remove or replace this!)
-	glPushMatrix();
-	{
-		glTranslatef(0, 0, -4.0f);
-		glRotatef(movieTime * 0.05f, 0, 1, 0);
-
-		//       v3
-		//        *
-		//       / \
-		//      /   \
-		//     /     \
-		// v1 *-------* v2
-
-		glBegin(GL_TRIANGLES);
-		{
-			//v1
-			glColor4f(1.0f, 0.0f, 0.0f, 1.0f);
-			glVertex3f(-1, -1.0f, 0);
-
-			//v2
-			glColor4f(0.0f, 1.0f, 0.0f, 1.0f);
-			glVertex3f(1, -1.0f, 0);
-
-			//v3
-			glColor4f(0.0f, 0.0f, 1.0f, 1.0f);
-			glVertex3f(0, 1, 0);
-		}
-		glEnd();
-
-
-		// top cube
-		glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
-		glPushMatrix();
-		{
-			glTranslatef(0, 1, 0);
-			glutSolidCube(0.25);
-		}
-		glPopMatrix();
-
-
-		// left cube
-		glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
-		glPushMatrix();
-		{
-			glTranslatef(-1.0f, -1.0f, 0);
-			glutSolidCube(0.25);
-		}
-		glPopMatrix();
-
-
-		// right cube
-		glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
-		glPushMatrix();
-		{
-			glTranslatef(1.0f, -1.0f, 0);
-			glutSolidCube(0.25);
-		}
-		glPopMatrix();
-	}
-	glPopMatrix();
 }
 
 /**
@@ -198,7 +152,9 @@ void update()
 
 
 	// TODO: update your scene logic in here
-
+    for(int i = 0; i < scenes.size(); ++i) {
+        scenes[i]->update();
+    }
 
 	// force a redisplay
 	glutPostRedisplay();
