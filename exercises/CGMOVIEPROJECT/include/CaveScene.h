@@ -10,6 +10,6 @@ namespace AlienNightmare {
     class CaveScene : public Scene {
 
     public:
-        virtual void render(float movieTime);
+	    virtual void render(float movieTime);
     };
 }

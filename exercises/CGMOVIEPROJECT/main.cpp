@@ -10,14 +10,16 @@
 #include <sstream>
 
 #include <GLee.h>
+
 #if defined(__APPLE__) || defined(__APPLE_CC__)
 # include <OpenGL/gl.h>
 # include <OpenGL/glu.h>
 # include <GLUT/glut.h>
 #else
-# include <GL/gl.h>		// OpenGL header
+
 # include <GL/glu.h>	// OpenGL Utility header
 # include <GL/glut.h>	// GLUT header
+
 #endif
 
 #include <vector>
@@ -50,12 +52,11 @@ std::vector<Scene *> scenes;
 /**
 * called ONCE after we have a valid window with an opengl context
 */
-void init()
-{
+void init() {
 	// you may adapt all this to your needs!
-    scenes.push_back(new CaveScene());
-    scenes.push_back(new ChaseScene());
-    scenes.push_back(new RoomScene());
+	scenes.push_back(new CaveScene());
+	scenes.push_back(new ChaseScene());
+	scenes.push_back(new RoomScene());
 
 	// enable stuff
 	glEnable(GL_DEPTH_TEST);
@@ -85,12 +86,11 @@ void init()
 /**
 * called within display()
 */
-void renderScene()
-{
+void renderScene() {
 	//TODO: draw your scenes here
-    for(int i = 0; i < scenes.size(); ++i) {
-        scenes[i]->render(movieTime);
-    }
+	for (int i = 0; i < scenes.size(); ++i) {
+		scenes[i]->render(movieTime);
+	}
 
 	// draw stuff! (you may remove or replace this!)
 }
@@ -98,34 +98,27 @@ void renderScene()
 /**
 * called to create the camera/view matrix
 */
-void setupViewMatrix()
-{
-	if (useFreeCamera)
-	{
+void setupViewMatrix() {
+	if (useFreeCamera) {
 		//TODO: free camera (view matrix)
-
 	}
-	else
-	{
+	else {
 		//TODO: animated camera (view matrix)
 	}
 }
 
-void animatedCameraUpdate(float delta)
-{
+void animatedCameraUpdate(float delta) {
 	//TODO: update or animate the variables of your animated camera in here, which then get used in the display() function
 }
 
-void freeCameraUpdate(float delta)
-{
+void freeCameraUpdate(float delta) {
 	//TODO: update or animate the variables of your free camera in here, which then get used in the display() function
 }
 
 /**
  * called just before display(), every frame. 
  */
-void update()
-{
+void update() {
 	// curTime is the number of milliseconds since glutInit() was called, it gets bigger and bigger.
 	// delta is the number of milliseconds that the last frame, we just rendered, took.
 	float curTime = glutGet(GLUT_ELAPSED_TIME);
@@ -133,10 +126,9 @@ void update()
 	movieTime = curTime;
 	frameCounter++;
 
-	if (movieTime > lastFpsUpdate)
-	{
+	if (movieTime > lastFpsUpdate) {
 		lastFpsUpdate = movieTime + 500;
-		fps = frameCounter*2;
+		fps = frameCounter * 2;
 		frameCounter = 0;
 	}
 
@@ -145,16 +137,18 @@ void update()
 	// simply multiply every movement calculation with delta. (e.g. nextPosition = curPosition + velocity * delta)
 
 	// update everything
-	if (useFreeCamera)
+	if (useFreeCamera) {
 		freeCameraUpdate(delta);
-	else
+	}
+	else {
 		animatedCameraUpdate(delta);
+	}
 
 
 	// TODO: update your scene logic in here
-    for(int i = 0; i < scenes.size(); ++i) {
-        scenes[i]->update();
-    }
+	for (int i = 0; i < scenes.size(); ++i) {
+		scenes[i]->update();
+	}
 
 	// force a redisplay
 	glutPostRedisplay();
@@ -163,22 +157,25 @@ void update()
 /**
 * called when a frame should be rendered
 */
-void display()
-{
+void display() {
 	// clear color buffer and depth buffer
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	// handle wireframe mode
-	if (wireframe)
+	if (wireframe) {
 		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-	else
+	}
+	else {
 		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+	}
 
 	// handle culling
-	if (culling)
+	if (culling) {
 		glEnable(GL_CULL_FACE);
-	else
+	}
+	else {
 		glDisable(GL_CULL_FACE);
+	}
 
 	// reset model matrix
 	glMatrixMode(GL_MODELVIEW);
@@ -208,24 +205,21 @@ void display()
 
 		// draw first line
 		std::string testString = "Press W to toggle wireframe mode";
-		for (int i = 0; i < testString.size(); i++)
-		{
+		for (int i = 0; i < testString.size(); i++) {
 			glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, testString[i]);
 		}
 
 		// set new offset, draw second line
 		glRasterPos2i(offset, windowHeight - 15 * 2 - offset - 7);
 		testString = "Press B to toggle backface culling";
-		for (int i = 0; i < testString.size(); i++)
-		{
+		for (int i = 0; i < testString.size(); i++) {
 			glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, testString[i]);
 		}
 
 		// set new offset, draw third line
 		glRasterPos2i(offset, windowHeight - 15 * 3 - offset - 7 * 2);
 		testString = "Press C to switch between animated/free camera";
-		for (int i = 0; i < testString.size(); i++)
-		{
+		for (int i = 0; i < testString.size(); i++) {
 			glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, testString[i]);
 		}
 
@@ -235,8 +229,7 @@ void display()
 		stringStream << "Frames per second: ";
 		stringStream << fps;
 		testString = stringStream.str();
-		for (int i = 0; i < testString.size(); i++)
-		{
+		for (int i = 0; i < testString.size(); i++) {
 			glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, testString[i]);
 		}
 	}
@@ -258,8 +251,7 @@ void display()
 * @param x mouse x position in pixel relative to the window, when the mouse button was pressed
 * @param y mouse y position in pixel relative to the window, when the mouse button was pressed
 */
-void mouse(int button, int state, int x, int y)
-{
+void mouse(int button, int state, int x, int y) {
 	//TODO: implement free camera rotation here
 }
 
@@ -268,8 +260,7 @@ void mouse(int button, int state, int x, int y)
 * @param x mouse x position in pixel relative to the window
 * @param y mouse x position in pixel relative to the window
 */
-void mouseMotion(int x, int y)
-{
+void mouseMotion(int x, int y) {
 	//TODO: implement free camera rotation here too
 }
 
@@ -279,35 +270,35 @@ void mouseMotion(int x, int y)
  * @param x mouse x position in pixel relative to the window, when the key was pressed
  * @param y mouse y position in pixel relative to the window, when the key was pressed
  */
-void keyboard(unsigned char key, int x, int y)
-{
+void keyboard(unsigned char key, int x, int y) {
 	//printf("key = %c\n", key);
 
-	switch (key)
-	{
-	case 27: // 27 = the escape key as decimal number in the ASCII table
-		exit(0);
-		break;
+	switch (key) {
+		case 27: // 27 = the escape key as decimal number in the ASCII table
+			exit(0);
+	        break;
 
-	case 'x': // x-key example
-		// do something
-		break;
+		case 'x': // x-key example
+			// do something
+			break;
 
-	case 'w': // w-key toggles wireframe mode
-		wireframe = !wireframe;
-		break;
+		case 'w': // w-key toggles wireframe mode
+			wireframe = !wireframe;
+	        break;
 
-	case 'b': // b-key toggles backface culling
-		culling = !culling;
-		break;
+		case 'b': // b-key toggles backface culling
+			culling = !culling;
+	        break;
 
-	case 'c':
-		useFreeCamera = !useFreeCamera;
-		if (!useFreeCamera)
-			printf("Switched to animated camera.\n");
-		else
-			printf("Switched to free camera.\n");
-		break;
+		case 'c':
+			useFreeCamera = !useFreeCamera;
+	        if (!useFreeCamera) {
+		        printf("Switched to animated camera.\n");
+	        }
+	        else {
+		        printf("Switched to free camera.\n");
+	        }
+	        break;
 	}
 }
 
@@ -317,26 +308,24 @@ void keyboard(unsigned char key, int x, int y)
 * @param x mouse x position in pixel relative to the window, when the key was pressed
 * @param y mouse y position in pixel relative to the window, when the key was pressed
 */
-void specialkey(int key, int x, int y)
-{
+void specialkey(int key, int x, int y) {
 	//printf("special key: %i\n", key);
 
 	//TODO: implement free camera movement with the arrow keys here (please only update the position of the camera in freeCameraUpdate(), not in the keyboard function!)
 
-	switch (key)
-	{
-	case GLUT_KEY_UP:
-		printf("up\n");
-		break;
-	case GLUT_KEY_DOWN:
-		printf("down\n");
-		break;
-	case GLUT_KEY_RIGHT:
-		printf("right\n");
-		break;
-	case GLUT_KEY_LEFT:
-		printf("left\n");
-		break;
+	switch (key) {
+		case GLUT_KEY_UP:
+			printf("up\n");
+	        break;
+		case GLUT_KEY_DOWN:
+			printf("down\n");
+	        break;
+		case GLUT_KEY_RIGHT:
+			printf("right\n");
+	        break;
+		case GLUT_KEY_LEFT:
+			printf("left\n");
+	        break;
 	}
 }
 
@@ -345,19 +334,17 @@ void specialkey(int key, int x, int y)
 * @param w new window width in pixel
 * @param h new window height in pixel
 */
-void reshape(int w, int h)
-{
+void reshape(int w, int h) {
 	// rebuild viewport
 	glViewport(0, 0, w, h);
 
 	// rebuild projection matrix
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
-	gluPerspective(45, ((float)w) / h, 0.1f, 100);
+	gluPerspective(45, ((float) w) / h, 0.1f, 100);
 }
 
-int setupGLUT(int argc, char** argv)
-{
+int setupGLUT(int argc, char **argv) {
 	// initialize glut
 	glutInit(&argc, argv);
 
@@ -369,7 +356,8 @@ int setupGLUT(int argc, char** argv)
 	int windowWidth = 1280;
 	int windowHeight = 720;
 	glutInitWindowSize(windowWidth, windowHeight);
-	glutInitWindowPosition((glutGet(GLUT_SCREEN_WIDTH) - windowWidth) / 2, (glutGet(GLUT_SCREEN_HEIGHT) - windowHeight) / 2); // center the window
+	glutInitWindowPosition((glutGet(GLUT_SCREEN_WIDTH) - windowWidth) / 2,
+	                       (glutGet(GLUT_SCREEN_HEIGHT) - windowHeight) / 2); // center the window
 
 	// create window
 	int windowId = glutCreateWindow("<INSERT_MOVIE_TITLE_HERE>");
@@ -389,8 +377,7 @@ int setupGLUT(int argc, char** argv)
 	return windowId;
 }
 
-int main(int argc, char** argv)
-{
+int main(int argc, char **argv) {
 	setupGLUT(argc, argv);
 
 	oogl::dumpGLInfos();

@@ -6,10 +6,10 @@
 
 // The definitions of the overwritten function
 void AlienNightmare::ChaseScene::render(float movieTime) {
-    glPushMatrix();
-    {
-        glTranslatef(0, 0, 0);
-        Scene::render(movieTime);
-    }
-    glPopMatrix();
+	glPushMatrix();
+	{
+		glTranslatef(0, 0, 0);
+		Scene::render(movieTime);
+	}
+	glPopMatrix();
 }
