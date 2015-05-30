@@ -1,6 +1,6 @@
-//================ Copyright (c) 2015, <STUDENT_NAME1>, <STUDENT_NAME2>, All rights reserved. =================//
+//================ Copyright (c) 2015, <Sorin Davidoi>, <Andreea Muscalagiu>, All rights reserved. =================//
 //
-// <MOVIE_NAME>
+// <Alien Nightmare>
 //
 //=============================================================================================================//
 
