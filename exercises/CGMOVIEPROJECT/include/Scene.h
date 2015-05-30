@@ -20,14 +20,28 @@
 
 namespace AlienNightmare {
     class Scene {
-    private:
-	    const static int spacingBetweenScenes;
+    public:
+	    struct Size {
+		    GLfloat width, height, depth;
+		    Size(GLfloat width, GLfloat height, GLfloat depth) : width(width), height(height), depth(depth) { }
+	    };
+
+	    struct Position {
+		    GLfloat x, y, z;
+		    Position(GLfloat x, GLfloat y, GLfloat z) : x(x), y(y), z(z) { }
+	    };
+
+    protected:
+	    const Size size;
+	    const Position position;
+
+	    void drawFloor(GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha);
+	    void drawDemo(float movieTime);
 
     public:
-	    virtual void render(float movieTime);
+	    Scene(Position position, Size size);
 
-	    virtual void update();
-
-	    int spacing();
+	    virtual void render(float movieTime) = 0;
+	    virtual void update() = 0;
     };
 }

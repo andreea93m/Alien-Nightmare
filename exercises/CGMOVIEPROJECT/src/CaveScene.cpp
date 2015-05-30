@@ -4,11 +4,20 @@
 
 #include "../include/CaveScene.h"
 
+AlienNightmare::CaveScene::CaveScene(AlienNightmare::Scene::Position position, AlienNightmare::Scene::Size size)
+		: Scene(position, size) { }
+
 void AlienNightmare::CaveScene::render(float movieTime) {
 	glPushMatrix();
 	{
-		glTranslatef(-spacing(), 0, 0);
-		Scene::render(movieTime);
+		glTranslatef(position.x, position.y, position.z);
+		drawFloor(0, 1, 0, 1);
+
+		drawDemo(movieTime);
 	}
 	glPopMatrix();
+}
+
+void AlienNightmare::CaveScene::update() {
+
 }

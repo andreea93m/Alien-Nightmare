@@ -4,12 +4,20 @@
 
 #include "../include/ChaseScene.h"
 
+AlienNightmare::ChaseScene::ChaseScene(Position position, Size size) : Scene(position, size) { }
+
 // The definitions of the overwritten function
 void AlienNightmare::ChaseScene::render(float movieTime) {
 	glPushMatrix();
 	{
-		glTranslatef(0, 0, 0);
-		Scene::render(movieTime);
+		glTranslatef(position.x, position.y, position.z);
+
+		drawFloor(1, 0, 0, 1);
+		drawDemo(movieTime);
 	}
 	glPopMatrix();
+}
+
+void AlienNightmare::ChaseScene::update() {
+
 }

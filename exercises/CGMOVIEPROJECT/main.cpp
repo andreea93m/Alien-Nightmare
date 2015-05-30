@@ -54,9 +54,9 @@ std::vector<Scene *> scenes;
 */
 void init() {
 	// you may adapt all this to your needs!
-	scenes.push_back(new CaveScene());
-	scenes.push_back(new ChaseScene());
-	scenes.push_back(new RoomScene());
+	scenes.push_back(new CaveScene(Scene::Position(-16, 0, 0), Scene::Size(10, 10, 10)));
+	scenes.push_back(new ChaseScene(Scene::Position(-5, 0, 0), Scene::Size(10, 10, 10)));
+	scenes.push_back(new RoomScene(Scene::Position(6, 0, 0), Scene::Size(10, 10, 10)));
 
 	// enable stuff
 	glEnable(GL_DEPTH_TEST);
@@ -101,6 +101,7 @@ void renderScene() {
 void setupViewMatrix() {
 	if (useFreeCamera) {
 		//TODO: free camera (view matrix)
+		gluLookAt(0, 5, 30, 0, 0, 0, 0, 1, 0);
 	}
 	else {
 		//TODO: animated camera (view matrix)

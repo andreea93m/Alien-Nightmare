@@ -10,6 +10,9 @@ namespace AlienNightmare {
     class CaveScene : public Scene {
 
     public:
+	    CaveScene(Position position, Size size);
+
 	    virtual void render(float movieTime);
+	    virtual void update();
     };
 }

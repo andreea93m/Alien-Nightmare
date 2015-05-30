@@ -4,12 +4,19 @@
 
 #include "../include/RoomScene.h"
 
-// The definitions of the overwritten function
+AlienNightmare::RoomScene::RoomScene(AlienNightmare::Scene::Position position, AlienNightmare::Scene::Size size)
+		:Scene(position, size) { }
+
 void AlienNightmare::RoomScene::render(float movieTime) {
 	glPushMatrix();
 	{
-		glTranslatef(spacing(), 0, 0);
-		Scene::render(movieTime);
+		glTranslatef(position.x, position.y, position.z);
+		drawFloor(0, 0, 1, 1);
+		drawDemo(movieTime);
 	}
 	glPopMatrix();
+}
+
+void AlienNightmare::RoomScene::update() {
+
 }

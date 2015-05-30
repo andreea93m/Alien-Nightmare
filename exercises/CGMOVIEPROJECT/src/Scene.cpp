@@ -4,12 +4,22 @@
 
 #include "../include/Scene.h"
 
-const int AlienNightmare::Scene::spacingBetweenScenes = 2;
+AlienNightmare::Scene::Scene(Position position, Size size) : position(position), size(size) { }
 
-void AlienNightmare::Scene::render(float movieTime) {
+void AlienNightmare::Scene::drawFloor(GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha) {
 	glPushMatrix();
 	{
-		glTranslatef(0, 0, -4.0f);
+		glRotatef(90, 1, 0, 0);
+		glColor4f(red, green, blue, alpha);
+		glRectf(0, 0, size.width, size.height);
+	}
+	glPopMatrix();
+}
+
+void AlienNightmare::Scene::drawDemo(float movieTime) {
+	glPushMatrix();
+	{
+		glTranslatef(size.width / 2, size.height / 2, - size.depth / 2);
 		glRotatef(movieTime * 0.05f, 0, 1, 0);
 
 		//       v3
@@ -66,12 +76,4 @@ void AlienNightmare::Scene::render(float movieTime) {
 		glPopMatrix();
 	}
 	glPopMatrix();
-}
-
-void AlienNightmare::Scene::update() {
-
-}
-
-int AlienNightmare::Scene::spacing() {
-	return spacingBetweenScenes;
 }
