@@ -35,7 +35,17 @@
 
 using namespace AlienNightmare;
 
+struct Camera {
+	Position eye, center, up;
+
+	GLfloat speed;
+
+	GLfloat moveX, moveZ;
+};
+
 // global variables
+Camera camera;
+
 float movieTime = 0.0f;
 float delta = 0.0f;
 int fps = 0;
@@ -53,6 +63,11 @@ std::vector<Scene *> scenes;
 * called ONCE after we have a valid window with an opengl context
 */
 void init() {
+	camera.eye.y = 5;
+	camera.eye.z = 30;
+	camera.up.y = 1;
+	camera.speed = 0.05;
+
 	// you may adapt all this to your needs!
 	scenes.push_back(new CaveScene(Position(-16, 0, 0), Size(10, 10, 10)));
 	scenes.push_back(new ChaseScene(Position(-5, 0, 0), Size(10, 10, 10)));
@@ -101,7 +116,10 @@ void renderScene() {
 void setupViewMatrix() {
 	if (useFreeCamera) {
 		//TODO: free camera (view matrix)
-		gluLookAt(0, 5, 30, 0, 0, 0, 0, 1, 0);
+		gluLookAt(camera.eye.x, camera.eye.y, camera.eye.z,
+		          camera.center.x, camera.center.y, camera.center.z,
+		          camera.up.x, camera.up.y, camera.up.z
+		);
 	}
 	else {
 		//TODO: animated camera (view matrix)
@@ -114,6 +132,11 @@ void animatedCameraUpdate(float delta) {
 
 void freeCameraUpdate(float delta) {
 	//TODO: update or animate the variables of your free camera in here, which then get used in the display() function
+	camera.eye.x += delta * camera.moveX;
+	camera.center.x += delta * camera.moveX;
+
+	camera.eye.z += delta * camera.moveZ;
+	camera.center.z += delta * camera.moveZ;
 }
 
 /**
@@ -252,7 +275,7 @@ void display() {
 * @param x mouse x position in pixel relative to the window, when the mouse button was pressed
 * @param y mouse y position in pixel relative to the window, when the mouse button was pressed
 */
-void mouse(int button, int state, int x, int y) {
+void mouseDown(int button, int state, int x, int y) {
 	//TODO: implement free camera rotation here
 }
 
@@ -266,22 +289,18 @@ void mouseMotion(int x, int y) {
 }
 
 /**
- * called when the user pressed a character key (this excludes UP, DOWN, DEL, PGDN etc., these are handled in specialkey)
+ * called when the user pressed a character key (this excludes UP, DOWN, DEL, PGDN etc., these are handled in specialKeyDown)
  * @param key ASCII character code
  * @param x mouse x position in pixel relative to the window, when the key was pressed
  * @param y mouse y position in pixel relative to the window, when the key was pressed
  */
-void keyboard(unsigned char key, int x, int y) {
+void keyDown(unsigned char key, int x, int y) {
 	//printf("key = %c\n", key);
 
 	switch (key) {
 		case 27: // 27 = the escape key as decimal number in the ASCII table
 			exit(0);
 	        break;
-
-		case 'x': // x-key example
-			// do something
-			break;
 
 		case 'w': // w-key toggles wireframe mode
 			wireframe = !wireframe;
@@ -309,23 +328,48 @@ void keyboard(unsigned char key, int x, int y) {
 * @param x mouse x position in pixel relative to the window, when the key was pressed
 * @param y mouse y position in pixel relative to the window, when the key was pressed
 */
-void specialkey(int key, int x, int y) {
+void specialKeyDown(int key, int x, int y) {
 	//printf("special key: %i\n", key);
 
-	//TODO: implement free camera movement with the arrow keys here (please only update the position of the camera in freeCameraUpdate(), not in the keyboard function!)
+	//TODO: implement free camera movement with the arrow keys here (please only update the position of the camera in freeCameraUpdate(), not in the keyDown function!)
 
 	switch (key) {
 		case GLUT_KEY_UP:
 			printf("up\n");
+	        camera.moveZ = -camera.speed;
 	        break;
 		case GLUT_KEY_DOWN:
 			printf("down\n");
+	        camera.moveZ = camera.speed;
 	        break;
 		case GLUT_KEY_RIGHT:
 			printf("right\n");
+	        camera.moveX = camera.speed;
 	        break;
 		case GLUT_KEY_LEFT:
 			printf("left\n");
+	        camera.moveX = -camera.speed;
+	        break;
+	}
+}
+
+void specialKeyUp(int key, int x, int y) {
+	switch (key) {
+		case GLUT_KEY_UP:
+			printf("up\n");
+	        camera.moveZ = 0;
+	        break;
+		case GLUT_KEY_DOWN:
+			printf("down\n");
+	        camera.moveZ = 0;
+	        break;
+		case GLUT_KEY_RIGHT:
+			printf("right\n");
+	        camera.moveX = 0;
+	        break;
+		case GLUT_KEY_LEFT:
+			printf("left\n");
+	        camera.moveX = 0;
 	        break;
 	}
 }
@@ -367,9 +411,11 @@ int setupGLUT(int argc, char **argv) {
 	glutDisplayFunc(display);
 	glutIdleFunc(update);
 	glutReshapeFunc(reshape);
-	glutKeyboardFunc(keyboard);
-	glutSpecialFunc(specialkey);
-	glutMouseFunc(mouse);
+	glutKeyboardFunc(keyDown);
+
+	glutSpecialFunc(specialKeyDown);
+	glutSpecialUpFunc(specialKeyUp);
+	glutMouseFunc(mouseDown);
 	glutMotionFunc(mouseMotion);
 
 	// fullscreen
