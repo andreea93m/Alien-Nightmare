@@ -27,7 +27,7 @@
 
 
 // global variables
-float time = 0.0f;
+float movieTime = 0.0f;
 float delta = 0.0f;
 int fps = 0;
 
@@ -83,7 +83,7 @@ void renderScene()
 	glPushMatrix();
 	{
 		glTranslatef(0, 0, -4.0f);
-		glRotatef(time*0.05f, 0, 1, 0);
+		glRotatef(movieTime * 0.05f, 0, 1, 0);
 
 		//       v3
 		//        *
@@ -175,13 +175,13 @@ void update()
 	// curTime is the number of milliseconds since glutInit() was called, it gets bigger and bigger.
 	// delta is the number of milliseconds that the last frame, we just rendered, took.
 	float curTime = glutGet(GLUT_ELAPSED_TIME);
-	delta = curTime - time;
-	time = curTime;
+	delta = curTime - movieTime;
+	movieTime = curTime;
 	frameCounter++;
 
-	if (time > lastFpsUpdate)
+	if (movieTime > lastFpsUpdate)
 	{
-		lastFpsUpdate = time + 500;
+		lastFpsUpdate = movieTime + 500;
 		fps = frameCounter*2;
 		frameCounter = 0;
 	}
