@@ -4,19 +4,21 @@
 
 #pragma once
 
+namespace AlienNightmare {
+    class Object;
+}
+
 #include "GLhelpers.h"
 
 namespace AlienNightmare {
     class Object {
     protected:
+	    void moveToPosition();
+
+    public:
 	    const Size size;
 	    const Position position;
 
-	    void moveToPosition();
-
-	    void moveRelative(GLfloat xp, GLfloat yp, GLfloat zp);
-
-    public:
 	    static void drawCoordinateSystem();
 
 	    Object(Position position, Size size);

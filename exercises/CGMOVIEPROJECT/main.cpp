@@ -22,11 +22,11 @@
 
 #endif
 
-#include <vector>
-
 #include <oogl/gl_error.h>
 #include <oogl/timer.h>
 #include <oogl/Model.h>
+
+#include <vector>
 
 #include "include/Scene.h"
 #include "include/CaveScene.h"

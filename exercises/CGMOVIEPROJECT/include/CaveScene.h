@@ -5,9 +5,12 @@
 #pragma once
 
 #include "Scene.h"
+#include "DemoObject.h"
 
 namespace AlienNightmare {
     class CaveScene : public Scene {
+    private:
+	    DemoObject demoObject;
 
     public:
 	    CaveScene(Position position, Size size);

@@ -4,15 +4,16 @@
 
 #include "../include/ChaseScene.h"
 
-AlienNightmare::ChaseScene::ChaseScene(Position position, Size size) : Scene(position, size) { }
+AlienNightmare::ChaseScene::ChaseScene(Position position, Size size) : Scene(position, size),
+                                                                       demoObject(Position(this, 0.5, 0.5, 0.5),
+                                                                                  Size(1, 1, 1)) { }
 
 void AlienNightmare::ChaseScene::render(float movieTime) {
 	glPushMatrix();
 	{
 		moveToPosition();
 		drawFloor(1, 0, 0, 1);
-		moveRelative(1 / 2.0f, 1 / 2.0f, 1 / 2.0f);
-		drawDemo(movieTime);
+		demoObject.render(movieTime);
 	}
 	glPopMatrix();
 }

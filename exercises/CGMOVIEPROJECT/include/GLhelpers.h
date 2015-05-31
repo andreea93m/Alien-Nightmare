@@ -7,19 +7,25 @@
 #include <GL/glu.h>
 
 namespace AlienNightmare {
-    struct Position {
+    class Object;
+
+    class Position {
+    public:
 	    GLfloat x, y, z;
 
-	    Position() : x(0), y(0), z(0) { };
+	    Position();
 
-	    Position(GLfloat x, GLfloat y, GLfloat z) : x(x), y(y), z(z) { };
+	    Position(GLfloat x, GLfloat y, GLfloat z);
+
+	    Position(Object *object, GLfloat xp, GLfloat yp, GLfloat zp);
     };
 
-    struct Size {
+    class Size {
+    public:
 	    GLfloat width, height, depth;
 
-	    Size() : width(0), height(0), depth(0) { };
+	    Size();
 
-	    Size(GLfloat width, GLfloat height, GLfloat depth) : width(width), height(height), depth(depth) { }
+	    Size(GLfloat width, GLfloat height, GLfloat depth);
     };
 }
