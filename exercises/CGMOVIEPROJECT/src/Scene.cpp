@@ -4,7 +4,7 @@
 
 #include "../include/Scene.h"
 
-AlienNightmare::Scene::Scene(Position position, Size size) : position(position), size(size) { }
+AlienNightmare::Scene::Scene(Position position, Size size) : Object(position, size) { }
 
 void AlienNightmare::Scene::drawFloor(GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha) {
 	glPushMatrix();

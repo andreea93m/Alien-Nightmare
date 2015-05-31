@@ -16,27 +16,17 @@
 # include <GL/glu.h>	// OpenGL Utility header
 # include <GL/glut.h>	// GLUT header
 
-#include "GLhelpers.h"
-
 #endif
 
-namespace AlienNightmare {
-    class Scene {
-    public:
+#include "Object.h"
 
+namespace AlienNightmare {
+    class Scene : public Object {
     protected:
-	    const Size size;
-	    const Position position;
+	    Scene(Position position, Size size);
 
 	    void drawFloor(GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha);
 
 	    void drawDemo(float movieTime);
-
-    public:
-	    Scene(Position position, Size size);
-
-	    virtual void render(float movieTime) = 0;
-
-	    virtual void update() = 0;
     };
 }

@@ -405,7 +405,7 @@ int setupGLUT(int argc, char **argv) {
 	                       (glutGet(GLUT_SCREEN_HEIGHT) - windowHeight) / 2); // center the window
 
 	// create window
-	int windowId = glutCreateWindow("<INSERT_MOVIE_TITLE_HERE>");
+	int windowId = glutCreateWindow("Alien Nightmare");
 
 	// register callback functions
 	glutDisplayFunc(display);

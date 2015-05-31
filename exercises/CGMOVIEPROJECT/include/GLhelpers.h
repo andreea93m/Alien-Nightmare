@@ -4,6 +4,8 @@
 
 #pragma once
 
+#include <GL/glu.h>
+
 namespace AlienNightmare {
     struct Position {
 	    GLfloat x, y, z;
