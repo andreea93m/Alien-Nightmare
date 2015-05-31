@@ -16,8 +16,8 @@ namespace AlienNightmare {
 	    void moveToPosition();
 
     public:
-	    const Size size;
-	    const Position position;
+	    Size size;
+	    Position position;
 
 	    static void drawCoordinateSystem();
 
@@ -26,5 +26,7 @@ namespace AlienNightmare {
 	    virtual void render(float movieTime) = 0;
 
 	    virtual void update() = 0;
+
+	    void placeRelative(Object * object, GLfloat xp, GLfloat yp, GLfloat zp);
     };
 }
