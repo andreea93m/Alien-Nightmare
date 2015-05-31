@@ -4,7 +4,7 @@
 
 #pragma once
 
-#include <GL/glu.h>
+#include <gl.h>
 
 namespace AlienNightmare {
     class Object;
