@@ -12,11 +12,12 @@ namespace AlienNightmare {
 	    const Size size;
 	    const Position position;
 
+	    void moveToPosition();
+
     public:
 	    Object(Position position, Size size);
 
 	    virtual void render(float movieTime) = 0;
-
 	    virtual void update() = 0;
     };
 }

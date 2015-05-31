@@ -5,3 +5,7 @@
 #include "../include/Object.h"
 
 AlienNightmare::Object::Object(Position position, Size size) : position(position), size(size) { }
+
+void AlienNightmare::Object::moveToPosition() {
+	glTranslatef(position.x, position.y, position.z);
+}

@@ -10,7 +10,7 @@ AlienNightmare::CaveScene::CaveScene(Position position, Size size)
 void AlienNightmare::CaveScene::render(float movieTime) {
 	glPushMatrix();
 	{
-		glTranslatef(position.x, position.y, position.z);
+		moveToPosition();
 		drawFloor(0, 1, 0, 1);
 
 		drawDemo(movieTime);

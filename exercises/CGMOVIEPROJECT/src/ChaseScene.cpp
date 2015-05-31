@@ -10,7 +10,7 @@ AlienNightmare::ChaseScene::ChaseScene(Position position, Size size) : Scene(pos
 void AlienNightmare::ChaseScene::render(float movieTime) {
 	glPushMatrix();
 	{
-		glTranslatef(position.x, position.y, position.z);
+		moveToPosition();
 
 		drawFloor(1, 0, 0, 1);
 		drawDemo(movieTime);

@@ -10,7 +10,7 @@ AlienNightmare::RoomScene::RoomScene(Position position, Size size)
 void AlienNightmare::RoomScene::render(float movieTime) {
 	glPushMatrix();
 	{
-		glTranslatef(position.x, position.y, position.z);
+		moveToPosition();
 		drawFloor(0, 0, 1, 1);
 		drawDemo(movieTime);
 	}
