@@ -12,6 +12,7 @@ void AlienNightmare::RoomScene::render(float movieTime) {
 	{
 		moveToPosition();
 		drawFloor(0, 0, 1, 1);
+		moveRelative(1 / 2.0f, 1 / 2.0f, 1 / 2.0f);
 		drawDemo(movieTime);
 	}
 	glPopMatrix();

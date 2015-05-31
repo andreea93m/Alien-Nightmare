@@ -12,7 +12,7 @@ void AlienNightmare::CaveScene::render(float movieTime) {
 	{
 		moveToPosition();
 		drawFloor(0, 1, 0, 1);
-
+		moveRelative(1 / 2.0f, 1 / 2.0f, 1 / 2.0f);
 		drawDemo(movieTime);
 	}
 	glPopMatrix();

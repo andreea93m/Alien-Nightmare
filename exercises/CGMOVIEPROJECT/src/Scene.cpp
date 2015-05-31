@@ -19,7 +19,6 @@ void AlienNightmare::Scene::drawFloor(GLfloat red, GLfloat green, GLfloat blue, 
 void AlienNightmare::Scene::drawDemo(float movieTime) {
 	glPushMatrix();
 	{
-		glTranslatef(size.width / 2, size.height / 2, -size.depth / 2);
 		glRotatef(movieTime * 0.05f, 0, 1, 0);
 
 		//       v3
