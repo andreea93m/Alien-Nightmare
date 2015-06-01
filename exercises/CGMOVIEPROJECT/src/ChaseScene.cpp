@@ -13,6 +13,7 @@ void AlienNightmare::ChaseScene::render(float movieTime) {
 	{
 		moveToPosition();
 		drawFloor(1, 0, 0, 1);
+		drawWalls(1, 0, 0, 1);
 		demoObject.render(movieTime);
 	}
 	glPopMatrix();
