@@ -5,7 +5,8 @@
 #include "../include/CaveScene.h"
 
 AlienNightmare::CaveScene::CaveScene(Position position, Size size)
-		: Scene(position, size), demoObject(Position(this, 0.5, 0.5, 0.5), Size(1, 1, 1)) {
+		: Scene(position, size), sun(Position(this, 0.5, 0.5, 0.5), 1), denmark(2, "textures/denmark.png"){
+	denmark.placeRelative(this, 0.3, 0.0, 0.6);
 }
 
 void AlienNightmare::CaveScene::render(float movieTime) {
@@ -14,7 +15,8 @@ void AlienNightmare::CaveScene::render(float movieTime) {
 		moveToPosition();
 		drawFloor(0, 1, 0, 1);
 		drawWalls(0, 1, 0, 1);
-		demoObject.render(movieTime);
+		sun.render(movieTime);
+		denmark.render(movieTime);
 	}
 	glPopMatrix();
 }
