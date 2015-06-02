@@ -18,14 +18,18 @@ void AlienNightmare::Sun::render(float movieTime) {
 		float ambient[] = {0.0f, 0.0f, 0.0f, 1.0f};
 		float diffuse[] = {1.0f, 1.0f, 1.0f, 1.0f};
 		float specular[] = {1.0f, 1.0f, 1.0f, 1.0f};
-		float position[] = {0.0f, 0.0f, 0.0f, 1.0f};
+		float lightPosition[] = {0.0f, 0.0f, 0.0f, 1.0f};
 
-		glLightfv(GL_LIGHT0, GL_AMBIENT, ambient);
-		glLightfv(GL_LIGHT0, GL_DIFFUSE, diffuse);
-		glLightfv(GL_LIGHT0, GL_SPECULAR, specular);
+		glEnable(GL_LIGHTING);
+		glEnable(GL_LIGHT1);
+
+//		glLightModeli(GL_LIGHT_MODEL_TWO_SIDE, GL_TRUE);
+		glLightfv(GL_LIGHT1, GL_AMBIENT, ambient);
+		glLightfv(GL_LIGHT1, GL_DIFFUSE, diffuse);
+		glLightfv(GL_LIGHT1, GL_SPECULAR, specular);
 
 		//the light position is affected by the model view matrix, too
-		glLightfv(GL_LIGHT0, GL_POSITION, position);
+		glLightfv(GL_LIGHT1, GL_POSITION, lightPosition);
 
 		glDisable(GL_LIGHTING); //temporary disable lightning
 
