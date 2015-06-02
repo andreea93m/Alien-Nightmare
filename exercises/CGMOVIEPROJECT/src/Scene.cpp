@@ -9,9 +9,7 @@ AlienNightmare::Scene::Scene(Position position, Size size) : Object(position, si
 void AlienNightmare::Scene::drawFloor(GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha) {
 	glPushMatrix();
 	{
-		glRotatef(90, 1, 0, 0);
-		glColor4f(red, green, blue, alpha);
-		glRectf(0, 0, size.width, size.height);
+
 	}
 	glPopMatrix();
 }
@@ -19,42 +17,73 @@ void AlienNightmare::Scene::drawFloor(GLfloat red, GLfloat green, GLfloat blue, 
 void AlienNightmare::Scene::drawWalls(GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha) {
 	glPushMatrix();
 	{
-		// Draw left wall
-		glPushMatrix();
-		{
-			glRotatef(90, 0, -1, 0);
-			glColor4f(red, green, blue, alpha);
-			glRectf(0, 0, size.width, size.height);
-		}
-		glPopMatrix();
+		glColor3f(red,green,blue);
 
-		// Draw right wall
-		glPushMatrix();
+		// Back
+		glBegin(GL_QUADS);
 		{
-			glRotatef(-90, 0, 1, 0);
-			glTranslatef(0, 0, - size.width);
-			glColor4f(red, green, blue, alpha);
-			glRectf(0, 0, size.width, size.height);
+			glNormal3f(0, -1, 0);
+			glVertex3f(size.width, size.height, size.depth);
+			glVertex3f(0, size.height, size.depth);
+			glVertex3f(0, size.height, 0);
+			glVertex3f(size.width, size.height, 0);
 		}
-		glPopMatrix();
+		glEnd();
 
-		// Draw back wall
-		glPushMatrix();
+		// Back
+		glBegin(GL_QUADS);
 		{
-			glColor4f(red, green, blue, alpha);
-			glRectf(0, 0, size.width, size.height);
+			glNormal3f(0, 0, 1);
+			glVertex3f(size.width, size.height, 0);
+			glVertex3f(0, size.height, 0);
+			glVertex3f(0, 0, 0);
+			glVertex3f(size.width, 0, 0);
 		}
-		glPopMatrix();
+		glEnd();
 
-		// Draw roof wall
-		glPushMatrix();
+		//Left
+		glBegin(GL_QUADS);
 		{
-			glTranslatef(0, size.height, 0);
-			glRotatef(90, 1, 0, 0);
-			glColor4f(red, green, blue, alpha);
-			glRectf(0, 0, size.width, size.height);
+			glNormal3f(1, 0, 0);
+			glVertex3f(0, size.height, 0);
+			glVertex3f(0, size.height, size.depth);
+			glVertex3f(0, 0, size.depth);
+			glVertex3f(0, 0, 0);
 		}
-		glPopMatrix();
+		glEnd();
+
+		//Right
+		glBegin(GL_QUADS);
+		{
+			glNormal3f(1, 0, 0);
+			glVertex3f(0, size.height, 0);
+			glVertex3f(0, size.height, size.depth);
+			glVertex3f(0, 0, size.depth);
+			glVertex3f(0, 0, 0);
+		}
+		glEnd();
+
+		//Right
+		glBegin(GL_QUADS);
+		{
+			glNormal3f(-1, 0, 0);
+			glVertex3f(size.width, size.height, size.depth);
+			glVertex3f(size.width, size.height, 0);
+			glVertex3f(size.width, 0, 0);
+			glVertex3f(size.width, 0, size.depth);
+		}
+		glEnd();
+
+		//Bottom
+		glBegin(GL_QUADS);
+		{
+			glNormal3f(0, 1, 0);
+			glVertex3f(size.width, 0, 0);
+			glVertex3f(0, 0, 0);
+			glVertex3f(0, 0, size.depth);
+			glVertex3f(size.width, 0, size.depth);
+		}
+		glEnd();
 	}
 	glPopMatrix();
 }
