@@ -5,14 +5,16 @@
 #pragma once
 
 #include "Scene.h"
+#include "Fire.h"
 #include "Sun.h"
 #include "Polandball.h"
 
 namespace AlienNightmare {
     class CaveScene : public Scene {
-    private:
+    public:
 	    Sun sun;
-	    Polandball denmark; // Added to test the lighting
+	    Polandball denmark;
+	    Fire fire;
 
     public:
 	    CaveScene(Position position, Size size);

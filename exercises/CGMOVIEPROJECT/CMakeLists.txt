@@ -5,6 +5,10 @@ resolve_files()
 set(CURRENT_INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR})
 group_files()
 
+ADD_DEFINITIONS(
+    -std=c++11
+)
+
 include_directories(${CURRENT_INCLUDE_DIRS})
 
 find_package(GLUT REQUIRED)

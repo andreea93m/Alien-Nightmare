@@ -9,8 +9,8 @@ AlienNightmare::Scene::Scene(Position position, Size size) : Object(position, si
 void AlienNightmare::Scene::drawFloor(GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha) {
 	glPushMatrix();
 	{
-		glColor3f(red,green,blue);
-		
+		glColor3f(red, green, blue);
+
 		//Bottom
 		glBegin(GL_QUADS);
 		{
@@ -28,7 +28,7 @@ void AlienNightmare::Scene::drawFloor(GLfloat red, GLfloat green, GLfloat blue, 
 void AlienNightmare::Scene::drawWalls(GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha) {
 	glPushMatrix();
 	{
-		glColor3f(red,green,blue);
+		glColor3f(red, green, blue);
 
 		// Back
 		glBegin(GL_QUADS);
