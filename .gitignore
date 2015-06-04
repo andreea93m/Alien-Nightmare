@@ -1,2 +1,5 @@
 .idea/
+.project
+.cproject
+build/
 exercises/CGMOVIEPROJECT/startCGMOVIEPROJECT.sh
