@@ -46,7 +46,7 @@ introduced in lab session with spot­light and texturing support).
 - [ ] Transparency 
 	- [ ] At least one object must be semi­transparent and rendered in correct order. 
 - [ ] Camera 
-	- [ ] Use the keyboard to control forward (up­key) and backward movement (down­key) along 
+	- [x] Use the keyboard to control forward (up­key) and backward movement (down­key) along 
 the viewing direction and the mouse to control the heading (mouse­x) and pitch 
 (mouse­y) of the camera relative to the ground (no roll!). 
 	- [ ] Additional animated camera flight.

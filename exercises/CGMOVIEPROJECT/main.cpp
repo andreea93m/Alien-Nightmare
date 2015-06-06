@@ -5,8 +5,6 @@
 //=============================================================================================================//
 
 #include <iostream>
-#include <cstdlib>
-#include <cstdio>
 #include <sstream>
 
 #include <GLee.h>
@@ -28,6 +26,7 @@
 
 #include <vector>
 
+#include "include/Camera.h"
 #include "include/Scene.h"
 #include "include/CaveScene.h"
 #include "include/ChaseScene.h"
@@ -35,17 +34,12 @@
 
 using namespace AlienNightmare;
 
-struct Camera {
-	Position eye, center, up;
-
-	GLfloat speed;
-
-	GLfloat moveX, moveZ;
-};
+struct Mouse {
+	bool leftButtonDown;
+	int startX, startY;
+} mouse;
 
 // global variables
-Camera camera;
-
 float movieTime = 0.0f;
 float delta = 0.0f;
 int fps = 0;
@@ -63,10 +57,9 @@ std::vector<Scene *> scenes;
 * called ONCE after we have a valid window with an opengl context
 */
 void init() {
-	camera.eye.y = 5;
-	camera.eye.z = 30;
-	camera.up.y = 1;
-	camera.speed = 0.05;
+	Camera::eye.y = 5;
+	Camera::eye.z = 15;
+	Camera::center.z = -1;
 
 	// you may adapt all this to your needs!
 	scenes.push_back(new CaveScene(Position(-16, 0, 0), Size(10, 10, 10)));
@@ -119,10 +112,7 @@ void renderScene() {
 void setupViewMatrix() {
 	if (useFreeCamera) {
 		//TODO: free camera (view matrix)
-		gluLookAt(camera.eye.x, camera.eye.y, camera.eye.z,
-		          camera.center.x, camera.center.y, camera.center.z,
-		          camera.up.x, camera.up.y, camera.up.z
-		);
+		Camera::setViewMatrix();
 	}
 	else {
 		//TODO: animated camera (view matrix)
@@ -135,11 +125,7 @@ void animatedCameraUpdate(float delta) {
 
 void freeCameraUpdate(float delta) {
 	//TODO: update or animate the variables of your free camera in here, which then get used in the display() function
-	camera.eye.x += delta * camera.moveX;
-	camera.center.x += delta * camera.moveX;
-
-	camera.eye.z += delta * camera.moveZ;
-	camera.center.z += delta * camera.moveZ;
+	Camera::update(delta);
 }
 
 /**
@@ -280,6 +266,17 @@ void display() {
 */
 void mouseDown(int button, int state, int x, int y) {
 	//TODO: implement free camera rotation here
+	if (button == GLUT_LEFT_BUTTON) {
+		if (state == GLUT_DOWN) {
+			mouse.leftButtonDown = true;
+
+			mouse.startX = x;
+			mouse.startY = y;
+		}
+		else {
+			mouse.leftButtonDown = false;
+		}
+	}
 }
 
 /**
@@ -289,6 +286,12 @@ void mouseDown(int button, int state, int x, int y) {
 */
 void mouseMotion(int x, int y) {
 	//TODO: implement free camera rotation here too
+	if (mouse.leftButtonDown) {
+		Camera::mouseMove(mouse.startX - x, mouse.startY - y);
+
+		mouse.startX = x;
+		mouse.startY = y;
+	}
 }
 
 /**
@@ -316,10 +319,10 @@ void keyDown(unsigned char key, int x, int y) {
 		case 'c':
 			useFreeCamera = !useFreeCamera;
 	        if (!useFreeCamera) {
-		        printf("Switched to animated camera.\n");
+		        printf("Switched to animated Camera::\n");
 	        }
 	        else {
-		        printf("Switched to free camera.\n");
+		        printf("Switched to free Camera::\n");
 	        }
 	        break;
 	}
@@ -339,19 +342,19 @@ void specialKeyDown(int key, int x, int y) {
 	switch (key) {
 		case GLUT_KEY_UP:
 			printf("up\n");
-	        camera.moveZ = -camera.speed;
+	        Camera::keyboardDown(key);
 	        break;
 		case GLUT_KEY_DOWN:
 			printf("down\n");
-	        camera.moveZ = camera.speed;
+	        Camera::keyboardDown(key);
 	        break;
 		case GLUT_KEY_RIGHT:
 			printf("right\n");
-	        camera.moveX = camera.speed;
+	        Camera::keyboardDown(key);
 	        break;
 		case GLUT_KEY_LEFT:
 			printf("left\n");
-	        camera.moveX = -camera.speed;
+	        Camera::keyboardDown(key);
 	        break;
 	}
 }
@@ -360,19 +363,19 @@ void specialKeyUp(int key, int x, int y) {
 	switch (key) {
 		case GLUT_KEY_UP:
 			printf("up\n");
-	        camera.moveZ = 0;
+	        Camera::keyboardUp(key);
 	        break;
 		case GLUT_KEY_DOWN:
 			printf("down\n");
-	        camera.moveZ = 0;
+	        Camera::keyboardUp(key);
 	        break;
 		case GLUT_KEY_RIGHT:
 			printf("right\n");
-	        camera.moveX = 0;
+	        Camera::keyboardUp(key);
 	        break;
 		case GLUT_KEY_LEFT:
 			printf("left\n");
-	        camera.moveX = 0;
+	        Camera::keyboardUp(key);
 	        break;
 	}
 }
