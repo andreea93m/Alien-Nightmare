@@ -43,7 +43,17 @@ void AlienNightmare::Polandball::render(float movieTime) {
 
 		moveToPosition();
 
-		Shader::usePhongShader();
+//		GLfloat ambient[] = { 0,0,0,0 };
+//		GLfloat diffuse[] = { 1.0, life, life / 4, life };
+//		GLfloat specular[] = { 1.0, life, life / 4, life };
+//		GLfloat shininess = 32.0; // [0..128]
+//
+//		glMaterialfv(GL_FRONT, GL_AMBIENT, ambient);
+//		glMaterialfv(GL_FRONT, GL_DIFFUSE, diffuse);
+//		glMaterialfv(GL_FRONT, GL_SPECULAR, specular);
+//		glMaterialf(GL_FRONT, GL_SHININESS, shininess);
+
+		Shader::usePhongShaderWithTexturing();
 
 		glEnable(GL_TEXTURE_2D);
 		texture->bind(5);

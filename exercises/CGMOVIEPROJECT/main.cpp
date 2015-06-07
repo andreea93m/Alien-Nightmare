@@ -63,7 +63,7 @@ std::vector<Scene *> scenes;
 */
 void init() {
 	Shader::init();
-	Shader::useSmoothShader();
+	Shader::usePhongShader();
 
 	Camera::eye.y = 5;
 	Camera::eye.z = 15;

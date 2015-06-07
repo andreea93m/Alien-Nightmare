@@ -11,15 +11,15 @@ void AlienNightmare::Particle::render(float movieTime) {
 	{
 		moveToPosition();
 
-//		GLfloat ambient[] = { 1.0, life, life / 4, life };
-//		GLfloat diffuse[] = { 1.0, life, life / 4, life };
-//		GLfloat specular[] = { 1.0, life, life / 4, life };
-//		GLfloat shininess = 32.0; // [0..128]
-//
-//		glMaterialfv(GL_FRONT, GL_AMBIENT, ambient);
-//		glMaterialfv(GL_FRONT, GL_DIFFUSE, diffuse);
-//		glMaterialfv(GL_FRONT, GL_SPECULAR, specular);
-//		glMaterialf(GL_FRONT, GL_SHININESS, shininess);
+		GLfloat ambient[] = { 1.0, life, life / 4, life };
+		GLfloat diffuse[] = { 1.0, life, life / 4, life };
+		GLfloat specular[] = { 1.0, life, life / 4, life };
+		GLfloat shininess = 32.0; // [0..128]
+
+		glMaterialfv(GL_FRONT, GL_AMBIENT, ambient);
+		glMaterialfv(GL_FRONT, GL_DIFFUSE, diffuse);
+		glMaterialfv(GL_FRONT, GL_SPECULAR, specular);
+		glMaterialf(GL_FRONT, GL_SHININESS, shininess);
 
 		glColor4f(1.0, life, life / 4, life);
 
@@ -40,13 +40,9 @@ void AlienNightmare::Particle::render(float movieTime) {
 			bottomRight *= 0.1;
 			bottomLeft *= 0.1;
 
-			glTexCoord2d(1, 1);
 			glVertex3fv(& topRight.x);
-			glTexCoord2d(0, 1);
 			glVertex3fv(& topLeft.x);
-			glTexCoord2d(1, 0);
 			glVertex3fv(& bottomLeft.x);
-			glTexCoord2d(0, 0);
 			glVertex3fv(& bottomRight.x);
 		}
 		glEnd();

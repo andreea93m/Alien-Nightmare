@@ -94,7 +94,6 @@ void AlienNightmare::Shader::useSimpleShader() {
 
 	glUniform4f(glGetUniformLocation(simpleshaderprogram,"mycolor"),1.0,0.0,0.0,1.0);
 	glUniform1i(glGetUniformLocation(simpleshaderprogram,"mytexture"),5);
-	glUniform1f(glGetUniformLocation(simpleshaderprogram,"wobbletime"),0);
 }
 
 void AlienNightmare::Shader::usePhongShader() {
@@ -104,8 +103,22 @@ void AlienNightmare::Shader::usePhongShader() {
 	glUseProgram(phongshaderprogram);
 
 	glUniform4f(glGetUniformLocation(phongshaderprogram,"mycolor"),1.0,0.0,0.0,1.0);
+	glUniform1i(glGetUniformLocation(phongshaderprogram,"lightIndex"),2);
+	glUniform1i(glGetUniformLocation(phongshaderprogram,"lightIndex2"),3);
+	glUniform1i(glGetUniformLocation(phongshaderprogram,"useTexturing"), false);
+}
+
+void AlienNightmare::Shader::usePhongShaderWithTexturing() {
+	Shader::PREVIOUS_SHADER = Shader::CURRENT_SHADER;
+	Shader::CURRENT_SHADER = Shader::shaders::PHONG;
+
+	glUseProgram(phongshaderprogram);
+
+	glUniform4f(glGetUniformLocation(phongshaderprogram,"mycolor"),1.0,0.0,0.0,1.0);
+	glUniform1i(glGetUniformLocation(phongshaderprogram,"useTexturing"), true);
 	glUniform1i(glGetUniformLocation(phongshaderprogram,"mytexture"),5);
-	glUniform1f(glGetUniformLocation(phongshaderprogram,"wobbletime"),0);
+	glUniform1i(glGetUniformLocation(phongshaderprogram,"lightIndex"),2);
+	glUniform1i(glGetUniformLocation(phongshaderprogram,"lightIndex2"),3);
 }
 
 void AlienNightmare::Shader::useSmoothShader() {

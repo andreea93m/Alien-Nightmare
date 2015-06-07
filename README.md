@@ -40,8 +40,8 @@ model that contains the textures already).
 - [x] Illumination 
 	- [x] Use multiple light sources (at least 1 moving). 
 	- [x] Use at least 1 spot­light. 
-- [ ] Shader 
-	- [ ] Implement Phong shading that is applied to every object that is rendered (extend shader 
+- [x] Shader 
+	- [x] Implement Phong shading that is applied to every object that is rendered (extend shader 
 introduced in lab session with spot­light and texturing support). 
 - [ ] Transparency 
 	- [ ] At least one object must be semi­transparent and rendered in correct order. 

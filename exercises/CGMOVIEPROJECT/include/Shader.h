@@ -30,6 +30,7 @@ namespace AlienNightmare {
 	    static void useSmoothShader();
 	    static void useSimpleShader();
 	    static void usePhongShader();
+	    static void usePhongShaderWithTexturing();
 
 	    static void undoShaderChange();
     };

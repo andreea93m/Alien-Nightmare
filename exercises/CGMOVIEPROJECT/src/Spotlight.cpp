@@ -10,15 +10,14 @@ void AlienNightmare::Spotlight::render(float movieTime) {
 	glPushMatrix();
 	{
 		moveToPosition();
-		drawCoordinateSystem();
 
 		GLfloat light_ambient[] = { 0.0, 0.0, 0.0, 1.0 };
-		GLfloat light_diffuse[] = { 1.0, 0.0, 0.0, 1.0 };
-		GLfloat light_specular[] = { 1.0, 1.0, 1.0, 1.0 };
+		GLfloat light_diffuse[] = { 1.0, 1.0, 1.0, 1.0 };
+		GLfloat light_specular[] = { 0.0, 0.0, 0.0, 1.0 };
 		GLfloat light_position[] = { size.width / 2, size.height / 2, size.depth / 2, 1.0 };
 
 		GLfloat spot_pos[] = { 0.0, 0.0, 0.0, 1.0 };
-		GLfloat spot_dir[] = { 0.0, -1.0 , 0.0 };
+		GLfloat spot_dir[] = { 0.0, -1.0f , 0.0 };
 		glLightfv(GL_LIGHT3, GL_POSITION, spot_pos);
 		glLightf(GL_LIGHT3, GL_SPOT_CUTOFF, 45.0);
 		glLightfv(GL_LIGHT3, GL_SPOT_DIRECTION, spot_dir);

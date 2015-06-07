@@ -11,6 +11,7 @@ namespace AlienNightmare {
 #include <vector>
 #include <random>
 #include <oogl/Image.h>
+#include "Shader.h"
 #include "Object.h"
 #include "Particle.h"
 

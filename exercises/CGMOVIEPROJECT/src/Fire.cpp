@@ -39,9 +39,13 @@ void AlienNightmare::Fire::render(float movieTime) {
 		glEnable(GL_BLEND);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE);
 
+//		Shader::usePhongShaderWithBillboarding();
+
 		for (int i = 0; i < particle.size(); i++) {
 			particle[i].render(movieTime);
 		}
+
+//		Shader::undoShaderChange();
 
 		glDisable(GL_BLEND);
 	}
