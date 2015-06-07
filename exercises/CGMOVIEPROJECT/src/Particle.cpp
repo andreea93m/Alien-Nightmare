@@ -11,6 +11,16 @@ void AlienNightmare::Particle::render(float movieTime) {
 	{
 		moveToPosition();
 
+//		GLfloat ambient[] = { 1.0, life, life / 4, life };
+//		GLfloat diffuse[] = { 1.0, life, life / 4, life };
+//		GLfloat specular[] = { 1.0, life, life / 4, life };
+//		GLfloat shininess = 32.0; // [0..128]
+//
+//		glMaterialfv(GL_FRONT, GL_AMBIENT, ambient);
+//		glMaterialfv(GL_FRONT, GL_DIFFUSE, diffuse);
+//		glMaterialfv(GL_FRONT, GL_SPECULAR, specular);
+//		glMaterialf(GL_FRONT, GL_SHININESS, shininess);
+
 		glColor4f(1.0, life, life / 4, life);
 
 		glBegin(GL_TRIANGLE_STRIP);
