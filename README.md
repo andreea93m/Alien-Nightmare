@@ -11,7 +11,7 @@ Developed as a group project for Computer Graphics (UE) at Johannes Kepler Unive
 - [x] Fire
 - [ ] Bloom effect
 - [ ] Flying bat
-- [ ] Polandballs around the fire
+- [x] Polandballs around the fire
 - [ ] Lurking Alien
 
 #### Scene 2
@@ -34,12 +34,12 @@ and legs).
 - [ ] Materials 
 	- [ ] At least two clearly different materials with specular properties (just setting different 
 colors using glColor is not sufficient). 
-- [ ] Texturing 
+- [x] Texturing 
 	- [x] Apply texture to at least one manually created geometry (not simply loading an external 
 model that contains the textures already). 
-- [ ] Illumination 
-	- [ ] Use multiple light sources (at least 1 moving). 
-	- [ ] Use at least 1 spot­light. 
+- [x] Illumination 
+	- [x] Use multiple light sources (at least 1 moving). 
+	- [x] Use at least 1 spot­light. 
 - [ ] Shader 
 	- [ ] Implement Phong shading that is applied to every object that is rendered (extend shader 
 introduced in lab session with spot­light and texturing support). 
