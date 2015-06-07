@@ -16,9 +16,10 @@ namespace AlienNightmare {
     private:
 	    GLUquadric * quadric;
 	    GLuint textureId;
+	    GLfloat angle;
 
     public:
-	    Polandball(GLfloat radius, const std::string & fileName);
+	    Polandball(GLfloat radius, GLfloat angle, const std::string & fileName);
 
 	    virtual void render(float movieTime);
 

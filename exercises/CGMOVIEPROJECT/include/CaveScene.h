@@ -13,7 +13,7 @@ namespace AlienNightmare {
     class CaveScene : public Scene {
     public:
 	    Sun sun;
-	    Polandball denmark;
+	    Polandball denmark, germany, poland;
 	    Fire fire;
 
     public:

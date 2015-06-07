@@ -4,8 +4,8 @@
 
 #include "../include/Polandball.h"
 
-AlienNightmare::Polandball::Polandball(GLfloat radius, const std::string & filename) :
-		Object(Position(0, 0, 0), Size(radius, radius, radius)),
+AlienNightmare::Polandball::Polandball(GLfloat radius, GLfloat angle, const std::string & filename) :
+		Object(Position(0, 0, 0), Size(radius, radius, radius)), angle(angle),
 		quadric(gluNewQuadric()) {
 
 	oogl::Image * image = oogl::loadImage(filename);
@@ -52,7 +52,7 @@ void AlienNightmare::Polandball::render(float movieTime) {
 		// Rotate the sphere such that the 'face' of the polandball is looking at the camera
 		glRotatef(90, 1, 0, 0);
 		glRotatef(180, 0, 1, 0);
-		glRotatef(180, 0, 0, 1);
+		glRotatef(180 + angle, 0, 0, 1);
 
 		gluQuadricTexture(quadric, 1);
 		gluSphere(quadric, size.width / 2, 10, 10);
