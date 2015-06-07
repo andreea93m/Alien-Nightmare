@@ -5,11 +5,12 @@
 #pragma once
 
 #include <gl.h>
+#include <glm/glm.hpp>
 
 namespace AlienNightmare {
     class Object;
 
-    class Position {
+    class Position : public glm::vec3 {
     public:
 	    GLfloat x, y, z;
 

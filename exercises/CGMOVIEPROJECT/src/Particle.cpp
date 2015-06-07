@@ -15,14 +15,29 @@ void AlienNightmare::Particle::render(float movieTime) {
 
 		glBegin(GL_TRIANGLE_STRIP);
 		{
+			glm::vec3 topRight = glm::vec3(position.x + size.width, position.y + size.height, size.depth);
+			glm::vec3 topLeft = glm::vec3(position.x - size.width, position.y + size.height, size.depth);
+			glm::vec3 bottomRight = glm::vec3(position.x + size.width, position.y - size.height, size.depth);
+			glm::vec3 bottomLeft = glm::vec3(position.x - size.width, position.y - size.height, size.depth);
+
+			topRight -= (Camera::right + Camera::up);
+			topLeft += (Camera::right - Camera::up);
+			bottomRight += (Camera::right + Camera::up);
+			bottomLeft -= (Camera::right - Camera::up);
+
+			topRight *= 0.1;
+			topLeft *= 0.1;
+			bottomRight *= 0.1;
+			bottomLeft *= 0.1;
+
 			glTexCoord2d(1, 1);
-			glVertex3f(position.x + size.width, position.y + size.height, size.depth);
+			glVertex3fv(& topRight.x);
 			glTexCoord2d(0, 1);
-			glVertex3f(position.x - size.width, position.y + size.height, size.depth);
+			glVertex3fv(& topLeft.x);
 			glTexCoord2d(1, 0);
-			glVertex3f(position.x + size.width, position.y - size.height, size.depth);
+			glVertex3fv(& bottomLeft.x);
 			glTexCoord2d(0, 0);
-			glVertex3f(position.x - size.width, position.y - size.height, size.depth);
+			glVertex3fv(& bottomRight.x);
 		}
 		glEnd();
 

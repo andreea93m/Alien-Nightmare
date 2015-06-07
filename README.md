@@ -8,7 +8,7 @@ Developed as a group project for Computer Graphics (UE) at Johannes Kepler Unive
 
 #### Scene 1
 - [ ] Cave
-- [ ] Fire
+- [x] Fire
 - [ ] Bloom effect
 - [ ] Flying bat
 - [ ] Polandballs around the fire
@@ -53,5 +53,5 @@ the viewing direction and the mouse to control the heading (mouse­x) and pitch
 
 ### Special effects
 - [ ] Postprocessing shader (bloom shader)
-- [ ] Particle system (fire)
+- [x] Particle system (fire)
 

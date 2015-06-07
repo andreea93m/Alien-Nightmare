@@ -4,6 +4,8 @@
 
 #pragma once
 
+#include "Camera.h"
+
 namespace AlienNightmare {
     class Particle;
 }
