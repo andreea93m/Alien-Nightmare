@@ -14,15 +14,18 @@
 namespace AlienNightmare {
     class Polandball : public Object {
     private:
+	    Position initialPosition;
 	    GLUquadric * quadric;
 	    GLuint textureId;
 	    GLfloat angle;
+	    GLfloat speed, maxHeight;
 
     public:
 	    Polandball(GLfloat radius, GLfloat angle, const std::string & fileName);
 
-	    virtual void render(float movieTime);
+	    void setJump(GLfloat speed, GLfloat height);
 
+	    virtual void render(float movieTime);
 	    virtual void update();
     };
 }

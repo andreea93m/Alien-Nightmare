@@ -9,12 +9,15 @@ AlienNightmare::RoomScene::RoomScene(Position position, Size size)
 
 	Polandball * poland = new Polandball(1, 0, "textures/poland.png");
 	poland->placeRelative(this, 0.3, 0, 0.3);
+	poland->setJump(0.000005, 2);
 
 	Polandball * germany = new Polandball(1, 0, "textures/germany.png");
 	germany->placeRelative(this, 0.6, 0, 0.9);
+	germany->setJump(0.000007, 6);
 
 	Polandball * denmark = new Polandball(1, 0, "textures/denmark.png");
 	denmark->placeRelative(this, 0.9, 0, 0.6);
+	denmark->setJump(0.00001, 4);
 
 	polandballs.push_back(poland);
 	polandballs.push_back(germany);

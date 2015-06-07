@@ -5,8 +5,8 @@
 #include "../include/Polandball.h"
 
 AlienNightmare::Polandball::Polandball(GLfloat radius, GLfloat angle, const std::string & filename) :
-		Object(Position(0, 0, 0), Size(radius, radius, radius)), angle(angle),
-		quadric(gluNewQuadric()) {
+		Object(Position(0, 0, 0), Size(radius, radius, radius)), initialPosition(position), angle(angle),
+		quadric(gluNewQuadric()), speed(0.0f) {
 
 	oogl::Image * image = oogl::loadImage(filename);
 
@@ -37,6 +37,8 @@ AlienNightmare::Polandball::Polandball(GLfloat radius, GLfloat angle, const std:
 void AlienNightmare::Polandball::render(float movieTime) {
 	glPushMatrix();
 	{
+		position.y += movieTime * speed;
+
 		moveToPosition();
 
 		glEnable(GL_TEXTURE_2D);
@@ -63,5 +65,13 @@ void AlienNightmare::Polandball::render(float movieTime) {
 }
 
 void AlienNightmare::Polandball::update() {
+	if(speed && (position.y - initialPosition.y + size.height / 2 > maxHeight || position.y - initialPosition.y - size.height / 2 < 0)) {
+		printf("switch: position.y = %lf\n", position.y);
+		speed = -speed;
+	}
+}
 
+void AlienNightmare::Polandball::setJump(GLfloat speed, GLfloat height) {
+	this->speed = speed;
+	this->maxHeight = height;
 }

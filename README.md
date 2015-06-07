@@ -22,7 +22,7 @@ Developed as a group project for Computer Graphics (UE) at Johannes Kepler Unive
 - [ ] Window
 - [ ] Spotlight
 - [ ] Colored glass ball
-- [ ] Jumping Polandballs
+- [x] Jumping Polandballs
 - [ ] Alien outside the window
 
 ### Basic movie effects
