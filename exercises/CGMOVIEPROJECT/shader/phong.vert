@@ -6,6 +6,7 @@
 smooth out vec3 p_normalVec;
 smooth out vec3 p_lightVec;
 smooth out vec3 p_eyeVec;
+out vec2 mytextureCoordinates; // From simpleshader
 
 smooth out vec3 p_lightVec2;
 
@@ -20,4 +21,8 @@ void main() {
 	
 	//compute the vertex position based on projection and modelview matrix
 	gl_Position = gl_ModelViewProjectionMatrix * gl_Vertex; //gl_ModelViewProjectionMatrix = gl_ProjectionMatrix * gl_ModelViewMatrix
+
+	// From simpleshader
+	mytextureCoordinates = gl_MultiTexCoord0.st;
+    gl_Position =  gl_ProjectionMatrix * gl_ModelViewMatrix * gl_Vertex;
 }

@@ -43,7 +43,7 @@ void AlienNightmare::Polandball::render(float movieTime) {
 
 		moveToPosition();
 
-		Shader::useSimpleShader();
+		Shader::usePhongShader();
 
 		glEnable(GL_TEXTURE_2D);
 		texture->bind(5);

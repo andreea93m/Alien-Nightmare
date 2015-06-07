@@ -100,7 +100,12 @@ void AlienNightmare::Shader::useSimpleShader() {
 void AlienNightmare::Shader::usePhongShader() {
 	Shader::PREVIOUS_SHADER = Shader::CURRENT_SHADER;
 	Shader::CURRENT_SHADER = Shader::shaders::PHONG;
+
 	glUseProgram(phongshaderprogram);
+
+	glUniform4f(glGetUniformLocation(phongshaderprogram,"mycolor"),1.0,0.0,0.0,1.0);
+	glUniform1i(glGetUniformLocation(phongshaderprogram,"mytexture"),5);
+	glUniform1f(glGetUniformLocation(phongshaderprogram,"wobbletime"),0);
 }
 
 void AlienNightmare::Shader::useSmoothShader() {
@@ -108,7 +113,7 @@ void AlienNightmare::Shader::useSmoothShader() {
 	Shader::CURRENT_SHADER = Shader::shaders::SMOOTH;
 
 	glUseProgram(0);
-	
+
 	glShadeModel(GL_SMOOTH);
 	glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
 	glHint(GL_POLYGON_SMOOTH_HINT, GL_NICEST);

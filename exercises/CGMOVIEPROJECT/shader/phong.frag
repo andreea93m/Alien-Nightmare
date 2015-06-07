@@ -8,6 +8,13 @@ smooth in vec3 p_eyeVec;
 
 smooth in vec3 p_lightVec2;
 
+// From simpleshader
+const float PI = 3.14;
+uniform vec4 mycolor;
+uniform sampler2D mytexture;
+in vec2 mytextureCoordinates;
+uniform float wobbletime;
+
 vec4 calculateSimplePointLight(in vec3 lightVec, in vec3 normalVec, in vec3 eyeVec, in int lightSourceIndex) {
 
 	lightVec = normalize(lightVec);
@@ -27,4 +34,9 @@ vec4 calculateSimplePointLight(in vec3 lightVec, in vec3 normalVec, in vec3 eyeV
 
 void main() { 	
 	gl_FragColor = calculateSimplePointLight(p_lightVec, p_normalVec, p_eyeVec, 0) + calculateSimplePointLight(p_lightVec2, p_normalVec, p_eyeVec, 1);
+
+	// From simpleshader
+	vec2 wobblecoords = mytextureCoordinates;
+    wobblecoords.s = wobblecoords.s + sin(wobblecoords.t*PI+wobbletime)*0.1;
+    gl_FragColor = texture(mytexture,wobblecoords);
 }
