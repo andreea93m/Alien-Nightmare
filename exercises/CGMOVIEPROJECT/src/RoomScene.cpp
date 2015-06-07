@@ -5,7 +5,7 @@
 #include "../include/RoomScene.h"
 
 AlienNightmare::RoomScene::RoomScene(Position position, Size size)
-		: Scene(position, size) {
+		: Scene(position, size), spotlight(Position(this, 0.5, 0.5, 0.5), Size(1, 1, 1)) {
 
 	Polandball * poland = new Polandball(1, 0, "textures/poland.png");
 	poland->placeRelative(this, 0.3, 0, 0.3);
@@ -28,8 +28,10 @@ void AlienNightmare::RoomScene::render(float movieTime) {
 	glPushMatrix();
 	{
 		moveToPosition();
-		drawFloor(0, 0, 1, 1);
 		//drawWalls(0, 0, 1, 1);
+
+		spotlight.render(movieTime);
+		drawFloor(0, 0, 1, 1);
 
 		glColor3f(1, 1, 1);
 

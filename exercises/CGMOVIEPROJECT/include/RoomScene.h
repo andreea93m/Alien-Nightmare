@@ -6,11 +6,13 @@
 
 #include <vector>
 #include "Scene.h"
+#include "Spotlight.h"
 #include "Polandball.h"
 
 namespace AlienNightmare {
     class RoomScene : public Scene {
     private:
+	    Spotlight spotlight;
 	    std::vector<Polandball *> polandballs;
 
     public:

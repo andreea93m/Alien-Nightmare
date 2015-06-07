@@ -20,7 +20,7 @@ Developed as a group project for Computer Graphics (UE) at Johannes Kepler Unive
 #### Scene 3
 - [ ] Dark room
 - [ ] Window
-- [ ] Spotlight
+- [x] Spotlight
 - [ ] Colored glass ball
 - [x] Jumping Polandballs
 - [ ] Alien outside the window
