@@ -26,11 +26,16 @@
 
 #include <vector>
 
+#include "include/Shader.h"
 #include "include/Camera.h"
 #include "include/Scene.h"
 #include "include/CaveScene.h"
 #include "include/ChaseScene.h"
 #include "include/RoomScene.h"
+
+#include <oogl/GLSLShader.h>
+#include <oogl/GLSLProgram.h>
+#include <glm/gtc/type_ptr.hpp>
 
 using namespace AlienNightmare;
 
@@ -57,6 +62,9 @@ std::vector<Scene *> scenes;
 * called ONCE after we have a valid window with an opengl context
 */
 void init() {
+	Shader::init();
+	Shader::useSmoothShader();
+
 	Camera::eye.y = 5;
 	Camera::eye.z = 15;
 	Camera::center.z = -1;
@@ -76,10 +84,10 @@ void init() {
 	//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 
 	// shading
-	glShadeModel(GL_SMOOTH);
-	glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
-	glHint(GL_POLYGON_SMOOTH_HINT, GL_NICEST);
-	glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
+//	glShadeModel(GL_SMOOTH);
+//	glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
+//	glHint(GL_POLYGON_SMOOTH_HINT, GL_NICEST);
+//	glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
 
 	// blending
 	glEnable(GL_BLEND);

@@ -7,8 +7,10 @@
 #include <GLee.h>
 #include <glu.h>
 #include <oogl/Image.h>
+#include <oogl/Texture.h>
 #include <algorithm>
 #include <string>
+#include "Shader.h"
 #include "Object.h"
 
 namespace AlienNightmare {
@@ -19,6 +21,7 @@ namespace AlienNightmare {
 	    GLuint textureId;
 	    GLfloat angle;
 	    GLfloat speed, maxHeight;
+	    oogl::Texture * texture;
 
     public:
 	    Polandball(GLfloat radius, GLfloat angle, const std::string & fileName);
