@@ -37,7 +37,7 @@ void AlienNightmare::Object::moveToPosition() {
 	glTranslatef(position.x, position.y, position.z);
 }
 
-void AlienNightmare::Object::placeRelative(Object * object, GLfloat xp, GLfloat yp, GLfloat zp) {
+void AlienNightmare::Object::placeRelative(Object *object, GLfloat xp, GLfloat yp, GLfloat zp) {
 	position.x = size.width / 2 + xp * object->size.width;
 	position.y = size.height / 2 + yp * object->size.height;
 	position.z = size.depth / 2 + zp * object->size.depth;

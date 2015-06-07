@@ -14,24 +14,23 @@
 
 namespace AlienNightmare {
     class Shader {
-        private:
-	    enum shaders { SMOOTH, SIMPLE, PHONG };
-	    static shaders CURRENT_SHADER, PREVIOUS_SHADER;
+    private:
+	    static const int MAX_LIGHTS;
+	    static GLuint program;
 
-        static GLuint simpleshaderprogram;
-		static GLuint phongshaderprogram;
+	    static void initPhongShader();
 
-		static void initSimpleShader();
-		static void initPhongShader();
+	    static int lights[8];
 
     public:
 	    static void init();
 
-	    static void useSmoothShader();
-	    static void useSimpleShader();
-	    static void usePhongShader();
-	    static void usePhongShaderWithTexturing();
+	    static void enableTexture(GLuint texture);
 
-	    static void undoShaderChange();
+	    static void disableTexture();
+
+	    static void enableLight(int light);
+
+	    static void disableLight(int light);
     };
 }

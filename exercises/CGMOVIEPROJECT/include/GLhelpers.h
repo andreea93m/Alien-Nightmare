@@ -10,7 +10,7 @@
 namespace AlienNightmare {
     class Object;
 
-    class Position : public glm::vec3 {
+    class Position {
     public:
 	    GLfloat x, y, z;
 

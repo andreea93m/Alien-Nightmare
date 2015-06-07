@@ -33,8 +33,6 @@
 #include "include/ChaseScene.h"
 #include "include/RoomScene.h"
 
-#include <oogl/GLSLShader.h>
-#include <oogl/GLSLProgram.h>
 #include <glm/gtc/type_ptr.hpp>
 
 using namespace AlienNightmare;
@@ -63,7 +61,6 @@ std::vector<Scene *> scenes;
 */
 void init() {
 	Shader::init();
-	Shader::usePhongShader();
 
 	Camera::eye.y = 5;
 	Camera::eye.z = 15;

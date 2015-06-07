@@ -21,6 +21,11 @@ namespace AlienNightmare {
 	    GLfloat life, fade;
 	    Position direction, gravity;
 
+	    glm::vec3 topRight;
+	    glm::vec3 topLeft;
+	    glm::vec3 bottomRight;
+	    glm::vec3 bottomLeft;
+
 	    float generate(float low, float high);
 
     public:

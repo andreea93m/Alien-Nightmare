@@ -5,35 +5,11 @@
 #include <oogl/Texture.h>
 #include "../include/Polandball.h"
 
-AlienNightmare::Polandball::Polandball(GLfloat radius, GLfloat angle, const std::string & filename) :
+AlienNightmare::Polandball::Polandball(GLfloat radius, GLfloat angle, const std::string &filename) :
 		Object(Position(0, 0, 0), Size(radius, radius, radius)), initialPosition(position), angle(angle),
 		quadric(gluNewQuadric()), speed(0.0f) {
 
-//	oogl::Image * image = oogl::loadImage(filename);
 	texture = oogl::loadTexture(filename);
-
-	// Allocate space for the texture
-//	glGenTextures(1, & textureId);
-//
-//	// Set the texture to edit
-//	glBindTexture(GL_TEXTURE_2D, textureId);
-//
-//	// Map the image to the texture
-//	glTexImage2D(
-//			GL_TEXTURE_2D,
-//			0,
-//			GL_RGB,
-//			image->getWidth(),
-//			image->getHeight(),
-//			0,
-//			GL_RGB,
-//			GL_UNSIGNED_BYTE,
-//			image->getData()
-//	);
-//
-//	glBindTexture(GL_TEXTURE_2D, 0);
-
-//	delete image;
 }
 
 void AlienNightmare::Polandball::render(float movieTime) {
@@ -43,28 +19,8 @@ void AlienNightmare::Polandball::render(float movieTime) {
 
 		moveToPosition();
 
-//		GLfloat ambient[] = { 0,0,0,0 };
-//		GLfloat diffuse[] = { 1.0, life, life / 4, life };
-//		GLfloat specular[] = { 1.0, life, life / 4, life };
-//		GLfloat shininess = 32.0; // [0..128]
-//
-//		glMaterialfv(GL_FRONT, GL_AMBIENT, ambient);
-//		glMaterialfv(GL_FRONT, GL_DIFFUSE, diffuse);
-//		glMaterialfv(GL_FRONT, GL_SPECULAR, specular);
-//		glMaterialf(GL_FRONT, GL_SHININESS, shininess);
-
-		Shader::usePhongShaderWithTexturing();
-
-		glEnable(GL_TEXTURE_2D);
 		texture->bind(5);
-
-//		glBindTexture(GL_TEXTURE_2D, textureId);
-//
-//		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-//		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-//
-//		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-//		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+		Shader::enableTexture(5);
 
 		// Rotate the sphere such that the 'face' of the polandball is looking at the camera
 		glRotatef(90, 1, 0, 0);
@@ -74,20 +30,15 @@ void AlienNightmare::Polandball::render(float movieTime) {
 		gluQuadricTexture(quadric, 1);
 		gluSphere(quadric, size.width / 2, 10, 10);
 
+		Shader::disableTexture();
 		texture->unbind();
-
-		glDisable(GL_TEXTURE_2D);
-
-		Shader::undoShaderChange();
-
-//		glBindTexture(GL_TEXTURE_2D, 0);
 	}
 	glPopMatrix();
 }
 
 void AlienNightmare::Polandball::update() {
-	if(speed && (position.y - initialPosition.y + size.height / 2 > maxHeight || position.y - initialPosition.y - size.height / 2 < 0)) {
-		printf("switch: position.y = %lf\n", position.y);
+	if (speed && (position.y - initialPosition.y + size.height / 2 > maxHeight ||
+	              position.y - initialPosition.y - size.height / 2 < 0)) {
 		speed = -speed;
 	}
 }

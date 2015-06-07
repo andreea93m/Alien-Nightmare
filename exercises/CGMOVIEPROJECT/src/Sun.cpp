@@ -4,7 +4,10 @@
 
 #include "../include/Sun.h"
 
-AlienNightmare::Sun::Sun(const AlienNightmare::Position &position, const GLfloat radius) : Object(position, Size(2 * radius, 2 * radius, 2 * radius)) {
+AlienNightmare::Sun::Sun(const AlienNightmare::Position &position, const GLfloat radius) : Object(position,
+                                                                                                  Size(2 * radius,
+                                                                                                       2 * radius,
+                                                                                                       2 * radius)) {
 	color[0] = 1;
 	color[1] = 1;
 	color[3] = 0;

@@ -12,6 +12,7 @@ namespace AlienNightmare {
 	    Scene(Position position, Size size);
 
 	    void drawFloor(GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha);
+
 	    void drawWalls(GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha);
     };
 }

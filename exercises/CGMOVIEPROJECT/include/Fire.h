@@ -18,22 +18,27 @@ namespace AlienNightmare {
 namespace AlienNightmare {
 
     class Fire : public Object {
-    public:
-	    unsigned long count;
-	    float slowdown;
-	    Position speed;
-	    GLuint textureId;
-
+    private:
 	    std::default_random_engine generator;
-	    std::normal_distribution<double> xdist, zdist;
+	    std::normal_distribution<GLfloat> xNormalDistribution, zNormalDistribution;
 
-	    std::vector<Particle> particle;            // Particle Array (Room For Particle Info)
+	    std::vector<Particle> particle;
+
+	    GLfloat light_ambient[4];
+	    GLfloat light_diffuse[4];
+	    GLfloat light_specular[4];
+	    GLfloat light_position[4];
 
     public:
+	    const float slowdown;
+	    const Position speed;
+
 	    Fire(unsigned long count, const Position &position, const Size &size);
 
 	    virtual void render(float movieTime);
 
 	    virtual void update();
+
+	    void generateParticlePosition(Particle *particle);
     };
 }

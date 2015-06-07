@@ -16,6 +16,7 @@ namespace AlienNightmare {
 	    Sun(const Position &position, const GLfloat radius);
 
 	    virtual void render(float movieTime);
+
 	    virtual void update();
     };
 }
