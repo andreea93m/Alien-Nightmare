@@ -14,7 +14,8 @@ AlienNightmare::Spotlight::Spotlight(const AlienNightmare::Position &position,
                                                                          spot_pos{0.0, 0.0, 0.0, 1.0},
                                                                          spot_dir{0.0, -0.5f, -0.5f},
                                                                          spot_cutoff(20.0),
-                                                                         spot_quadratic_attenuation(0.01) { }
+                                                                         spot_linear_attenuation(0.0),
+                                                                         spot_quadratic_attenuation(0.0) { }
 
 void AlienNightmare::Spotlight::render(float movieTime) {
 	glPushMatrix();
@@ -27,7 +28,8 @@ void AlienNightmare::Spotlight::render(float movieTime) {
 		glLightfv(GL_LIGHT3, GL_POSITION, spot_pos);
 		glLightf(GL_LIGHT3, GL_SPOT_CUTOFF, spot_cutoff);
 		glLightfv(GL_LIGHT3, GL_SPOT_DIRECTION, spot_dir);
-		glLightf(GL_LIGHT3, GL_SPOT_EXPONENT, 0.5);
+		glLightf(GL_LIGHT3, GL_SPOT_EXPONENT, 0.3);
+		glLightf(GL_LIGHT3, GL_LINEAR_ATTENUATION, spot_linear_attenuation);
 		glLightf(GL_LIGHT3, GL_QUADRATIC_ATTENUATION, spot_quadratic_attenuation);
 
 		glLightfv(GL_LIGHT3, GL_POSITION, light_position);

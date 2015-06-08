@@ -14,7 +14,7 @@ namespace AlienNightmare {
 	    GLfloat light_position[4];
 	    GLfloat spot_pos[4];
 	    GLfloat spot_dir[4];
-	    GLfloat spot_cutoff, spot_quadratic_attenuation;
+	    GLfloat spot_cutoff, spot_linear_attenuation, spot_quadratic_attenuation;
 
     public:
 	    Spotlight(const Position &position, const Size &size);

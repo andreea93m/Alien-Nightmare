@@ -25,28 +25,39 @@ vec4 calculateSimplePointLight(in vec3 lightVec, in vec3 normalVec, in vec3 eyeV
 	normalVec = normalize(normalVec);
 	eyeVec = normalize(eyeVec);
 
-	vec3 spotVec = normalize(gl_LightSource[lightSourceIndex].spotDirection);
-	float angle = dot(-lightVec, spotVec);
+	gl_LightSourceParameters lightParameters = gl_LightSource[lightSourceIndex];
 
-	if(angle > gl_LightSource[lightSourceIndex].spotCosCutoff) {
-		float diffuse = max(dot(normalVec,lightVec),0.0);
-		vec3 reflectVec = reflect(-lightVec,normalVec);
-		float spec = pow( max(dot(reflectVec, eyeVec),0.0) ,gl_FrontMaterial.shininess);
+	vec3 spotVec = normalize(lightParameters.spotDirection);
+	vec3 reflectVec = reflect(-lightVec,normalVec);
+	float diffuse = max(dot(normalVec,lightVec),0.0);
+    float spec = pow(max(dot(reflectVec, eyeVec),0.0) ,gl_FrontMaterial.shininess);
 
-		vec4 c_amb = clamp(gl_LightSource[lightSourceIndex].ambient * gl_FrontMaterial.ambient, 0.0, 1.0);
-		vec4 c_diff = clamp(diffuse * gl_LightSource[lightSourceIndex].diffuse * gl_FrontMaterial.diffuse, 0.0, 1.0);
-		vec4 c_spec = clamp(spec * gl_LightSource[lightSourceIndex].specular * gl_FrontMaterial.specular, 0.0, 1.0);
+	float att = 1.0 / (lightParameters.constantAttenuation +
+    	                    lightParameters.linearAttenuation * dist +
+    	                    lightParameters.quadraticAttenuation * dist * dist);
 
-		float att = 1.0 / (gl_LightSource[lightSourceIndex].constantAttenuation +
-	                    gl_LightSource[lightSourceIndex].linearAttenuation * dist +
-	                    gl_LightSource[lightSourceIndex].quadraticAttenuation * dist * dist);
+	vec4 finalColor = useTexturing ? texture(mytexture, mytextureCoordinates) : vec4(1.0);
 
-		vec4 finalColor = att * (c_amb + c_diff + c_spec);
+    vec4 c_amb = clamp(lightParameters.ambient * gl_FrontMaterial.ambient, 0.0, 1.0);
+    vec4 c_diff = clamp(diffuse * lightParameters.diffuse * gl_FrontMaterial.diffuse, 0.0, 1.0);
+    vec4 c_spec = clamp(spec * lightParameters.specular * gl_FrontMaterial.specular, 0.0, 1.0);
 
-		return useTexturing ? finalColor * texture(mytexture, mytextureCoordinates) : finalColor;
-	}
+    if(lightParameters.spotCutoff <= 90.0) {
+        // This is a spot light
+        float angle = dot(-lightVec, spotVec);
 
-	return gl_LightSource[lightSourceIndex].ambient;
+        if(angle < cos(radians(lightParameters.spotCutoff))) {
+            // Outside the cone
+            c_diff = c_spec = vec4(0.0);
+        }
+
+        // Apply the spot exponent to the attenuation
+        att *= pow(angle, lightParameters.spotExponent);
+    }
+
+    finalColor *= att * (c_amb + c_diff + c_spec);
+
+	return finalColor;
 }
 
 void main() {
