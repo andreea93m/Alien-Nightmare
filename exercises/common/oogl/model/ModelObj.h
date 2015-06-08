@@ -23,7 +23,7 @@ public:
 
 	virtual void render(RenderOptions options = 0);
 
-private:
+// private:
 	GLMmodel* model;
 	oogl::DisplayList *displayList;
 

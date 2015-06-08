@@ -26,7 +26,7 @@ public:
 
 	virtual void render(RenderOptions options = 0);
 
-private:
+// private:
 	Lib3dsFile *file;
 	float currentFrame;
 	std::vector<oogl::Texture*> textures;

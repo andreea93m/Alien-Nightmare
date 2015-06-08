@@ -13,7 +13,7 @@ AlienNightmare::Spotlight::Spotlight(const AlienNightmare::Position &position,
                                                                                         size.depth / 2, 1.0},
                                                                          spot_pos{0.0, 0.0, 0.0, 1.0},
                                                                          spot_dir{0.0, -1.0f, 0.0},
-                                                                         spot_cutoff(45.0),
+                                                                         spot_cutoff(50.0),
                                                                          spot_quadratic_attenuation(0.01) { }
 
 void AlienNightmare::Spotlight::render(float movieTime) {
