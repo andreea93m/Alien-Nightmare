@@ -25,7 +25,7 @@ void AlienNightmare::Fire::render(float movieTime) {
 		glLightfv(GL_LIGHT2, GL_AMBIENT, light_ambient);
 		glLightfv(GL_LIGHT2, GL_DIFFUSE, light_diffuse);
 		glLightfv(GL_LIGHT2, GL_SPECULAR, light_specular);
-		glLightf(GL_LIGHT2, GL_QUADRATIC_ATTENUATION, 0.01f);
+		glLightf(GL_LIGHT2, GL_QUADRATIC_ATTENUATION, 0.1f);
 
 		glEnable(GL_LIGHT2);
 
