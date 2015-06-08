@@ -18,8 +18,8 @@ Developed as a group project for Computer Graphics (UE) at Johannes Kepler Unive
 - [ ] Dalek scares a Polandball
 
 #### Scene 3
-- [ ] Dark room
-- [ ] Window
+- [x] Dark room
+- [x] Window
 - [x] Spotlight
 - [ ] Colored glass ball
 - [x] Jumping Polandballs
@@ -43,8 +43,8 @@ model that contains the textures already).
 - [x] Shader 
 	- [x] Implement Phong shading that is applied to every object that is rendered (extend shader 
 introduced in lab session with spot­light and texturing support). 
-- [ ] Transparency 
-	- [ ] At least one object must be semi­transparent and rendered in correct order. 
+- [x] Transparency 
+	- [x] At least one object must be semi­transparent and rendered in correct order. 
 - [ ] Camera 
 	- [x] Use the keyboard to control forward (up­key) and backward movement (down­key) along 
 the viewing direction and the mouse to control the heading (mouse­x) and pitch 

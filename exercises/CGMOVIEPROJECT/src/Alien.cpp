@@ -14,7 +14,7 @@ void AlienNightmare::Alien::render(float movieTime) {
 	{
 		moveToPosition();
 
-		glTranslatef(0, 0.5, 0);
+		glTranslatef(0, 1, 0);
 		glScalef(2, 2, 2);
 		model->model->materials[1].ambient[3] = 0;
 		glBindTexture(GL_TEXTURE_2D, model->model->textures[1].id);

@@ -9,11 +9,11 @@ AlienNightmare::Spotlight::Spotlight(const AlienNightmare::Position &position,
                                                                          light_ambient{0.0, 0.0, 0.0, 1.0},
                                                                          light_diffuse{1.0, 1.0, 1.0, 1.0},
                                                                          light_specular{0.0, 0.0, 0.0, 1.0},
-                                                                         light_position{size.width / 2, size.height / 2,
-                                                                                        size.depth / 2, 1.0},
+                                                                         light_position{size.width, size.height,
+                                                                                        size.depth, 1.0},
                                                                          spot_pos{0.0, 0.0, 0.0, 1.0},
-                                                                         spot_dir{0.0, -1.0f, 0.0},
-                                                                         spot_cutoff(50.0),
+                                                                         spot_dir{0.0, -0.5f, -0.5f},
+                                                                         spot_cutoff(20.0),
                                                                          spot_quadratic_attenuation(0.01) { }
 
 void AlienNightmare::Spotlight::render(float movieTime) {
@@ -21,9 +21,13 @@ void AlienNightmare::Spotlight::render(float movieTime) {
 	{
 		moveToPosition();
 
+		light_diffuse[0] = light_specular[0] = sinf(movieTime / 100);
+		light_diffuse[1] = light_specular[1] = cosf(movieTime / 100);
+
 		glLightfv(GL_LIGHT3, GL_POSITION, spot_pos);
 		glLightf(GL_LIGHT3, GL_SPOT_CUTOFF, spot_cutoff);
 		glLightfv(GL_LIGHT3, GL_SPOT_DIRECTION, spot_dir);
+		glLightf(GL_LIGHT3, GL_SPOT_EXPONENT, 0.5);
 		glLightf(GL_LIGHT3, GL_QUADRATIC_ATTENUATION, spot_quadratic_attenuation);
 
 		glLightfv(GL_LIGHT3, GL_POSITION, light_position);

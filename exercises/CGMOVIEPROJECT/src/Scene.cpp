@@ -11,6 +11,9 @@ void AlienNightmare::Scene::drawFloor(GLfloat red, GLfloat green, GLfloat blue, 
 	{
 		glColor3f(red, green, blue);
 
+		GLfloat color[] = {0.2, 0.2, 0.2, 1.0};
+		glColor4fv(color);
+
 		//Bottom
 		glBegin(GL_QUADS);
 		{
