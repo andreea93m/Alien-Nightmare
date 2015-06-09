@@ -5,7 +5,7 @@
 #include "../include/Shader.h"
 
 GLuint AlienNightmare::Shader::program;
-const int AlienNightmare::Shader::MAX_LIGHTS = 2;
+const int AlienNightmare::Shader::MAX_LIGHTS = 8;
 int AlienNightmare::Shader::lights[8] = {-1, -1, -1, -1, -1, -1, -1, -1};
 
 void AlienNightmare::Shader::init() {
@@ -56,6 +56,11 @@ void AlienNightmare::Shader::disableTexture() {
 }
 
 void AlienNightmare::Shader::enableLight(int light) {
+	for (int i = 0; i < Shader::MAX_LIGHTS; ++i) {
+		printf("%d ", lights[i]);
+	}
+	printf("\n");
+
 	for (int i = 0; i < Shader::MAX_LIGHTS; ++i) {
 		if (lights[i] == light) {
 			return;
