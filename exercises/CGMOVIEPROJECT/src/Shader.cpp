@@ -66,14 +66,16 @@ void AlienNightmare::Shader::enableLight(int light) {
 		if (lights[i] == -1) {
 			lights[i] = light;
 
-			switch (i) {
-				case 0:
-					glUniform1i(glGetUniformLocation(program, "lightIndex"), light);
-			        break;
-				case 1:
-					glUniform1i(glGetUniformLocation(program, "lightIndex2"), light);
-			        break;
-			}
+			glUniform1iv(glGetUniformLocation(program, "lightIndex"), 8, lights);
+
+//			switch (i) {
+//				case 0:
+//					glUniform1i(glGetUniformLocation(program, "lightIndex0"), light);
+//			        break;
+//				case 1:
+//					glUniform1i(glGetUniformLocation(program, "lightIndex1"), light);
+//			        break;
+//			}
 
 			break;
 		}
@@ -85,14 +87,7 @@ void AlienNightmare::Shader::disableLight(int light) {
 		if (lights[i] == light) {
 			lights[i] = -1;
 
-			switch (i) {
-				case 0:
-					glUniform1i(glGetUniformLocation(program, "lightIndex"), -1);
-			        break;
-				case 1:
-					glUniform1i(glGetUniformLocation(program, "lightIndex2"), -1);
-			        break;
-			}
+			glUniform1iv(glGetUniformLocation(program, "lightIndex"), 8, lights);
 
 			break;
 		}

@@ -4,14 +4,9 @@
 smooth in vec3 p_normalVec;
 smooth in vec3 p_eyeVec;
 
-smooth in vec3 p_lightVec;
-smooth in vec3 p_lightVec2;
-
-flat in int p_lightIndex;
-flat in int p_lightIndex2;
-
-smooth in float p_dist;
-smooth in float p_dist2;
+smooth in vec3 p_lightVec[8];
+flat in int p_lightIndex[8];
+smooth in float p_dist[8];
 
 uniform vec4 mycolor;
 uniform bool useTexturing;
@@ -60,7 +55,10 @@ vec4 calculateSimplePointLight(in vec3 lightVec, in vec3 normalVec, in vec3 eyeV
 	return finalColor;
 }
 
-void main() {
-	gl_FragColor = calculateSimplePointLight(p_lightVec, p_normalVec, p_eyeVec, p_lightIndex, p_dist) +
-					calculateSimplePointLight(p_lightVec2, p_normalVec, p_eyeVec, p_lightIndex2, p_dist2);
+void main() {	
+	for(int i = 0; i < 8; ++i) {
+		if(p_lightIndex[i] != -1) {
+			gl_FragColor += calculateSimplePointLight(p_lightVec[i], p_normalVec, p_eyeVec, p_lightIndex[i], p_dist[i]);
+		}
+	}
 }
