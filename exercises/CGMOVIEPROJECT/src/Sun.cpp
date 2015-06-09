@@ -21,7 +21,7 @@ void AlienNightmare::Sun::render(float movieTime) {
 		float ambient[] = {0.0f, 0.0f, 0.0f, 1.0f};
 		float diffuse[] = {1.0f, 1.0f, 0.0f, 1.0f};
 		float specular[] = {1.0f, 1.0f, 0.0f, 1.0f};
-		float lightPosition[] = {0.0f, size.height, 0.0f, 1.0f};
+		float lightPosition[] = {1.0f, 1.0f, 1.0f, 1.0f};
 
 //		glEnable(GL_LIGHTING);
 
@@ -29,13 +29,13 @@ void AlienNightmare::Sun::render(float movieTime) {
 		glLightfv(GL_LIGHT1, GL_AMBIENT, ambient);
 		glLightfv(GL_LIGHT1, GL_DIFFUSE, diffuse);
 		glLightfv(GL_LIGHT1, GL_SPECULAR, specular);
-		glLightf(GL_LIGHT1, GL_QUADRATIC_ATTENUATION, 0.1f);
+		glLightf(GL_LIGHT1, GL_QUADRATIC_ATTENUATION, 0.03f);
 
 		//the light position is affected by the model view matrix, too
 		glLightfv(GL_LIGHT1, GL_POSITION, lightPosition);
 
 		glColor3fv(color);
-		glutSolidSphere(size.height / 2, 10, 10);
+		//glutSolidSphere(size.height / 2, 10, 10);
 
 		glEnable(GL_LIGHT1);
 		Shader::enableLight(1);
