@@ -67,9 +67,9 @@ void init() {
 	Camera::center.z = -1;
 
 	// you may adapt all this to your needs!
-	scenes.push_back(new CaveScene(Position(-16, 0, 0), Size(10, 10, 10)));
-	scenes.push_back(new ChaseScene(Position(-5, 0, 0), Size(10, 10, 10)));
-	scenes.push_back(new RoomScene(Position(6, 0, 0), Size(10, 10, 10)));
+	scenes.push_back(new CaveScene(Position(-30, 0, 0), Size(10, 10, 10)));
+	scenes.push_back(new ChaseScene(Position(-10, 0, 0), Size(10, 10, 10)));
+	scenes.push_back(new RoomScene(Position(20, 0, 0), Size(10, 10, 10)));
 
 	// enable stuff
 	glEnable(GL_DEPTH_TEST);
