@@ -19,7 +19,7 @@ void AlienNightmare::CaveScene::render(float movieTime) {
 	{
 		moveToPosition();
 		//drawWalls(0, 1, 0, 1);
-		//sun.render(movieTime);
+		sun.render(movieTime);
 		fire.render(movieTime);
 		denmark.render(movieTime);
 		germany.render(movieTime);

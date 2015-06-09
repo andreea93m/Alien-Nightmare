@@ -6,6 +6,7 @@
 
 #include <oogl/glutIncludes.h>
 #include "Object.h"
+#include "Shader.h"
 
 namespace AlienNightmare {
     class Sun : public Object {
