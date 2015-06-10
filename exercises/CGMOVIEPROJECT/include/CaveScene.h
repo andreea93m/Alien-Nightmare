@@ -6,15 +6,15 @@
 
 #include "Scene.h"
 #include "Fire.h"
-#include "Sun.h"
 #include "Polandball.h"
+#include "Bat.h"
 
 namespace AlienNightmare {
     class CaveScene : public Scene {
     public:
-	    Sun sun;
 	    Polandball denmark, germany, poland;
 	    Fire fire;
+	    Bat bat;
 
     public:
 	    CaveScene(Position position, Size size);
