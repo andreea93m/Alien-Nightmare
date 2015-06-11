@@ -58,7 +58,7 @@ vec4 calculateSimplePointLight(in vec3 lightVec, in vec3 normalVec, in vec3 eyeV
 void main() {
 	gl_FragColor = vec4(0.0);
 		
-	for(int i = 0; i < 2; ++i) {
+	for(int i = 0; i < 8; ++i) {
 		if(p_lightIndex[i] != -1) {
 			gl_FragColor += calculateSimplePointLight(p_lightVec[i], p_normalVec, p_eyeVec, p_lightIndex[i], p_dist[i]);
 		}
