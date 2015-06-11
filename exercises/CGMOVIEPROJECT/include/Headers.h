@@ -1,4 +1,6 @@
+#ifdef _WIN32
 #include "windows.h"
+#endif
 
 #include <GLee.h>
 #if defined(__APPLE__) || defined(__APPLE_CC__)
