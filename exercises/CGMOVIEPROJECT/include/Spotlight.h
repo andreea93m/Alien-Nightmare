@@ -8,12 +8,12 @@
 namespace AlienNightmare {
     class Spotlight : public Object {
     private:
-	    GLfloat light_ambient[4];
-	    GLfloat light_diffuse[4];
-	    GLfloat light_specular[4];
-	    GLfloat light_position[4];
-	    GLfloat spot_pos[4];
-	    GLfloat spot_dir[4];
+		std::vector<GLfloat> light_ambient;
+		std::vector<GLfloat> light_diffuse;
+		std::vector<GLfloat> light_specular;
+		std::vector<GLfloat> light_position;
+		std::vector<GLfloat> spot_pos;
+		std::vector<GLfloat> spot_dir;
 	    GLfloat spot_cutoff, spot_linear_attenuation, spot_quadratic_attenuation;
 
     public:

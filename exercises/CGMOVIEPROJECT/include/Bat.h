@@ -7,9 +7,10 @@
 
 #pragma once
 
+#include "Headers.h"
+
 #include <oogl/model/Model3ds.h>
 #include <oogl/model/ModelObj.h>
-#include <GL/glut.h>
 #include <oogl/Texture.h>
 #include "Object.h"
 #include "Shader.h"

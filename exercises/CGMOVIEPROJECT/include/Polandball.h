@@ -4,8 +4,7 @@
 
 #pragma once
 
-#include <GLee.h>
-#include <glu.h>
+#include "include/Headers.h"
 #include <oogl/Image.h>
 #include <oogl/Texture.h>
 #include <algorithm>

@@ -8,8 +8,8 @@ AlienNightmare::Fire::Fire(unsigned long count, const AlienNightmare::Position &
                            const AlienNightmare::Size &size)
 		: Object(position, size), slowdown(2000.0),
 		  xNormalDistribution(0, (float) (size.width / 2.0)), zNormalDistribution(0, size.depth / 2.0),
-		  light_ambient{0.0, 0.0, 0.0, 1.0}, light_diffuse{1.0, 1.0, 0.0, 1.0},
-		  light_specular{1.0, 1.0, 1.0, 1.0}, light_position{size.width / 2, size.height / 2, size.depth / 2, 1.0} {
+		  light_ambient({0.0, 0.0, 0.0, 1.0}), light_diffuse({1.0, 1.0, 0.0, 1.0}),
+		  light_specular({1.0, 1.0, 1.0, 1.0}), light_position({size.width / 2, size.height / 2, size.depth / 2, 1.0}) {
 
 	for (int i = 0; i < count; ++i) {
 		particle.push_back(Particle(this, 0.05));
@@ -21,10 +21,10 @@ void AlienNightmare::Fire::render(float movieTime) {
 	{
 		moveToPosition();
 
-		glLightfv(GL_LIGHT2, GL_POSITION, light_position);
-		glLightfv(GL_LIGHT2, GL_AMBIENT, light_ambient);
-		glLightfv(GL_LIGHT2, GL_DIFFUSE, light_diffuse);
-		glLightfv(GL_LIGHT2, GL_SPECULAR, light_specular);
+		glLightfv(GL_LIGHT2, GL_POSITION, & light_position[0]);
+		glLightfv(GL_LIGHT2, GL_AMBIENT, &light_ambient[0]);
+		glLightfv(GL_LIGHT2, GL_DIFFUSE, &light_diffuse[0]);
+		glLightfv(GL_LIGHT2, GL_SPECULAR, &light_specular[0]);
 		glLightf(GL_LIGHT2, GL_QUADRATIC_ATTENUATION, 0.1f);
 
 		glEnable(GL_LIGHT2);

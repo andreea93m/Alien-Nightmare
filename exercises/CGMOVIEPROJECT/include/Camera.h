@@ -4,19 +4,14 @@
 
 #pragma once
 
-#if defined(__APPLE__) || defined(__APPLE_CC__)
-# include <OpenGL/gl.h>
-# include <OpenGL/glu.h>
-# include <GLUT/glut.h>
-#else
+#include "include/Headers.h"
 
-# include <GL/glu.h>	// OpenGL Utility header
-# include <GL/glut.h>	// GLUT header
-
-#endif
+#define _USE_MATH_DEFINES
 
 #include <cmath>
 #include <glm/glm.hpp>
+
+
 
 namespace AlienNightmare {
     class Camera {
