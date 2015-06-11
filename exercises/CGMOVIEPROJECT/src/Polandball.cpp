@@ -15,8 +15,6 @@ AlienNightmare::Polandball::Polandball(GLfloat radius, GLfloat angle, const std:
 void AlienNightmare::Polandball::render(float movieTime) {
 	glPushMatrix();
 	{
-		position.y += movieTime * speed;
-
 		moveToPosition();
 
 		texture->bind(5);
@@ -41,6 +39,8 @@ void AlienNightmare::Polandball::update() {
 	              position.y - initialPosition.y - size.height / 2 < 0)) {
 		speed = -speed;
 	}
+
+	position.y += speed;
 }
 
 void AlienNightmare::Polandball::setJump(GLfloat speed, GLfloat height) {
