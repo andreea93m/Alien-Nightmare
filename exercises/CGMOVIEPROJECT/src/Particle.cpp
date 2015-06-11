@@ -1,7 +1,7 @@
 #include "../include/Particle.h"
 
 AlienNightmare::Particle::Particle(Fire *fire, GLfloat size) : Object(Position(fire, 0.5, 0, 0.5),
-                                                                      Size(size, size, size)), fire(fire),
+	Size(size, size, size)), fire(fire), fade(0.0),
                                                                gravity(0.0, 0.8, 0.0), life(-1) {
 	update();
 }
