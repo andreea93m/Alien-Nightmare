@@ -20,7 +20,7 @@ void AlienNightmare::CaveScene::render(float movieTime) {
 	glPushMatrix();
 	{
 		moveToPosition();
-		//drawWalls(0, 1, 0, 1);
+		drawWalls(0, 1, 0, 1);
 		fire.render(movieTime);
 		bat.render(movieTime);
 		denmark.render(movieTime);

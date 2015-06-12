@@ -56,10 +56,6 @@ void AlienNightmare::Shader::disableTexture() {
 }
 
 void AlienNightmare::Shader::enableLight(int light) {
-	for (int i = 0; i < Shader::MAX_LIGHTS; ++i) {
-		printf("%d ", lights[i]);
-	}
-	printf("\n");
 
 	for (int i = 0; i < Shader::MAX_LIGHTS; ++i) {
 		if (lights[i] == light) {

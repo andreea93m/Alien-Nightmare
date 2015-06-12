@@ -3,11 +3,15 @@
 //
 
 #pragma once
-
+#include "include/Headers.h"
 #include "Object.h"
+#include "Shader.h"
+#include <oogl/Texture.h>
 
 namespace AlienNightmare {
     class Scene : public Object {
+    private:
+	    oogl::Texture *texture;
     protected:
 	    Scene(Position position, Size size);
 
