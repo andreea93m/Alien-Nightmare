@@ -29,7 +29,7 @@ void AlienNightmare::Sun::render(float movieTime) {
 		glLightfv(GL_LIGHT1, GL_AMBIENT, ambient);
 		glLightfv(GL_LIGHT1, GL_DIFFUSE, diffuse);
 		glLightfv(GL_LIGHT1, GL_SPECULAR, specular);
-		glLightf(GL_LIGHT1, GL_QUADRATIC_ATTENUATION, 0.03f);
+		glLightf(GL_LIGHT1, GL_QUADRATIC_ATTENUATION, 0.003f);
 
 		//the light position is affected by the model view matrix, too
 		glLightfv(GL_LIGHT1, GL_POSITION, lightPosition);

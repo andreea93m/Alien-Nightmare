@@ -6,6 +6,7 @@
 
 AlienNightmare::Scene::Scene(Position position, Size size) : Object(position, size) {
 	texture = oogl::loadTexture("textures/cave_textur.jpg");
+	texture1 = oogl::loadTexture("textures/cave_texture.jpg");
 }
 
 void AlienNightmare::Scene::drawFloor(GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha) {
@@ -41,11 +42,11 @@ void AlienNightmare::Scene::drawWalls(GLfloat red, GLfloat green, GLfloat blue, 
 		glBegin(GL_QUADS);
 		{
 			glNormal3f(0, -1, 0);
-			glTexCoord2f(0.0, 0.0);
+			glTexCoord2f(1.0, 1.0);
 			glVertex3f(size.width, size.height, size.depth);
 			glTexCoord2f(0.0, 1.0);
 			glVertex3f(0, size.height, size.depth);
-			glTexCoord2f(1.0, 1.0);
+			glTexCoord2f(0.0, 0.0);
 			glVertex3f(0, size.height, 0);
 			glTexCoord2f(1.0, 0.0);
 			glVertex3f(size.width, size.height, 0);
@@ -62,12 +63,12 @@ void AlienNightmare::Scene::drawWalls(GLfloat red, GLfloat green, GLfloat blue, 
 		glBegin(GL_QUADS);
 		{
 			glColor3f(red, green, blue);
-			glNormal3f(0, 0, 1);
-			glTexCoord2f(0.0, 0.0);
+			glNormal3f(1, 0, 1);
+			glTexCoord2f(1.0, 1.0);
 			glVertex3f(size.width, size.height, 0);
 			glTexCoord2f(0.0, 1.0);
 			glVertex3f(0, size.height, 0);
-			glTexCoord2f(1.0, 1.0);
+			glTexCoord2f(0.0, 0.0);
 			glVertex3f(0, 0, 0);
 			glTexCoord2f(1.0, 0.0);
 			glVertex3f(size.width, 0, 0);
@@ -78,7 +79,7 @@ void AlienNightmare::Scene::drawWalls(GLfloat red, GLfloat green, GLfloat blue, 
 		Shader::disableTexture();
 		texture->unbind();
 
-		texture->bind(12);
+		texture1->bind(12);
 		Shader::enableTexture(12);
 
 		//Left
@@ -86,39 +87,39 @@ void AlienNightmare::Scene::drawWalls(GLfloat red, GLfloat green, GLfloat blue, 
 		{
 			glColor3f(red, green, blue);
 			glNormal3f(1, 0, 0);
-			glTexCoord2f(0.0, 0.0);
+			glTexCoord2f(1.0, 1.0);
 			glVertex3f(0, size.height, 0);
 			glTexCoord2f(0.0, 1.0);
 			glVertex3f(0, size.height, size.depth);
-			glTexCoord2f(1.0, 1.0);
+			glTexCoord2f(0.0, 0.0);
 			glVertex3f(0, 0, size.depth);
 			glTexCoord2f(1.0, 0.0);
 			glVertex3f(0, 0, 0);
 		}
 		glEnd();
 		Shader::disableTexture();
-		texture->unbind();
+		texture1->unbind();
 
 		//Right
-		texture->bind(13);
+		texture1->bind(13);
 		Shader::enableTexture(13);
 
 		glBegin(GL_QUADS);
 		{
 			glColor3f(red, green, blue);
 			glNormal3f(-1, 0, 0);
-			glTexCoord2f(0.0, 0.0);
+			glTexCoord2f(1.0, 1.0);
 			glVertex3f(size.width, size.height, size.depth);
 			glTexCoord2f(0.0, 1.0);
 			glVertex3f(size.width, size.height, 0);
-			glTexCoord2f(1.0, 1.0);
+			glTexCoord2f(0.0, 0.0);
 			glVertex3f(size.width, 0, 0);
 			glTexCoord2f(1.0, 0.0);
 			glVertex3f(size.width, 0, size.depth);
 		}
 		glEnd();
 		Shader::disableTexture();
-		texture->unbind();
+		texture1->unbind();
 
 	}
 	glPopMatrix();

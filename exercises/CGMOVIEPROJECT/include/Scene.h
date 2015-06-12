@@ -12,6 +12,7 @@ namespace AlienNightmare {
     class Scene : public Object {
     private:
 	    oogl::Texture *texture;
+	    oogl::Texture *texture1;
     protected:
 	    Scene(Position position, Size size);
 
