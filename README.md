@@ -7,15 +7,17 @@ Developed as a group project for Computer Graphics (UE) at Johannes Kepler Unive
 ### Movie Concept
 
 #### Scene 1
-- [ ] Cave
+- [x] Cave
 - [x] Fire
 - [ ] Bloom effect
-- [ ] Flying bat
+- [x] Flying bat
 - [x] Polandballs around the fire
 - [ ] Lurking Alien
 
 #### Scene 2
-- [ ] Dalek scares a Polandball
+- [x] Warrior
+- [x] Polandball
+- [ ] Warrior scares the Polandball
 
 #### Scene 3
 - [x] Dark room
