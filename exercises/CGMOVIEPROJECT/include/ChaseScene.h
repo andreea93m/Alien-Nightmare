@@ -5,11 +5,17 @@
 #pragma once
 
 #include "Scene.h"
+#include "Sun.h"
+#include "Polandball.h"
 #include "DemoObject.h"
+#include "Warrior.h"
 
 namespace AlienNightmare {
     class ChaseScene : public Scene {
     private:
+    	Sun sun;
+    	Polandball germany;
+    	Warrior warrior;
 	    DemoObject demoObject;
 
     public:
