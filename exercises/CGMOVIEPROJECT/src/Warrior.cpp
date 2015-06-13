@@ -35,12 +35,11 @@ void AlienNightmare::Warrior::render(float movieTime) {
 }
 
 void AlienNightmare::Warrior::update() {
-	//std::cout<<direction;
 
 	// go in front
 	if(direction == 1){
 		position.z+=speed;
-		if(position.z + speed > scene->size.depth){
+		if(position.z + speed > scene->size.depth - 1){
 			angle = -90;
 			direction = 0;
 		}
@@ -48,7 +47,7 @@ void AlienNightmare::Warrior::update() {
 	// go left
 	else if(direction == 0){
 		position.x-=speed;
-		if(position.x - speed < 0){
+		if(position.x - speed < 1){
 			angle = 180;
 			direction = -1;
 		}
@@ -57,7 +56,7 @@ void AlienNightmare::Warrior::update() {
 	// go back
 	else if(direction == -1){
 		position.z-=speed;
-		if(position.z - speed < 0){
+		if(position.z - speed < 1){
 			angle = 90;
 			direction = -2;
 		}
@@ -65,7 +64,7 @@ void AlienNightmare::Warrior::update() {
 	// go right
 	else if(direction == -2){
 		position.x+=speed;
-		if(position.x + speed > scene->size.width){
+		if(position.x + speed > scene->size.width - 1){
 			angle = 360;
 			direction = 1;
 		}

@@ -9,6 +9,7 @@
 #include <oogl/Texture.h>
 #include <algorithm>
 #include <string>
+#include "Scene.h"
 #include "Shader.h"
 #include "Object.h"
 
@@ -17,15 +18,18 @@ namespace AlienNightmare {
     private:
 	    Position initialPosition;
 	    GLUquadric *quadric;
-	    GLuint textureId;
+	    Scene *scene;
+	    GLfloat direction;
 	    GLfloat angle;
-	    GLfloat speed, maxHeight;
+	    GLfloat speed, maxHeight, forward_speed;
 	    oogl::Texture *texture;
 
     public:
 	    Polandball(GLfloat radius, GLfloat angle, const std::string &fileName);
 
 	    void setJump(GLfloat speed, GLfloat height);
+
+	    void setJumpForward(GLfloat speed, Scene *scene);
 
 	    virtual void render(float movieTime);
 

@@ -17,7 +17,7 @@ Developed as a group project for Computer Graphics (UE) at Johannes Kepler Unive
 #### Scene 2
 - [x] Warrior
 - [x] Polandball
-- [ ] Warrior scares the Polandball
+- [x] Warrior scares the Polandball
 
 #### Scene 3
 - [x] Dark room
