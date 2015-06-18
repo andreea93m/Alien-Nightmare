@@ -8,9 +8,10 @@
 #include <oogl/Texture.h>
 #include "../include/Parallelepiped.h"
 
-AlienNightmare::Parallelepiped::Parallelepiped(GLfloat sizeX, GLfloat sizeY,
+AlienNightmare::Parallelepiped::Parallelepiped(
+		const AlienNightmare::Position &position, GLfloat sizeX, GLfloat sizeY,
 		GLfloat sizeZ) :
-		Object(Position(0, 0, 0), Size(sizeX, sizeY, sizeZ)) {
+		Object(position, Size(sizeX, sizeY, sizeZ)) {
 }
 
 void AlienNightmare::Parallelepiped::render(float movieTime) {
@@ -48,7 +49,7 @@ void AlienNightmare::Parallelepiped::render(float movieTime) {
 	glPopMatrix();
 }
 
-void AlienNightmare::Parallelepiped::update(){
+void AlienNightmare::Parallelepiped::update() {
 
 }
 

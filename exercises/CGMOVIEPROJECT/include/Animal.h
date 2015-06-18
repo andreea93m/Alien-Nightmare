@@ -1,5 +1,5 @@
 /*
- * Parallelepiped.h
+ * Animal.h
  *
  *  Created on: Jun 18, 2015
  *      Author: andreea
@@ -15,15 +15,16 @@
 #include "Scene.h"
 #include "Shader.h"
 #include "Object.h"
+#include "Parallelepiped.h"
 
 namespace AlienNightmare {
-    class Parallelepiped : public Object {
+    class Animal : public Object {
     private:
-	    Position initialPosition;
 	    oogl::Texture *texture;
+	    Parallelepiped body, leftFrontLeg, rightFrontLeg, leftBackLeg, rightBackLeg;
 
     public:
-	    Parallelepiped(const AlienNightmare::Position &position, GLfloat sizeX, GLfloat sizeY, GLfloat sizeZ);
+	    Animal(const AlienNightmare::Position &position, GLfloat sizeX, GLfloat sizeY, GLfloat sizeZ);
 
 	    virtual void render(float movieTime);
 

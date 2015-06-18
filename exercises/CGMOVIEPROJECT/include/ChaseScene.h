@@ -10,13 +10,14 @@
 #include "DemoObject.h"
 #include "Warrior.h"
 #include "Parallelepiped.h"
+#include "Animal.h"
 
 namespace AlienNightmare {
     class ChaseScene : public Scene {
     private:
     	Sun sun;
     	Polandball germany;
-    	Parallelepiped parallelepiped;
+    	Animal animal;
     	Warrior warrior;
 	    DemoObject demoObject;
 
