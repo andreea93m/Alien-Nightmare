@@ -12,6 +12,7 @@ AlienNightmare::ChaseScene::ChaseScene(Position position, Size size) : Scene(pos
 																		demoObject(Position(this, 0.5, 0.5, 0.5),
                                                                                   Size(1, 1, 1)) {
 	germany.placeRelative(this, 0.8, 0, 0);
+	animal.setJump(0.01, 1000);
 	germany.setJump(0.03, 5);
 	germany.setJumpForward(0.045, this);
 	warrior.setSpeed(0.03);

@@ -11,7 +11,8 @@
 AlienNightmare::Parallelepiped::Parallelepiped(
 		const AlienNightmare::Position &position, GLfloat sizeX, GLfloat sizeY,
 		GLfloat sizeZ) :
-		Object(position, Size(sizeX, sizeY, sizeZ)) {
+		Object(position, Size(sizeX, sizeY, sizeZ)), initialPosition(position) {
+	speed = 0.0f;
 }
 
 void AlienNightmare::Parallelepiped::render(float movieTime) {
@@ -49,7 +50,20 @@ void AlienNightmare::Parallelepiped::render(float movieTime) {
 	glPopMatrix();
 }
 
+void AlienNightmare::Parallelepiped::setJump(GLfloat speed, GLfloat height) {
+	this->speed = speed;
+	this->maxHeight = height;
+}
+
 void AlienNightmare::Parallelepiped::update() {
+	if (speed
+			&& (position.y - initialPosition.y + size.height / 2 > maxHeight
+					|| position.y - initialPosition.y - size.height / 2 < 0)) {
+		speed = -speed;
+	}
+
+	position.y += speed;
+
 
 }
 

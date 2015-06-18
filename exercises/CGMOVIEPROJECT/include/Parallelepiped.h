@@ -20,10 +20,13 @@ namespace AlienNightmare {
     class Parallelepiped : public Object {
     private:
 	    Position initialPosition;
+	    GLfloat speed, maxHeight;
 	    oogl::Texture *texture;
 
     public:
 	    Parallelepiped(const AlienNightmare::Position &position, GLfloat sizeX, GLfloat sizeY, GLfloat sizeZ);
+
+	    void setJump(GLfloat speed, GLfloat height);
 
 	    virtual void render(float movieTime);
 
