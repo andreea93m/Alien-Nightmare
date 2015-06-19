@@ -32,7 +32,6 @@ void AlienNightmare::Camera::update(float delta) {
 
 	Camera::eye += Camera::center * delta * Camera::moveZ;
 	Camera::eye += Camera::right * delta * Camera::moveX;
-//	std::cout<<Camera::eye.x<<" "<<Camera::eye.y<<" "<<Camera::eye.z<<Camera::up.x<<" "<<Camera::up.y<<" "<<Camera::up.z;
 
 }
 
@@ -63,4 +62,10 @@ void AlienNightmare::Camera::setViewMatrix() {
 	          Camera::eye.z + Camera::center.z,
 	          Camera::up.x, Camera::up.y, Camera::up.z
 	);
+}
+
+float AlienNightmare::Camera::distanceTo(Scene *scene){
+	return sqrt((scene->position.x - Camera::eye.x) * (scene->position.x - Camera::eye.x) +
+			(scene->position.y - Camera::eye.y) * (scene->position.y - Camera::eye.y) +
+			(scene->position.z - Camera::eye.z) * (scene->position.z - Camera::eye.z));
 }

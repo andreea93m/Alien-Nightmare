@@ -14,7 +14,7 @@ namespace AlienNightmare {
 		std::vector<GLfloat> light_position;
 		std::vector<GLfloat> spot_pos;
 		std::vector<GLfloat> spot_dir;
-	    GLfloat spot_cutoff, spot_linear_attenuation, spot_quadratic_attenuation;
+	    GLfloat fluctuation = -1, spot_cutoff, spot_linear_attenuation, spot_quadratic_attenuation;
 
     public:
 	    Spotlight(const Position &position, const Size &size);

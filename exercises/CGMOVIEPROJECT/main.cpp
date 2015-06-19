@@ -47,9 +47,10 @@ int directionsZ[] = {1, 0, 0, 0, 0, 0, 0, -1, 0};
 float t[] = {0.7, 0.5, 1.5, 0.8, 1.5, 1, 1.5, 0.7, 0.5 };
 float speed[] = {0.015, 0.015, 0.008, 0.008, 0.008, 0.008, 0.008, 0.015, 0.015};
 int nrMoves = 9;
-int p = 0, elapsedTime = 0;
+int p = 0, elapsedTime = 0, closeness = 30;
 
 std::vector<Scene *> scenes;
+
 
 /**
 * called ONCE after we have a valid window with an opengl context
@@ -169,7 +170,8 @@ void update() {
 
 	// TODO: update your scene logic in here
 	for (int i = 0; i < scenes.size(); ++i) {
-		scenes[i]->update();
+		if(Camera::distanceTo(scenes[i]) < closeness)
+			scenes[i]->update();
 	}
 
 	// force a redisplay

@@ -6,6 +6,8 @@
 
 #include "include/Headers.h"
 #include <iostream>
+#include <math.h>
+#include "Scene.h"
 #define _USE_MATH_DEFINES
 
 #include <cmath>
@@ -31,7 +33,7 @@ namespace AlienNightmare {
 	    static void mouseMove(int dx, int dy);
 	    static void move(float directionX, float directionZ, float speed);
 	    static void update(float delta);
-
+	    static float distanceTo(Scene *scene);
 	    static void keyboardDown(int key);
 
 	    static void keyboardUp(int key);

@@ -22,8 +22,6 @@ void AlienNightmare::Spotlight::render(float movieTime) {
 	{
 		moveToPosition();
 
-		light_diffuse[0] = light_specular[0] = sinf(movieTime / 100);
-		light_diffuse[1] = light_specular[1] = cosf(movieTime / 100);
 
 		glLightfv(GL_LIGHT3, GL_POSITION, &spot_pos[0]);
 		glLightf(GL_LIGHT3, GL_SPOT_CUTOFF, spot_cutoff);
@@ -45,5 +43,9 @@ void AlienNightmare::Spotlight::render(float movieTime) {
 }
 
 void AlienNightmare::Spotlight::update() {
+	fluctuation += 0.1;
+	light_diffuse[0] = light_specular[0] = sinf(fluctuation);
+	light_diffuse[1] = light_specular[1] = cosf(fluctuation);
+
 
 }

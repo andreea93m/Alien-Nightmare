@@ -47,11 +47,11 @@ model that contains the textures already).
 introduced in lab session with spot­light and texturing support). 
 - [x] Transparency 
 	- [x] At least one object must be semi­transparent and rendered in correct order. 
-- [ ] Camera 
+- [x] Camera 
 	- [x] Use the keyboard to control forward (up­key) and backward movement (down­key) along 
 the viewing direction and the mouse to control the heading (mouse­x) and pitch 
 (mouse­y) of the camera relative to the ground (no roll!). 
-	- [ ] Additional animated camera flight.
+	- [x] Additional animated camera flight.
 
 ### Special effects
 - [ ] Postprocessing shader (bloom shader)

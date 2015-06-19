@@ -118,4 +118,5 @@ void AlienNightmare::RoomScene::update() {
 	for (int i = 0; i < polandballs.size(); ++i) {
 		polandballs[i]->update();
 	}
+	spotlight.update();
 }
