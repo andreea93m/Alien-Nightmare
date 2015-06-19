@@ -172,7 +172,7 @@ void update() {
 
 	// TODO: update your scene logic in here
 	for (int i = 0; i < scenes.size(); ++i) {
-		if (Camera::distanceTo(scenes[i]) < closeness)
+		if (!useFreeCamera || Camera::distanceTo(scenes[i]) < closeness)
 			scenes[i]->update();
 	}
 
@@ -274,6 +274,12 @@ void display() {
  */
 void mouseDown(int button, int state, int x, int y) {
 	//TODO: implement free camera rotation here
+	if (!useFreeCamera) {
+		return;
+	}
+
+	std::cout << "mouseDown\n";
+
 	if (button == GLUT_LEFT_BUTTON) {
 		if (state == GLUT_DOWN) {
 			mouse.leftButtonDown = true;
@@ -293,11 +299,15 @@ void mouseDown(int button, int state, int x, int y) {
  */
 void mouseMotion(int x, int y) {
 	//TODO: implement free camera rotation here too
-	if (mouse.leftButtonDown) {
-		Camera::mouseMove(mouse.startX - x, mouse.startY - y);
+	if (!useFreeCamera) {
+		return;
+	}
 
-		mouse.startX = x;
-		mouse.startY = y;
+	if (mouse.leftButtonDown) {
+			Camera::mouseMove(mouse.startX - x, mouse.startY - y);
+
+			mouse.startX = x;
+			mouse.startY = y;
 	}
 }
 
@@ -344,6 +354,9 @@ void specialKeyDown(int key, int x, int y) {
 	//printf("special key: %i\n", key);
 
 	//TODO: implement free camera movement with the arrow keys here (please only update the position of the camera in freeCameraUpdate(), not in the keyDown function!)
+	if (!freeCameraUpdate) {
+		return;
+	}
 
 	switch (key) {
 	case GLUT_KEY_UP:
@@ -366,6 +379,10 @@ void specialKeyDown(int key, int x, int y) {
 }
 
 void specialKeyUp(int key, int x, int y) {
+	if (!useFreeCamera) {
+		return;
+	}
+
 	switch (key) {
 	case GLUT_KEY_UP:
 		printf("up\n");
