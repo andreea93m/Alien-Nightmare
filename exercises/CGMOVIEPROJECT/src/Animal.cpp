@@ -25,6 +25,7 @@ AlienNightmare::Animal::Animal(const AlienNightmare::Position &position,
 	walkingDirection = -2;
 	walkingSpeed = 0;
 	head.placeRelative(&body, -0.8, 0, 0);
+	// set angle and direction for legs
 	leftFrontLeg.setProperties(-30, -1);
 	leftBackLeg.setProperties(30, 1);
 	rightBackLeg.setProperties(30, 1);
@@ -35,6 +36,7 @@ void AlienNightmare::Animal::render() {
 	glPushMatrix();
 	{
 		moveToPosition();
+		//rotate the object according to the walking angle changed in the update
 		glRotatef(walkingAngle, 0, 1, 0);
 		head.render();
 		body.render();
@@ -52,6 +54,7 @@ void AlienNightmare::Animal::setJump(GLfloat speed, GLfloat height,
 	this->speed = speed;
 	this->maxHeight = height;
 	this->walkingSpeed = walkingSpeed;
+	//set speed for jumping and maximum height for jumping and walking speed
 	body.setJump(speed, height);
 	head.setJump(speed, height + 1.5);
 	leftBackLeg.setJump(speed, height);

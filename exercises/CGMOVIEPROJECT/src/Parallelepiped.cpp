@@ -22,7 +22,7 @@ AlienNightmare::Parallelepiped::Parallelepiped(
 void AlienNightmare::Parallelepiped::render() {
 	glPushMatrix();
 	{
-
+		//rotate in case the legs are walking
 		glRotatef(angle, 1, 0, 0);
 		moveToPosition();
 		texture->bind(50);
@@ -55,6 +55,7 @@ void AlienNightmare::Parallelepiped::render() {
 		v[0][2] = v[3][2] = v[4][2] = v[7][2] = -this->size.depth / 2;
 		v[1][2] = v[2][2] = v[5][2] = v[6][2] = this->size.depth / 2;
 
+		//construct parallelepiped and apply textures
 		for (i = 5; i >= 0; i--) {
 			glBegin(GL_POLYGON);
 			glNormal3fv(&n[i][0]);
@@ -96,7 +97,7 @@ void AlienNightmare::Parallelepiped::update(float delta) {
 	}
 
 	position.y += delta * speed;
-
+	//separate cases of front legs from the back legs according to value of direction variabile
 	if (direction == 1) {
 		if (angle > 30 || angle < -30) {
 			rotationSpeed = -rotationSpeed;
@@ -111,6 +112,7 @@ void AlienNightmare::Parallelepiped::update(float delta) {
 	}
 
 }
+
 
 void AlienNightmare::Parallelepiped::setProperties(GLfloat angle,
                                                    GLfloat direction) {
