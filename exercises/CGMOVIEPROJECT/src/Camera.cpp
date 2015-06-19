@@ -69,6 +69,27 @@ void AlienNightmare::Camera::setViewMatrix() {
 	);
 }
 
+
+void AlienNightmare::Camera::reset(){
+	Camera::eye.x = 0;
+	Camera::eye.y = 5;
+	Camera::eye.z = 65;
+	Camera::center.x = 0;
+	Camera::center.y = 0;
+	Camera::center.z = -1;
+	Camera::right.x = 0;
+	Camera::right.y = 0;
+	Camera::right.z = 0;
+	Camera::up.x = 0;
+	Camera::up.y = 1;
+	Camera::up.z = 0;
+	Camera::moveX = 0;
+	Camera::moveZ = 0;
+	Camera::horizontalAngle = (GLfloat) M_PI;
+	//Camera::horizontalAngle = 0;
+	Camera::verticalAngle = 0;
+	Camera::speed = 0.05;
+}
 /**
  * Compute Euclidean distance from camera to scene to know
  * when to start updating the scenes during free camera mode

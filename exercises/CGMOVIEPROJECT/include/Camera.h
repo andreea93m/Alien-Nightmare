@@ -37,6 +37,7 @@ namespace AlienNightmare {
 	    static void update(float delta);
 	    static float distanceTo(Scene *scene);
 	    static void keyboardDown(int key);
+	    static void reset();
 
 	    static void keyboardUp(int key);
 
