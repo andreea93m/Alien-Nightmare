@@ -44,7 +44,7 @@ bool wireframe = false;
 bool culling = false;
 int directionsX[] = { 0, -1, 0, 1, 0, 1, 0, 0, -1 };
 int directionsZ[] = { 1, 0, 0, 0, 0, 0, 0, -1, 0 };
-float t[] = { 0.7, 0.5, 1.5, 0.8, 1.5, 1, 1.5, 0.7, 0.5 };
+float t[] = { 0.7, 0.5, 1.4, 0.8, 1.3, 1, 1.4, 0.6, 0.4 };
 float speed[] =
 		{ 0.015, 0.015, 0.008, 0.008, 0.008, 0.008, 0.008, 0.015, 0.015 };
 int nrMoves = 9;
@@ -125,6 +125,8 @@ void setupViewMatrix() {
 
 void animatedCameraUpdate(float delta) {
 	if (elapsedTime > t[p] * 3600) {
+		if(p >= nrMoves)
+			Camera::move(0, 0, 0);
 		elapsedTime = 0;
 		p++;
 	}
