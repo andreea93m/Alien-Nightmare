@@ -61,6 +61,7 @@ void init() {
 	Camera::eye.y = 5;
 	Camera::eye.z = 65;
 	Camera::center.z = -1;
+	Camera::up.y = 1;
 
 	// you may adapt all this to your needs!
 	scenes.push_back(new CaveScene(Position(-30, 0, 0), Size(10, 10, 10)));
@@ -336,8 +337,11 @@ void keyDown(unsigned char key, int x, int y) {
 	case 'c':
 		useFreeCamera = !useFreeCamera;
 		if (!useFreeCamera) {
+			Camera::reset();
 			printf("Switched to animated Camera::\n");
 		} else {
+			p = 0;
+			elapsedTime = 0;
 			printf("Switched to free Camera::\n");
 		}
 		break;
