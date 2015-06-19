@@ -1,0 +1,7 @@
+M:\dalek\t$m$p$$$\Dalek.ver.2005.standart_materials.max
+M:\dalek\t$m$p$$$\MAXFILES.TXT
+M:\dalek\2048x2048\diffuse.png
+M:\dalek\2048x2048\reflections-glossines.png
+M:\dalek\2048x2048\self-illuminations.png
+M:\dalek\2048x2048\bump.png
+M:\dalek\2048x2048\refract.png
