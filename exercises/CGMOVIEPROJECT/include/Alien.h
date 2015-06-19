@@ -10,6 +10,10 @@
 #include "Shader.h"
 
 namespace AlienNightmare {
+	/**
+	 * Represents an alien from the movie franchise Alien
+	 * Comes with a model and texture
+	 */
     class Alien : public Object {
     private:
 	    oogl::model::ModelObj *model;

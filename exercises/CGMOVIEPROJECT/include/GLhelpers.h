@@ -8,8 +8,12 @@
 #include <glm/glm.hpp>
 
 namespace AlienNightmare {
+	// Forward declaration
     class Object;
 
+	/**
+	 * Encapsulates the concept of position
+	 */
     class Position {
     public:
 	    GLfloat x, y, z;
@@ -21,6 +25,9 @@ namespace AlienNightmare {
 	    Position(Object *object, GLfloat xp, GLfloat yp, GLfloat zp);
     };
 
+	/**
+	 * Encapsulates the concept of size
+	 */
     class Size {
     public:
 	    GLfloat width, height, depth;

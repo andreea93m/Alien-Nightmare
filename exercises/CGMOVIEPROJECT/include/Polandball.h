@@ -14,6 +14,10 @@
 #include "Object.h"
 
 namespace AlienNightmare {
+	/**
+	 * A sphere with a texture applied to it
+	 * Can be configured to jump along the axes
+	 */
     class Polandball : public Object {
     private:
 	    Position initialPosition;

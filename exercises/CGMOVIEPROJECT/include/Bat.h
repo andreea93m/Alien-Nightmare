@@ -16,6 +16,9 @@
 #include "Shader.h"
 
 namespace AlienNightmare {
+	/**
+	 * A textured model representing a bat
+	 */
     class Bat : public Object {
     private:
 	    oogl::model::Model3ds *model;

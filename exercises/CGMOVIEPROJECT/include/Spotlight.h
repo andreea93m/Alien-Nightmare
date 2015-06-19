@@ -6,6 +6,9 @@
 #include "Shader.h"
 
 namespace AlienNightmare {
+	/**
+	 * Encapsulates the concept of a spotlight
+	 */
     class Spotlight : public Object {
     private:
 	    std::vector<GLfloat> light_ambient;

@@ -13,6 +13,10 @@
 #include <sstream>
 
 namespace AlienNightmare {
+	/**
+	 * Encapsulates the Phong Shader and enables easy interactions with it
+	 * (enableing / disabeing lights and textures)
+	 */
     class Shader {
     private:
 	    static const int MAX_LIGHTS;
@@ -25,12 +29,24 @@ namespace AlienNightmare {
     public:
 	    static void init();
 
+	    /**
+	     * Enables rendering with a given texture
+	     */
 	    static void enableTexture(GLuint texture);
 
+	    /**
+	     * Disables textured rendering
+	     */
 	    static void disableTexture();
 
+	    /**
+	     * Enables a specific light
+	     */
 	    static void enableLight(int light);
 
+	    /**
+	     * Disables a specific light
+	     */
 	    static void disableLight(int light);
     };
 }

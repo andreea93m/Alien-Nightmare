@@ -9,6 +9,9 @@
 #include "Shader.h"
 
 namespace AlienNightmare {
+	/**
+	 * Provides a sun-like light source
+	 */
     class Sun : public Object {
     private:
 	    GLfloat color[3];

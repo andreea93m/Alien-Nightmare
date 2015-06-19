@@ -13,6 +13,10 @@
 #include "Animal.h"
 
 namespace AlienNightmare {
+	/**
+	 * The second scene
+	 * An animal chases a robot which in turn chases a polandball
+	 */
     class ChaseScene : public Scene {
     private:
 	    Sun sun;

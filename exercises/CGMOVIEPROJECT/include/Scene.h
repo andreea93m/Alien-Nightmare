@@ -10,6 +10,10 @@
 #include <oogl/Texture.h>
 
 namespace AlienNightmare {
+	/**
+	 * Encapsulates the concept of a scene
+	 * Provides helper methods to draw the walls and the floor
+	 */
     class Scene : public Object {
     private:
 	    oogl::Texture *texture;

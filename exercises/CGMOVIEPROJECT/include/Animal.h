@@ -20,6 +20,11 @@
 #include "Parallelepiped.h"
 
 namespace AlienNightmare {
+	/**
+	 * A composed model (body, four legs and a head)
+	 * It can walk around the edges of a scene, move its legs and
+	 * bound its head
+	 */
     class Animal : public Object {
     private:
 	    Position initialPosition;
@@ -34,6 +39,9 @@ namespace AlienNightmare {
 
 	    virtual void render();
 
+	    /**
+	     * Configure the jumping and walking
+	     */
 	    void setJump(GLfloat speed, GLfloat height, GLfloat walkingSpeed);
 
 	    virtual void update(float delta);

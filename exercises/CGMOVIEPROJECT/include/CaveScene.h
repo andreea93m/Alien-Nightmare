@@ -11,6 +11,11 @@
 #include "Alien.h"
 
 namespace AlienNightmare {
+	/**
+	 * The first scene.
+	 * Consists of a three polandballs around a fire, in a cave.
+	 * An alien is lurking in the corner, and a bat hangs around over the fire
+	 */
     class CaveScene : public Scene {
     public:
 	    Polandball denmark, germany, poland;

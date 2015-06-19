@@ -11,6 +11,10 @@
 #include "Alien.h"
 
 namespace AlienNightmare {
+	/** The third and last scene
+	 * Contains walls (one is tranparent), three polandballs, a spotlight
+	 * and an alien outside the wall.
+	 */
     class RoomScene : public Scene {
     private:
 	    Spotlight spotlight;

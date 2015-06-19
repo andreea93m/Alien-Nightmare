@@ -17,9 +17,19 @@ namespace AlienNightmare {
 
 namespace AlienNightmare {
 
+	/**
+	 * A particle system simulating a fire
+	 */
     class Fire : public Object {
     private:
 	    std::default_random_engine generator;
+
+	    /**
+	     * The particles are normally generated along the X and Z axis, such
+	     * that the flames are more intense around the center
+	     * A light source is places among the particles which slowly moves in
+	     * a random manner
+	     */
 	    std::normal_distribution<GLfloat> xNormalDistribution, zNormalDistribution;
 
 	    std::vector<Particle> particle;
@@ -39,6 +49,9 @@ namespace AlienNightmare {
 
 	    virtual void update(float delta);
 
+	    /**
+	     * Takes a particle and reinitializes its fields acording to the normal distributions
+	     */
 	    void generateParticlePosition(Particle *particle);
     };
 }

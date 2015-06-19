@@ -15,6 +15,9 @@
 #include "Shader.h"
 
 namespace AlienNightmare {
+	/**
+	 * 3D model featuring a warrior robot
+	 */
     class Warrior : public Object {
     private:
 	    oogl::model::Model3ds *model;

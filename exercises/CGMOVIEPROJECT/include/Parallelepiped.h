@@ -18,6 +18,10 @@
 #include "Scene.h"
 
 namespace AlienNightmare {
+	/**
+	 * General-purpose 3D generalization of a rectangle
+	 * Provides methods to rotate and jump
+	 */
     class Parallelepiped : public Object {
     private:
 	    Position initialPosition;
@@ -29,8 +33,14 @@ namespace AlienNightmare {
 	    Parallelepiped(const AlienNightmare::Position &position, GLfloat sizeX, GLfloat sizeY, GLfloat sizeZ,
 	                   const std::string &filename);
 
+	    /**
+	     * Configures the jumping parameters
+	     */
 	    void setJump(GLfloat speed, GLfloat height);
 
+	    /**
+	     * Configures the rotation parameters
+	     */
 	    void setProperties(GLfloat angle, GLfloat direction);
 
 	    virtual void render();
