@@ -16,7 +16,7 @@ AlienNightmare::Parallelepiped::Parallelepiped(
 	angle = 0.0f;
 	speed = 0.0f;
 	direction = 0.0f;
-	rotationSpeed = 0.8;
+	rotationSpeed = 0.1;
 	texture = oogl::loadTexture(filename);
 }
 
@@ -87,12 +87,12 @@ void AlienNightmare::Parallelepiped::update(float delta) {
 	if (direction == 1) {
 		if(angle > 30 || angle < -30)
 			rotationSpeed = -rotationSpeed;
-		angle += delta * rotationSpeed * 10;
+		angle += delta * rotationSpeed;
 	}
 	else if(direction == -1){
 		if(angle > 30 || angle < -30)
 			rotationSpeed = -rotationSpeed;
-		angle += delta * rotationSpeed * 10;
+		angle += delta * rotationSpeed;
 	}
 
 }

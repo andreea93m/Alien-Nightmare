@@ -42,9 +42,9 @@ void AlienNightmare::Particle::render() {
 }
 
 void AlienNightmare::Particle::update(float delta) {
-	position.x += delta * direction.x / (fire->slowdown);
-	position.y += delta * direction.y / (fire->slowdown);
-	position.z += delta * direction.z / (fire->slowdown);
+	position.x += delta * fire->slowdown * direction.x;
+	position.y += delta * fire->slowdown * direction.y;
+	position.z += delta * fire->slowdown * direction.z;
 
 	direction.x += delta * gravity.x;
 	direction.y += delta * gravity.y;
