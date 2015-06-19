@@ -42,19 +42,19 @@ int frameCounter = 0;
 bool useFreeCamera = true;
 bool wireframe = false;
 bool culling = false;
-int directionsX[] = {0, -1, 0, 1, 0, 1, 0, 0, -1};
-int directionsZ[] = {1, 0, 0, 0, 0, 0, 0, -1, 0};
-float t[] = {0.7, 0.5, 1.5, 0.8, 1.5, 1, 1.5, 0.7, 0.5 };
-float speed[] = {0.015, 0.015, 0.008, 0.008, 0.008, 0.008, 0.008, 0.015, 0.015};
+int directionsX[] = { 0, -1, 0, 1, 0, 1, 0, 0, -1 };
+int directionsZ[] = { 1, 0, 0, 0, 0, 0, 0, -1, 0 };
+float t[] = { 0.7, 0.5, 1.5, 0.8, 1.5, 1, 1.5, 0.7, 0.5 };
+float speed[] =
+		{ 0.015, 0.015, 0.008, 0.008, 0.008, 0.008, 0.008, 0.015, 0.015 };
 int nrMoves = 9;
 int p = 0, elapsedTime = 0, closeness = 30;
 
 std::vector<Scene *> scenes;
 
-
 /**
-* called ONCE after we have a valid window with an opengl context
-*/
+ * called ONCE after we have a valid window with an opengl context
+ */
 void init() {
 	Shader::init();
 
@@ -68,10 +68,10 @@ void init() {
 	scenes.push_back(new RoomScene(Position(20, 0, 0), Size(10, 10, 10)));
 
 	// enable stuff
-	glEnable(GL_DEPTH_TEST);
-	glEnable(GL_COLOR_MATERIAL);
+	glEnable (GL_DEPTH_TEST);
+	glEnable (GL_COLOR_MATERIAL);
 
-	glEnable(GL_LIGHTING);
+	glEnable (GL_LIGHTING);
 
 	// wireframe mode
 	//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
@@ -83,7 +83,7 @@ void init() {
 //	glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
 
 	// blending
-	glEnable(GL_BLEND);
+	glEnable (GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 	// backface culling
@@ -95,8 +95,8 @@ void init() {
 }
 
 /**
-* called within display()
-*/
+ * called within display()
+ */
 void renderScene() {
 	//TODO: draw your scenes here
 	for (int i = 0; i < scenes.size(); ++i) {
@@ -107,30 +107,34 @@ void renderScene() {
 }
 
 /**
-* called to create the camera/view matrix
-*/
+ * called to create the camera/view matrix
+ */
 void setupViewMatrix() {
 	if (useFreeCamera) {
 		//TODO: free camera (view matrix)
 		Camera::setViewMatrix();
-	}
-	else {
+	} else {
 		Camera::setViewMatrix();
 	}
 }
 
+/**
+ *	move camera according to moves defined in directionsX, directionsY, directionsZ and speed in speed
+ */
+
 void animatedCameraUpdate(float delta) {
-		if(elapsedTime > t[p] * 3600){
-			elapsedTime = 0;
-			p++;
-		}
-		elapsedTime+=delta;
-		if(p<nrMoves){
-		Camera::move(directionsX[p],directionsZ[p], speed[p]);
+	if (elapsedTime > t[p] * 3600) {
+		elapsedTime = 0;
+		p++;
+	}
+	elapsedTime += delta;
+	if (p < nrMoves) {
+		Camera::move(directionsX[p], directionsZ[p], speed[p]);
 		Camera::update(delta);
-		}
+	}
 //TODO: update or animate the variables of your animated camera in here, which then get used in the display() function
 }
+
 
 void freeCameraUpdate(float delta) {
 	//TODO: update or animate the variables of your free camera in here, which then get used in the display() function
@@ -162,15 +166,13 @@ void update() {
 	// update everything
 	if (useFreeCamera) {
 		freeCameraUpdate(delta);
-	}
-	else {
+	} else {
 		animatedCameraUpdate(delta);
 	}
 
-
 	// TODO: update your scene logic in here
 	for (int i = 0; i < scenes.size(); ++i) {
-		if(Camera::distanceTo(scenes[i]) < closeness)
+		if (Camera::distanceTo(scenes[i]) < closeness)
 			scenes[i]->update();
 	}
 
@@ -179,8 +181,8 @@ void update() {
 }
 
 /**
-* called when a frame should be rendered
-*/
+ * called when a frame should be rendered
+ */
 void display() {
 	// clear color buffer and depth buffer
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -188,21 +190,19 @@ void display() {
 	// handle wireframe mode
 	if (wireframe) {
 		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-	}
-	else {
+	} else {
 		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 	}
 
 	// handle culling
 	if (culling) {
-		glEnable(GL_CULL_FACE);
-	}
-	else {
-		glDisable(GL_CULL_FACE);
+		glEnable (GL_CULL_FACE);
+	} else {
+		glDisable (GL_CULL_FACE);
 	}
 
 	// reset model matrix
-	glMatrixMode(GL_MODELVIEW);
+	glMatrixMode (GL_MODELVIEW);
 	glLoadIdentity();
 
 	// set the camera/view matrix
@@ -212,7 +212,7 @@ void display() {
 	renderScene();
 
 	// draw info text (you may remove or replace this!)
-	glMatrixMode(GL_PROJECTION);
+	glMatrixMode (GL_PROJECTION);
 	glPushMatrix();
 	{
 		int windowWidth = glutGet(GLUT_WINDOW_WIDTH);
@@ -260,21 +260,18 @@ void display() {
 	glPopMatrix();
 	glMatrixMode(GL_MODELVIEW); // reset matrix mode
 
-
-
-
 	// display possible opengl errors and swap front/backbuffer
 	LOG_GL_ERRORS();
 	glutSwapBuffers();
 }
 
 /**
-* called when the user presses or releases a mouse key
-* @param button which mouse button was pressed, one of GLUT_LEFT_BUTTON, GLUT_MIDDLE_BUTTON and GLUT_RIGHT_BUTTON
-* @param state button pressed (GLUT_DOWN) or released(GLUT_UP)
-* @param x mouse x position in pixel relative to the window, when the mouse button was pressed
-* @param y mouse y position in pixel relative to the window, when the mouse button was pressed
-*/
+ * called when the user presses or releases a mouse key
+ * @param button which mouse button was pressed, one of GLUT_LEFT_BUTTON, GLUT_MIDDLE_BUTTON and GLUT_RIGHT_BUTTON
+ * @param state button pressed (GLUT_DOWN) or released(GLUT_UP)
+ * @param x mouse x position in pixel relative to the window, when the mouse button was pressed
+ * @param y mouse y position in pixel relative to the window, when the mouse button was pressed
+ */
 void mouseDown(int button, int state, int x, int y) {
 	//TODO: implement free camera rotation here
 	if (button == GLUT_LEFT_BUTTON) {
@@ -283,18 +280,17 @@ void mouseDown(int button, int state, int x, int y) {
 
 			mouse.startX = x;
 			mouse.startY = y;
-		}
-		else {
+		} else {
 			mouse.leftButtonDown = false;
 		}
 	}
 }
 
 /**
-* called when the mouse moves
-* @param x mouse x position in pixel relative to the window
-* @param y mouse x position in pixel relative to the window
-*/
+ * called when the mouse moves
+ * @param x mouse x position in pixel relative to the window
+ * @param y mouse x position in pixel relative to the window
+ */
 void mouseMotion(int x, int y) {
 	//TODO: implement free camera rotation here too
 	if (mouse.leftButtonDown) {
@@ -315,93 +311,92 @@ void keyDown(unsigned char key, int x, int y) {
 	//printf("key = %c\n", key);
 
 	switch (key) {
-		case 27: // 27 = the escape key as decimal number in the ASCII table
-			exit(0);
-	        break;
+	case 27: // 27 = the escape key as decimal number in the ASCII table
+		exit(0);
+		break;
 
-		case 'w': // w-key toggles wireframe mode
-			wireframe = !wireframe;
-	        break;
+	case 'w': // w-key toggles wireframe mode
+		wireframe = !wireframe;
+		break;
 
-		case 'b': // b-key toggles backface culling
-			culling = !culling;
-	        break;
+	case 'b': // b-key toggles backface culling
+		culling = !culling;
+		break;
 
-		case 'c':
-			useFreeCamera = !useFreeCamera;
-	        if (!useFreeCamera) {
-		        printf("Switched to animated Camera::\n");
-	        }
-	        else {
-		        printf("Switched to free Camera::\n");
-	        }
-	        break;
+	case 'c':
+		useFreeCamera = !useFreeCamera;
+		if (!useFreeCamera) {
+			printf("Switched to animated Camera::\n");
+		} else {
+			printf("Switched to free Camera::\n");
+		}
+		break;
 	}
 }
 
 /**
-* called when the user pressed a special key (UP, DOWN, DEL, PGDN etc.)
-* @param GLUT key code
-* @param x mouse x position in pixel relative to the window, when the key was pressed
-* @param y mouse y position in pixel relative to the window, when the key was pressed
-*/
+ * called when the user pressed a special key (UP, DOWN, DEL, PGDN etc.)
+ * @param GLUT key code
+ * @param x mouse x position in pixel relative to the window, when the key was pressed
+ * @param y mouse y position in pixel relative to the window, when the key was pressed
+ */
 void specialKeyDown(int key, int x, int y) {
 	//printf("special key: %i\n", key);
 
 	//TODO: implement free camera movement with the arrow keys here (please only update the position of the camera in freeCameraUpdate(), not in the keyDown function!)
 
 	switch (key) {
-		case GLUT_KEY_UP:
-			printf("up\n");
-	        Camera::keyboardDown(key);
-	        break;
-		case GLUT_KEY_DOWN:
-			printf("down\n");
-	        Camera::keyboardDown(key);
-	        break;
-		case GLUT_KEY_RIGHT:
-			printf("right\n");
-	        Camera::keyboardDown(key);
-	        break;
-		case GLUT_KEY_LEFT:
-			printf("left\n");
-	        Camera::keyboardDown(key);
-	        break;
+	case GLUT_KEY_UP:
+		printf("up\n");
+		Camera::keyboardDown(key);
+		break;
+	case GLUT_KEY_DOWN:
+		printf("down\n");
+		Camera::keyboardDown(key);
+		break;
+	case GLUT_KEY_RIGHT:
+		printf("right\n");
+		Camera::keyboardDown(key);
+		break;
+	case GLUT_KEY_LEFT:
+		printf("left\n");
+		Camera::keyboardDown(key);
+		break;
 	}
 }
 
 void specialKeyUp(int key, int x, int y) {
 	switch (key) {
-		case GLUT_KEY_UP:
-			printf("up\n");
-	        Camera::keyboardUp(key);
-	        break;
-		case GLUT_KEY_DOWN:
-			printf("down\n");
-	        Camera::keyboardUp(key);
-	        break;
-		case GLUT_KEY_RIGHT:
-			printf("right\n");
-	        Camera::keyboardUp(key);
-	        break;
-		case GLUT_KEY_LEFT:
-			printf("left\n");
-	        Camera::keyboardUp(key);
-	        break;
+	case GLUT_KEY_UP:
+		printf("up\n");
+		Camera::keyboardUp(key);
+		break;
+	case GLUT_KEY_DOWN:
+		printf("down\n");
+		Camera::keyboardUp(key);
+		break;
+	case GLUT_KEY_RIGHT:
+		printf("right\n");
+		Camera::keyboardUp(key);
+		break;
+	case GLUT_KEY_LEFT:
+		printf("left\n");
+		Camera::keyboardUp(key);
+		break;
 	}
 }
 
 /**
-* called when the window was resized
-* @param w new window width in pixel
-* @param h new window height in pixel
-*/
+ * called when the window was resized
+ * @param w new window width in pixel
+ * @param h new window height in pixel
+ */
 void reshape(int w, int h) {
 	// rebuild viewport
 	glViewport(0, 0, w, h);
 
 	// rebuild projection matrix
-	glMatrixMode(GL_PROJECTION);
+	glMatrixMode (GL_PROJECTION);
 	glLoadIdentity();
 	gluPerspective(45, ((float) w) / h, 0.1f, 100);
 }
@@ -412,14 +407,15 @@ int setupGLUT(int argc, char **argv) {
 
 	// display mode
 	//glutInitContextVersion(3, 0);
-	glutInitDisplayMode(GLUT_RGBA | GLUT_DOUBLE | GLUT_DEPTH | GLUT_MULTISAMPLE);
+	glutInitDisplayMode(
+			GLUT_RGBA | GLUT_DOUBLE | GLUT_DEPTH | GLUT_MULTISAMPLE);
 
 	// window size and position
 	int windowWidth = 1280;
 	int windowHeight = 720;
 	glutInitWindowSize(windowWidth, windowHeight);
 	glutInitWindowPosition((glutGet(GLUT_SCREEN_WIDTH) - windowWidth) / 2,
-	                       (glutGet(GLUT_SCREEN_HEIGHT) - windowHeight) / 2); // center the window
+			(glutGet(GLUT_SCREEN_HEIGHT) - windowHeight) / 2); // center the window
 
 	// create window
 	int windowId = glutCreateWindow("Alien Nightmare");

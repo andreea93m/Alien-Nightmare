@@ -5,10 +5,16 @@
 #include <oogl/Model.h>
 #include "../include/Alien.h"
 
+/**
+ * Load alien model from Alien movie
+ */
 AlienNightmare::Alien::Alien(const AlienNightmare::Position &position, const AlienNightmare::Size &size) : Object(position, size) {
 	model = (oogl::model::ModelObj *) oogl::loadModel("models/Alien_Queen/Alien_Queen.obj");
 }
 
+/**
+ * Render alien
+ */
 void AlienNightmare::Alien::render(float movieTime) {
 	glPushMatrix();
 	{

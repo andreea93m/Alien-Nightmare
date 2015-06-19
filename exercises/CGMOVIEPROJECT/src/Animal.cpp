@@ -8,26 +8,39 @@
 #include <oogl/Texture.h>
 #include "../include/Animal.h"
 
-AlienNightmare::Animal::Animal(
-		const AlienNightmare::Position &position, GLfloat sizeX, GLfloat sizeY,
-		GLfloat sizeZ) :
-		Object(position, Size(sizeX, sizeY, sizeZ)), body(position, sizeX, sizeY, sizeZ),
-		leftFrontLeg(Position(this, 4.5, 4.3, 5.25), 0.5,0.5,0.5),
-		rightFrontLeg(Position(this, 5.5, 4.3, 5.25), 0.5,0.5,0.5),
-		leftBackLeg(Position(this, 4.5, 4.3, 4.75), 0.5,0.5,0.5),
-		rightBackLeg(Position(this, 5.5, 4.3, 4.75), 0.5,0.5,0.5),
-		initialPosition(position)
- {
+AlienNightmare::Animal::Animal(const AlienNightmare::Position &position,
+		GLfloat sizeX, GLfloat sizeY, GLfloat sizeZ) :
+		Object(position, Size(sizeX, sizeY, sizeZ)), body(Position(0, 0, 0),
+				sizeX, sizeY, sizeZ),
+//		leftFrontLeg(Position(this, 4.5, 4.3, 5.25), 0.5,1,0.2),
+//		rightFrontLeg(Position(this, 5.5, 4.3, 5.25), 0.5,1,0.2),
+//		leftBackLeg(Position(this, 4.5, 4.3, 4.75), 0.5,1,0.2),
+//		rightBackLeg(Position(this, 5.5, 4.3, 4.75), 0.5,1,0.2),
+				leftFrontLeg(Position(&body, -0.4, -0.8, 0.3), 0.1, 1, 0.2), rightFrontLeg(
+				Position(&body, 0.4, -0.8, 0.2), 0.1, 1, 0.3), leftBackLeg(
+				Position(&body, -0.4, -0.8, -0.3), 0.1, 1, 0.2), rightBackLeg(
+				Position(&body, 0.4, -0.8, -0.3), 0.1, 1, 0.2), initialPosition(
+				position) {
+
 	speed = 0.0f;
+	leftFrontLeg.setProperties(-30, -1);
+	leftBackLeg.setProperties(30, 1);
+	rightBackLeg.setProperties(30, 1);
+	rightFrontLeg.setProperties(-30, -1);
 }
 
 void AlienNightmare::Animal::render(float movieTime) {
-	body.render(movieTime);
-	leftFrontLeg.render(movieTime);
-	rightFrontLeg.render(movieTime);
-	leftBackLeg.render(movieTime);
-	rightBackLeg.render(movieTime);
+	glPushMatrix();
+	{
+		moveToPosition();
+		body.render(movieTime);
+		leftFrontLeg.render(movieTime);
+		rightFrontLeg.render(movieTime);
+		leftBackLeg.render(movieTime);
+		rightBackLeg.render(movieTime);
 
+	}
+	glPopMatrix();
 }
 
 void AlienNightmare::Animal::setJump(GLfloat speed, GLfloat height) {

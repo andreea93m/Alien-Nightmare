@@ -25,7 +25,6 @@ void AlienNightmare::Warrior::render(float movieTime) {
 		glRotatef(angle, 0, 0, 1);
 		glTranslatef(0, 1, 0);
 		glScalef(2, 2, 2);
-//		model->model->materials[1].ambient[3] = 0;
 		model->textures[0]->bind(8);
 		Shader::enableTexture(8);
 		model->render();

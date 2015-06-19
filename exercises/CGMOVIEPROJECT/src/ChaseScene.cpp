@@ -4,15 +4,18 @@
 
 #include "../include/ChaseScene.h"
 
+/**
+ * Set attributes for characters in ChaseScene
+ */
 AlienNightmare::ChaseScene::ChaseScene(Position position, Size size) : Scene(position, size),
 																		germany(1.5, 0, "textures/germany.png"),
 																		sun(Position(this, 0.5, 0.5, 0.5), 1),
-																		animal(Position(this, 0.5, 0.5, 0.75), 1,1,1.5),
+																		animal(Position(this, 0.5, 0.15, 0.5), 1,1,1.5),
 																		warrior(Position(this, 0.5, 0.2, 0.2), Size(1, 1, 1), this),
 																		demoObject(Position(this, 0.5, 0.5, 0.5),
                                                                                   Size(1, 1, 1)) {
 	germany.placeRelative(this, 0.8, 0, 0);
-	animal.setJump(0.01, 1000);
+	animal.setJump(0.01, 0.05);
 	germany.setJump(0.03, 5);
 	germany.setJumpForward(0.04, this);
 	warrior.setSpeed(0.03);

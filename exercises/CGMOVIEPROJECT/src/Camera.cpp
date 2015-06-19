@@ -13,7 +13,6 @@ GLfloat AlienNightmare::Camera::moveX, AlienNightmare::Camera::moveZ;
 GLfloat AlienNightmare::Camera::horizontalAngle = (GLfloat) M_PI;
 float AlienNightmare::Camera::verticalAngle;
 
-//GLfloat AlienNightmare::Camera::animateSpeed = 0.005;
 
 void AlienNightmare::Camera::update(float delta) {
 	Camera::center = glm::vec3(
@@ -45,6 +44,12 @@ void AlienNightmare::Camera::keyboardUp(int key) {
 	Camera::moveZ = (key == GLUT_KEY_UP || key == GLUT_KEY_DOWN) ? 0 : Camera::moveZ;
 
 }
+
+/**
+ * Move camera along x or z axis according to a speed
+ * used for animated camera flight
+ */
+
 void AlienNightmare::Camera::move(float directionX, float directionZ, float speed) {
 		Camera::moveX = directionX * speed;
 		Camera::moveZ = directionZ * speed;
@@ -63,6 +68,11 @@ void AlienNightmare::Camera::setViewMatrix() {
 	          Camera::up.x, Camera::up.y, Camera::up.z
 	);
 }
+
+/**
+ * Compute Euclidean distance from camera to scene to know
+ * when to start updating the scenes during free camera mode
+ */
 
 float AlienNightmare::Camera::distanceTo(Scene *scene){
 	return sqrt((scene->position.x - Camera::eye.x) * (scene->position.x - Camera::eye.x) +

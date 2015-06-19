@@ -30,7 +30,7 @@ Developed as a group project for Computer Graphics (UE) at Johannes Kepler Unive
 ### Basic movie effects
 
 - [ ] Composed model 
-	- [ ] Add at least one composed model that consists of multiple parts (e.g., roboter with arms 
+	- [x] Add at least one composed model that consists of multiple parts (e.g., roboter with arms 
 and legs). 
 	- [ ] Separate animation of different parts and animation (movement) of the model as a whole. 
 - [x] Materials 

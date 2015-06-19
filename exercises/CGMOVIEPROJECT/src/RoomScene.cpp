@@ -29,7 +29,6 @@ void AlienNightmare::RoomScene::render(float movieTime) {
 	{
 		moveToPosition();
 		Size room = Size(8, spotlight.position.y + spotlight.size.height + 0.01f, 6);
-		//drawWalls(0, 0, 1, 1);
 
 		glEnable(GL_BLEND);
 		glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_COLOR);
@@ -70,7 +69,6 @@ void AlienNightmare::RoomScene::render(float movieTime) {
 			{
 				GLfloat color[] = {0.2, 0.2, 0.2, 0.5};
 				glColor4fv(color);
-				// glMaterialfv(GL_FRONT, GL_EMISS, color);
 				glNormal3f(0, 0, 1);
 				glVertex3f(room.width, room.height, 0);
 				glVertex3f(0, room.height, 0);
@@ -79,8 +77,7 @@ void AlienNightmare::RoomScene::render(float movieTime) {
 			}
 			glEnd();
 
-//			glDisable(GL_BLEND);
-//			//Left
+			//Left
 			glDisable(GL_BLEND);
 			glBegin(GL_QUADS);
 			{
@@ -93,7 +90,7 @@ void AlienNightmare::RoomScene::render(float movieTime) {
 				glVertex3f(0, 0, 0);
 			}
 			glEnd();
-//
+
 			//Right
 			glBegin(GL_QUADS);
 			{
