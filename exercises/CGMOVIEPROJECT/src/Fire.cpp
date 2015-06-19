@@ -43,9 +43,9 @@ void AlienNightmare::Fire::render() {
 	glPopMatrix();
 }
 
-void AlienNightmare::Fire::update() {
+void AlienNightmare::Fire::update(float delta) {
 	for (int i = 0; i < particle.size(); i++) {
-		particle[i].update();
+		particle[i].update(delta);
 	}
 }
 

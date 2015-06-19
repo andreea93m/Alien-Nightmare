@@ -34,9 +34,9 @@ void AlienNightmare::ChaseScene::render() {
 	glPopMatrix();
 }
 
-void AlienNightmare::ChaseScene::update() {
-	sun.update();
-	germany.update();
-	warrior.update();
-	animal.update();
+void AlienNightmare::ChaseScene::update(float delta) {
+	sun.update(delta);
+	germany.update(delta);
+	warrior.update(delta);
+	animal.update(delta);
 }

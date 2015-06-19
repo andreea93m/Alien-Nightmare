@@ -3,7 +3,7 @@
 AlienNightmare::Particle::Particle(Fire *fire, GLfloat size) : Object(Position(fire, 0.5, 0, 0.5),
 	Size(size, size, size)), fire(fire), fade(0.0),
                                                                gravity(0.0, 0.8, 0.0), life(-1) {
-	update();
+	update(0.0);
 }
 
 void AlienNightmare::Particle::render() {
@@ -41,7 +41,7 @@ void AlienNightmare::Particle::render() {
 	glPopMatrix();
 }
 
-void AlienNightmare::Particle::update() {
+void AlienNightmare::Particle::update(float delta) {
 	position.x += direction.x / (fire->slowdown);
 	position.y += direction.y / (fire->slowdown);
 	position.z += direction.z / (fire->slowdown);

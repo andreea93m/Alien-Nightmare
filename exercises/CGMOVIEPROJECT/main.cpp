@@ -173,7 +173,7 @@ void update() {
 	// TODO: update your scene logic in here
 	for (int i = 0; i < scenes.size(); ++i) {
 		if (!useFreeCamera || Camera::distanceTo(scenes[i]) < closeness)
-			scenes[i]->update();
+			scenes[i]->update(delta);
 	}
 
 	// force a redisplay

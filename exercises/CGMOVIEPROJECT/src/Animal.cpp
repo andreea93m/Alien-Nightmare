@@ -60,13 +60,13 @@ void AlienNightmare::Animal::setJump(GLfloat speed, GLfloat height,
 
 }
 
-void AlienNightmare::Animal::update() {
-	head.update();
-	body.update();
-	leftBackLeg.update();
-	rightBackLeg.update();
-	leftFrontLeg.update();
-	rightFrontLeg.update();
+void AlienNightmare::Animal::update(float delta) {
+	head.update(delta);
+	body.update(delta);
+	leftBackLeg.update(delta);
+	rightBackLeg.update(delta);
+	leftFrontLeg.update(delta);
+	rightFrontLeg.update(delta);
 	// go in front
 	if (walkingDirection == 1) {
 		position.z += walkingSpeed;

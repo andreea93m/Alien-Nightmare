@@ -43,6 +43,6 @@ void AlienNightmare::Sun::render() {
 	glPopMatrix();
 }
 
-void AlienNightmare::Sun::update() {
+void AlienNightmare::Sun::update(float delta) {
 
 }

@@ -24,7 +24,7 @@ namespace AlienNightmare {
 	    Object(Position position, Size size);
 	    virtual void render() = 0;
 
-	    virtual void update() = 0;
+	    virtual void update(float delta) = 0;
 
 	    void placeRelative(Object *object, GLfloat xp, GLfloat yp, GLfloat zp);
     };

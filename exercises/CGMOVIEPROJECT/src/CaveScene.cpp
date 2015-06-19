@@ -32,8 +32,8 @@ void AlienNightmare::CaveScene::render() {
 	glPopMatrix();
 }
 
-void AlienNightmare::CaveScene::update() {
-	denmark.update();
-	fire.update();
-	bat.update();
+void AlienNightmare::CaveScene::update(float delta) {
+	denmark.update(delta);
+	fire.update(delta);
+	bat.update(delta);
 }

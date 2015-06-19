@@ -31,7 +31,7 @@ namespace AlienNightmare {
     public:
 	    Particle(Fire *fire, GLfloat size);
 
-	    virtual void update();
+	    virtual void update(float delta);
 
 	    void render();
     };

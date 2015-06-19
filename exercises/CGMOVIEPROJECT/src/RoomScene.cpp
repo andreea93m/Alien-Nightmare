@@ -111,9 +111,9 @@ void AlienNightmare::RoomScene::render() {
 	glPopMatrix();
 }
 
-void AlienNightmare::RoomScene::update() {
+void AlienNightmare::RoomScene::update(float delta) {
 	for (int i = 0; i < polandballs.size(); ++i) {
-		polandballs[i]->update();
+		polandballs[i]->update(delta);
 	}
-	spotlight.update();
+	spotlight.update(delta);
 }

@@ -16,6 +16,6 @@ namespace AlienNightmare {
 
 	    void render();
 
-	    void update();
+	    void update(float delta);
     };
 }

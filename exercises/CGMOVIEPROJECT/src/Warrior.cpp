@@ -33,7 +33,7 @@ void AlienNightmare::Warrior::render() {
 	glPopMatrix();
 }
 
-void AlienNightmare::Warrior::update() {
+void AlienNightmare::Warrior::update(float delta) {
 
 	// go in front
 	if(direction == 1){

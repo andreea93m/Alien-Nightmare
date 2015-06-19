@@ -34,6 +34,6 @@ namespace AlienNightmare {
 
 	    virtual void render();
 
-	    virtual void update();
+	    virtual void update(float delta);
     };
 }

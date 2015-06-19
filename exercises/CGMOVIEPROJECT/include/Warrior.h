@@ -30,6 +30,6 @@ namespace AlienNightmare {
 
 	    void setSpeed(GLfloat speed);
 
-	    virtual void update() override;
+	    virtual void update(float delta) override;
     };
 }

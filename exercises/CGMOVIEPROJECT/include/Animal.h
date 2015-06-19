@@ -36,6 +36,6 @@ namespace AlienNightmare {
 
 	    void setJump(GLfloat speed, GLfloat height, GLfloat walkingSpeed);
 
-	    virtual void update();
+	    virtual void update(float delta);
     };
 }

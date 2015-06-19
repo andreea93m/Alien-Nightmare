@@ -21,6 +21,6 @@ namespace AlienNightmare {
 
 	    virtual void render() override;
 
-	    virtual void update() override;
+	    virtual void update(float delta) override;
     };
 }

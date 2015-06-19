@@ -31,6 +31,6 @@ void AlienNightmare::Alien::render() {
 	glPopMatrix();
 }
 
-void AlienNightmare::Alien::update() {
+void AlienNightmare::Alien::update(float delta) {
 
 }

@@ -37,7 +37,7 @@ void AlienNightmare::Polandball::render() {
 	glPopMatrix();
 }
 
-void AlienNightmare::Polandball::update() {
+void AlienNightmare::Polandball::update(float delta) {
 	if (speed
 			&& (position.y - initialPosition.y + size.height / 2 > maxHeight
 					|| position.y - initialPosition.y - size.height / 2 < 0)) {

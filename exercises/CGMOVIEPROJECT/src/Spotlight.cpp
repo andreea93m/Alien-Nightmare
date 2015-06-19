@@ -42,7 +42,7 @@ void AlienNightmare::Spotlight::render() {
 	glPopMatrix();
 }
 
-void AlienNightmare::Spotlight::update() {
+void AlienNightmare::Spotlight::update(float delta) {
 	fluctuation += 0.1;
 	light_diffuse[0] = light_specular[0] = sinf(fluctuation);
 	light_diffuse[1] = light_specular[1] = cosf(fluctuation);

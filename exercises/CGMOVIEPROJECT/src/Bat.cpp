@@ -30,7 +30,7 @@ void AlienNightmare::Bat::render() {
 	glPopMatrix();
 }
 
-void AlienNightmare::Bat::update() {
+void AlienNightmare::Bat::update(float delta) {
 	if(up == 1)
 		position.y+=speed;
 	else
