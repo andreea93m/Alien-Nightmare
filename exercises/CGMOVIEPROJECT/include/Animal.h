@@ -22,7 +22,7 @@
 namespace AlienNightmare {
     class Animal : public Object {
     private:
-    	Position initialPosition;
+	    Position initialPosition;
 	    oogl::Texture *texture;
 	    GLfloat speed, maxHeight, walkingAngle, walkingSpeed, walkingDirection;
 	    Scene *scene;

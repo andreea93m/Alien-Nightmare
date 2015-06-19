@@ -5,7 +5,8 @@
 #include "../include/RoomScene.h"
 
 AlienNightmare::RoomScene::RoomScene(Position position, Size size)
-		: Scene(position, size), spotlight(Position(this, 0.4, 0.5, 0.8), Size(1, 1, 1)), alien(Position(this, 0.5, 0.0, 0.0), Size(1, 1, 1)) {
+		: Scene(position, size), spotlight(Position(this, 0.4, 0.5, 0.8), Size(1, 1, 1)),
+		  alien(Position(this, 0.5, 0.0, 0.0), Size(1, 1, 1)) {
 
 	Polandball *poland = new Polandball(1, 0, "textures/poland.png");
 	poland->placeRelative(this, 0.3, 0, 0.3);
@@ -48,7 +49,7 @@ void AlienNightmare::RoomScene::render() {
 
 		glPushMatrix();
 		{
-			glTranslatef(1,0, 2);
+			glTranslatef(1, 0, 2);
 			// glColor3f(red, green, blue);
 
 			// Top

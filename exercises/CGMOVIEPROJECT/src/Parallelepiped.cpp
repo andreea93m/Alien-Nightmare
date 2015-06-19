@@ -7,7 +7,6 @@
 
 #include <oogl/Texture.h>
 #include "../include/Parallelepiped.h"
-#include <iostream>
 
 AlienNightmare::Parallelepiped::Parallelepiped(
 		const AlienNightmare::Position &position, GLfloat sizeX, GLfloat sizeY,
@@ -24,18 +23,27 @@ void AlienNightmare::Parallelepiped::render() {
 	glPushMatrix();
 	{
 
-
 		glRotatef(angle, 1, 0, 0);
 		moveToPosition();
 		texture->bind(50);
 		Shader::enableTexture(50);
 
-		static GLfloat n[6][3] = { { -1.0, 0.0, 0.0 }, { 0.0, 1.0, 0.0 }, { 1.0,
-				0.0, 0.0 }, { 0.0, -1.0, 0.0 }, { 0.0, 0.0, 1.0 }, { 0.0, 0.0,
-				-1.0 } };
+		static GLfloat n[6][3] = {{-1.0, 0.0,  0.0},
+		                          {0.0,  1.0,  0.0},
+		                          {1.0,
+		                                 0.0,  0.0},
+		                          {0.0,  -1.0, 0.0},
+		                          {0.0,  0.0,  1.0},
+		                          {0.0,  0.0,
+		                                       -1.0}};
 
-		static GLint faces[6][4] = { { 0, 1, 2, 3 }, { 3, 2, 6, 7 }, { 7, 6, 5,
-				4 }, { 4, 5, 1, 0 }, { 5, 6, 2, 1 }, { 7, 4, 0, 3 } };
+		static GLint faces[6][4] = {{0, 1, 2, 3},
+		                            {3, 2, 6, 7},
+		                            {7, 6, 5,
+		                                      4},
+		                            {4, 5, 1, 0},
+		                            {5, 6, 2, 1},
+		                            {7, 4, 0, 3}};
 
 		GLfloat v[8][3];
 		GLint i;
@@ -48,7 +56,7 @@ void AlienNightmare::Parallelepiped::render() {
 		v[1][2] = v[2][2] = v[5][2] = v[6][2] = this->size.depth / 2;
 
 		for (i = 5; i >= 0; i--) {
-			glBegin (GL_POLYGON);
+			glBegin(GL_POLYGON);
 			glNormal3fv(&n[i][0]);
 			glTexCoord2f(1.0, 1.0);
 
@@ -90,20 +98,22 @@ void AlienNightmare::Parallelepiped::update(float delta) {
 	position.y += delta * speed;
 
 	if (direction == 1) {
-		if(angle > 30 || angle < -30)
+		if (angle > 30 || angle < -30) {
 			rotationSpeed = -rotationSpeed;
+		}
 		angle += delta * rotationSpeed;
 	}
-	else if(direction == -1){
-		if(angle > 30 || angle < -30)
+	else if (direction == -1) {
+		if (angle > 30 || angle < -30) {
 			rotationSpeed = -rotationSpeed;
+		}
 		angle += delta * rotationSpeed;
 	}
 
 }
 
 void AlienNightmare::Parallelepiped::setProperties(GLfloat angle,
-		GLfloat direction) {
+                                                   GLfloat direction) {
 	this->angle = angle;
 	this->direction = direction;
 }

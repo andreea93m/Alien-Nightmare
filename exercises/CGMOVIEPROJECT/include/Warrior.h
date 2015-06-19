@@ -17,7 +17,7 @@
 namespace AlienNightmare {
     class Warrior : public Object {
     private:
-	    oogl::model::Model3ds * model;
+	    oogl::model::Model3ds *model;
 	    Position initialPosition;
 	    Scene *scene;
 	    GLfloat direction;

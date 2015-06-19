@@ -6,15 +6,16 @@
 #include "../include/Polandball.h"
 
 AlienNightmare::Polandball::Polandball(GLfloat radius, GLfloat angle,
-		const std::string &filename) :
+                                       const std::string &filename) :
 		Object(Position(0, 0, 0), Size(radius, radius, radius)), initialPosition(
-				position), angle(angle), quadric(gluNewQuadric()), speed(0.0f), forward_speed(
-				0.0f), isSpecular(false) {
+		position), angle(angle), quadric(gluNewQuadric()), speed(0.0f), forward_speed(
+		0.0f), isSpecular(false) {
 
 	texture = oogl::loadTexture(filename);
 
-	if (filename == "textures/cat_head.jpg")
+	if (filename == "textures/cat_head.jpg") {
 		isSpecular = true;
+	}
 
 	direction = -2;
 }
@@ -33,7 +34,7 @@ void AlienNightmare::Polandball::render() {
 		glRotatef(180 + angle, 0, 0, 1);
 
 		if (isSpecular) {
-			float specular[] = { 0.1f, 0.1f, 0.1f, 0.2f };
+			float specular[] = {0.1f, 0.1f, 0.1f, 0.2f};
 			glMaterialfv(GL_FRONT, GL_SPECULAR, specular);
 			// glMaterialf(GL_FRONT, GL_SHININESS, 0.0);
 		}
@@ -45,7 +46,7 @@ void AlienNightmare::Polandball::render() {
 		texture->unbind();
 
 		if (isSpecular) {
-			float specular2[] = { .0f, .0f, 0.0f, .0f };
+			float specular2[] = {.0f, .0f, 0.0f, .0f};
 			glMaterialfv(GL_FRONT, GL_SPECULAR, specular2);
 		}
 	}
@@ -74,7 +75,7 @@ void AlienNightmare::Polandball::update(float delta) {
 				direction = 0;
 			}
 		}
-		// go left
+			// go left
 		else if (direction == 0) {
 			position.x -= delta * forward_speed;
 			if (position.x < 1) {
@@ -83,7 +84,7 @@ void AlienNightmare::Polandball::update(float delta) {
 			}
 
 		}
-		// go back
+			// go back
 		else if (direction == -1) {
 			position.z -= delta * forward_speed;
 			if (position.z < 1) {
@@ -91,7 +92,7 @@ void AlienNightmare::Polandball::update(float delta) {
 				direction = -2;
 			}
 		}
-		// go right
+			// go right
 		else if (direction == -2) {
 			position.x += delta * forward_speed;
 			if (position.x > scene->size.width - 1) {
@@ -109,7 +110,7 @@ void AlienNightmare::Polandball::setJump(GLfloat speed, GLfloat height) {
 }
 
 void AlienNightmare::Polandball::setJumpForward(GLfloat forward_speed,
-		Scene *scene) {
+                                                Scene *scene) {
 	this->forward_speed = forward_speed;
 	this->scene = scene;
 	angle = 90;

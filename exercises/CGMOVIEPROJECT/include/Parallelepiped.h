@@ -22,11 +22,12 @@ namespace AlienNightmare {
     private:
 	    Position initialPosition;
 	    GLfloat speed, maxHeight, angle, direction;
-		GLfloat rotationSpeed;
+	    GLfloat rotationSpeed;
 	    oogl::Texture *texture;
 
     public:
-	    Parallelepiped(const AlienNightmare::Position &position, GLfloat sizeX, GLfloat sizeY, GLfloat sizeZ, const std::string &filename);
+	    Parallelepiped(const AlienNightmare::Position &position, GLfloat sizeX, GLfloat sizeY, GLfloat sizeZ,
+	                   const std::string &filename);
 
 	    void setJump(GLfloat speed, GLfloat height);
 

@@ -9,14 +9,15 @@
 #include "../include/Animal.h"
 
 AlienNightmare::Animal::Animal(const AlienNightmare::Position &position,
-		GLfloat sizeX, GLfloat sizeY, GLfloat sizeZ, Scene *scene) :
+                               GLfloat sizeX, GLfloat sizeY, GLfloat sizeZ, Scene *scene) :
 		Object(position, Size(sizeX, sizeY, sizeZ)), body(Position(0, 0, 0),
-				sizeX, sizeY, sizeZ, "textures/cat_fur.jpg"), leftFrontLeg(
-				Position(&body, -0.4, -0.8, 0.3), 0.1, 1, 0.2, "textures/cat_fur.jpg"), rightFrontLeg(
-				Position(&body, 0.4, -0.8, 0.2), 0.1, 1, 0.3, "textures/cat_fur.jpg"), leftBackLeg(
-				Position(&body, -0.4, -0.8, -0.3), 0.1, 1, 0.2, "textures/cat_fur.jpg"), rightBackLeg(
-				Position(&body, 0.4, -0.8, -0.3), 0.1, 1, 0.2, "textures/cat_fur.jpg"), head(1.5, 0,
-				"textures/cat_head.jpg"), initialPosition(position) {
+		                                                  sizeX, sizeY, sizeZ, "textures/cat_fur.jpg"), leftFrontLeg(
+		Position(&body, -0.4, -0.8, 0.3), 0.1, 1, 0.2, "textures/cat_fur.jpg"), rightFrontLeg(
+		Position(&body, 0.4, -0.8, 0.2), 0.1, 1, 0.3, "textures/cat_fur.jpg"), leftBackLeg(
+		Position(&body, -0.4, -0.8, -0.3), 0.1, 1, 0.2, "textures/cat_fur.jpg"), rightBackLeg(
+		Position(&body, 0.4, -0.8, -0.3), 0.1, 1, 0.2, "textures/cat_fur.jpg"), head(1.5, 0,
+		                                                                             "textures/cat_head.jpg"),
+		initialPosition(position) {
 
 	speed = 0.0f;
 	walkingAngle = 90;
@@ -47,12 +48,12 @@ void AlienNightmare::Animal::render() {
 }
 
 void AlienNightmare::Animal::setJump(GLfloat speed, GLfloat height,
-		GLfloat walkingSpeed) {
+                                     GLfloat walkingSpeed) {
 	this->speed = speed;
 	this->maxHeight = height;
 	this->walkingSpeed = walkingSpeed;
 	body.setJump(speed, height);
-	head.setJump(speed, height+1.5);
+	head.setJump(speed, height + 1.5);
 	leftBackLeg.setJump(speed, height);
 	rightBackLeg.setJump(speed, height);
 	leftFrontLeg.setJump(speed, height);
@@ -84,7 +85,7 @@ void AlienNightmare::Animal::update(float delta) {
 		}
 
 	}
-	// go back
+		// go back
 	else if (walkingDirection == -1) {
 		position.z -= delta * walkingSpeed;
 		if (position.z < 1) {
@@ -92,7 +93,7 @@ void AlienNightmare::Animal::update(float delta) {
 			walkingDirection = -2;
 		}
 	}
-	// go right
+		// go right
 	else if (walkingDirection == -2) {
 		position.x += delta * walkingSpeed;
 		if (position.x > scene->size.width - 1) {

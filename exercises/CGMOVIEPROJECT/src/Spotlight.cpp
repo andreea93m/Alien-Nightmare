@@ -10,7 +10,7 @@ AlienNightmare::Spotlight::Spotlight(const AlienNightmare::Position &position,
                                                                          light_diffuse({1.0, 1.0, 1.0, 1.0}),
                                                                          light_specular({0.0, 0.0, 0.0, 1.0}),
                                                                          light_position({size.width, size.height,
-                                                                                        size.depth, 1.0}),
+                                                                                         size.depth, 1.0}),
                                                                          spot_pos({0.0, 0.0, 0.0, 1.0}),
                                                                          spot_dir({0.0, -0.5f, -0.5f}),
                                                                          spot_cutoff(20.0),
@@ -21,7 +21,6 @@ void AlienNightmare::Spotlight::render() {
 	glPushMatrix();
 	{
 		moveToPosition();
-
 
 		glLightfv(GL_LIGHT3, GL_POSITION, &spot_pos[0]);
 		glLightf(GL_LIGHT3, GL_SPOT_CUTOFF, spot_cutoff);
@@ -46,6 +45,5 @@ void AlienNightmare::Spotlight::update(float delta) {
 	fluctuation += delta * 0.01;
 	light_diffuse[0] = light_specular[0] = sinf(fluctuation);
 	light_diffuse[1] = light_specular[1] = cosf(fluctuation);
-
 
 }

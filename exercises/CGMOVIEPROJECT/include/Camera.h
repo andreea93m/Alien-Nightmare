@@ -8,14 +8,13 @@
 #include <iostream>
 #include <math.h>
 #include "Scene.h"
+
 #define _USE_MATH_DEFINES
 
 #define M_PI 3.1456867
 
 #include <cmath>
 #include <glm/glm.hpp>
-
-
 
 namespace AlienNightmare {
     class Camera {
@@ -33,10 +32,15 @@ namespace AlienNightmare {
 	    static glm::vec3 eye, center, right, up;
 
 	    static void mouseMove(int dx, int dy);
+
 	    static void move(float directionX, float directionZ, float speed);
+
 	    static void update(float delta);
+
 	    static float distanceTo(Scene *scene);
+
 	    static void keyboardDown(int key);
+
 	    static void reset();
 
 	    static void keyboardUp(int key);

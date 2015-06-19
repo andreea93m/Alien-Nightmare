@@ -12,7 +12,7 @@
 namespace AlienNightmare {
     class Alien : public Object {
     private:
-	    oogl::model::ModelObj * model;
+	    oogl::model::ModelObj *model;
     public:
 	    Alien(const Position &position, const Size &size);
 

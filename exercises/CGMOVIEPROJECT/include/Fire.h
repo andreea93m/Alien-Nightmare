@@ -23,11 +23,11 @@ namespace AlienNightmare {
 	    std::normal_distribution<GLfloat> xNormalDistribution, zNormalDistribution;
 
 	    std::vector<Particle> particle;
-		
-		std::vector<GLfloat> light_ambient;
-		std::vector<GLfloat> light_diffuse;
-		std::vector<GLfloat> light_specular;
-		std::vector<GLfloat> light_position;
+
+	    std::vector<GLfloat> light_ambient;
+	    std::vector<GLfloat> light_diffuse;
+	    std::vector<GLfloat> light_specular;
+	    std::vector<GLfloat> light_position;
 
     public:
 	    const float slowdown;

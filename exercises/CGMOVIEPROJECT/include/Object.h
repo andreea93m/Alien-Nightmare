@@ -22,6 +22,7 @@ namespace AlienNightmare {
 	    static void drawCoordinateSystem();
 
 	    Object(Position position, Size size);
+
 	    virtual void render() = 0;
 
 	    virtual void update(float delta) = 0;

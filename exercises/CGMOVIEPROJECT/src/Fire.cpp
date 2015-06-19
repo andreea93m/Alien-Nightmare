@@ -21,7 +21,7 @@ void AlienNightmare::Fire::render() {
 	{
 		moveToPosition();
 
-		glLightfv(GL_LIGHT2, GL_POSITION, & light_position[0]);
+		glLightfv(GL_LIGHT2, GL_POSITION, &light_position[0]);
 		glLightfv(GL_LIGHT2, GL_AMBIENT, &light_ambient[0]);
 		glLightfv(GL_LIGHT2, GL_DIFFUSE, &light_diffuse[0]);
 		glLightfv(GL_LIGHT2, GL_SPECULAR, &light_specular[0]);

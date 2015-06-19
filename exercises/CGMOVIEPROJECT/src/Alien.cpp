@@ -8,7 +8,8 @@
 /**
  * Load alien model from Alien movie
  */
-AlienNightmare::Alien::Alien(const AlienNightmare::Position &position, const AlienNightmare::Size &size) : Object(position, size) {
+AlienNightmare::Alien::Alien(const AlienNightmare::Position &position, const AlienNightmare::Size &size) : Object(
+		position, size) {
 	model = (oogl::model::ModelObj *) oogl::loadModel("models/Alien_Queen/Alien_Queen.obj");
 }
 

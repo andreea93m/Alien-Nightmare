@@ -15,10 +15,10 @@
 namespace AlienNightmare {
     class ChaseScene : public Scene {
     private:
-    	Sun sun;
-    	Polandball germany;
-    	Animal animal;
-    	Warrior warrior;
+	    Sun sun;
+	    Polandball germany;
+	    Animal animal;
+	    Warrior warrior;
 	    DemoObject demoObject;
 
     public:

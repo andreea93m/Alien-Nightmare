@@ -13,7 +13,6 @@ GLfloat AlienNightmare::Camera::moveX, AlienNightmare::Camera::moveZ;
 GLfloat AlienNightmare::Camera::horizontalAngle = (GLfloat) M_PI;
 float AlienNightmare::Camera::verticalAngle;
 
-
 void AlienNightmare::Camera::update(float delta) {
 	Camera::center = glm::vec3(
 			cos(Camera::verticalAngle) * sin(Camera::horizontalAngle),
@@ -51,8 +50,8 @@ void AlienNightmare::Camera::keyboardUp(int key) {
  */
 
 void AlienNightmare::Camera::move(float directionX, float directionZ, float speed) {
-		Camera::moveX = directionX * speed;
-		Camera::moveZ = directionZ * speed;
+	Camera::moveX = directionX * speed;
+	Camera::moveZ = directionZ * speed;
 }
 
 void AlienNightmare::Camera::mouseMove(int dx, int dy) {
@@ -69,8 +68,7 @@ void AlienNightmare::Camera::setViewMatrix() {
 	);
 }
 
-
-void AlienNightmare::Camera::reset(){
+void AlienNightmare::Camera::reset() {
 	Camera::eye.x = 0;
 	Camera::eye.y = 5;
 	Camera::eye.z = 65;
@@ -90,13 +88,14 @@ void AlienNightmare::Camera::reset(){
 	Camera::verticalAngle = 0;
 	Camera::speed = 0.05;
 }
+
 /**
  * Compute Euclidean distance from camera to scene to know
  * when to start updating the scenes during free camera mode
  */
 
-float AlienNightmare::Camera::distanceTo(Scene *scene){
+float AlienNightmare::Camera::distanceTo(Scene *scene) {
 	return sqrt((scene->position.x - Camera::eye.x) * (scene->position.x - Camera::eye.x) +
-			(scene->position.y - Camera::eye.y) * (scene->position.y - Camera::eye.y) +
-			(scene->position.z - Camera::eye.z) * (scene->position.z - Camera::eye.z));
+	            (scene->position.y - Camera::eye.y) * (scene->position.y - Camera::eye.y) +
+	            (scene->position.z - Camera::eye.z) * (scene->position.z - Camera::eye.z));
 }

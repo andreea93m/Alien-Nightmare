@@ -18,7 +18,7 @@
 namespace AlienNightmare {
     class Bat : public Object {
     private:
-	    oogl::model::Model3ds * model;
+	    oogl::model::Model3ds *model;
 	    Position initialPosition;
 	    GLfloat up;
 	    GLfloat speed;
