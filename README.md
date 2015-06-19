@@ -12,7 +12,7 @@ Developed as a group project for Computer Graphics (UE) at Johannes Kepler Unive
 - [ ] Bloom effect
 - [x] Flying bat
 - [x] Polandballs around the fire
-- [ ] Lurking Alien
+- [x] Lurking Alien
 
 #### Scene 2
 - [x] Warrior
@@ -29,10 +29,10 @@ Developed as a group project for Computer Graphics (UE) at Johannes Kepler Unive
 
 ### Basic movie effects
 
-- [ ] Composed model 
+- [x] Composed model 
 	- [x] Add at least one composed model that consists of multiple parts (e.g., roboter with arms 
 and legs). 
-	- [ ] Separate animation of different parts and animation (movement) of the model as a whole. 
+	- [x] Separate animation of different parts and animation (movement) of the model as a whole. 
 - [x] Materials 
 	- [x] At least two clearly different materials with specular properties (just setting different 
 colors using glColor is not sufficient). 

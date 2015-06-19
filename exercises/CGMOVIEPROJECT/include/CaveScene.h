@@ -8,12 +8,14 @@
 #include "Fire.h"
 #include "Polandball.h"
 #include "Bat.h"
+#include "Alien.h"
 
 namespace AlienNightmare {
     class CaveScene : public Scene {
     public:
 	    Polandball denmark, germany, poland;
 	    Fire fire;
+	    Alien alien;
 	    Bat bat;
 
     public:

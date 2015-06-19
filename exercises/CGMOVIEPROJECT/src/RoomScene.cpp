@@ -116,4 +116,5 @@ void AlienNightmare::RoomScene::update(float delta) {
 		polandballs[i]->update(delta);
 	}
 	spotlight.update(delta);
+	alien.update(delta);
 }
