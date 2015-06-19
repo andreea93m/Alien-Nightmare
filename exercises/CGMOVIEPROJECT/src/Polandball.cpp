@@ -53,9 +53,13 @@ void AlienNightmare::Polandball::render() {
 }
 
 void AlienNightmare::Polandball::update(float delta) {
-	if (speed
-			&& (position.y - initialPosition.y + size.height / 2 > maxHeight
-					|| position.y - initialPosition.y - size.height / 2 < 0)) {
+	if (speed && position.y - initialPosition.y + size.height / 2 > maxHeight) {
+		position.y = initialPosition.y + maxHeight - size.height / 2;
+		speed = -speed;
+	}
+
+	if (speed && position.y - initialPosition.y - size.height / 2 < 0) {
+		position.y = initialPosition.y + size.height / 2;
 		speed = -speed;
 	}
 
