@@ -10,6 +10,8 @@
 #include "Scene.h"
 #define _USE_MATH_DEFINES
 
+#define M_PI 3.1456867
+
 #include <cmath>
 #include <glm/glm.hpp>
 
