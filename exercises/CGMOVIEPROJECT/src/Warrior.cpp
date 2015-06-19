@@ -17,7 +17,7 @@ AlienNightmare::Warrior::Warrior(const AlienNightmare::Position &position, const
 	direction = -2;
 }
 
-void AlienNightmare::Warrior::render(float movieTime) {
+void AlienNightmare::Warrior::render() {
 	glPushMatrix();
 	{
 		moveToPosition();

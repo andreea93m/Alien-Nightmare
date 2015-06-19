@@ -100,7 +100,7 @@ void init() {
 void renderScene() {
 	//TODO: draw your scenes here
 	for (int i = 0; i < scenes.size(); ++i) {
-		scenes[i]->render(movieTime);
+		scenes[i]->render();
 	}
 
 	// draw stuff! (you may remove or replace this!)

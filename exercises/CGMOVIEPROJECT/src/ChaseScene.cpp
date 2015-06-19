@@ -21,15 +21,15 @@ AlienNightmare::ChaseScene::ChaseScene(Position position, Size size) : Scene(pos
 	warrior.setSpeed(0.03);
 }
 
-void AlienNightmare::ChaseScene::render(float movieTime) {
+void AlienNightmare::ChaseScene::render() {
 	glPushMatrix();
 	{
 		moveToPosition();
 		drawFloor(1, 0, 0, 1);
-		sun.render(movieTime);
-		animal.render(movieTime);
-		germany.render(movieTime);
-		warrior.render(movieTime);
+		sun.render();
+		animal.render();
+		germany.render();
+		warrior.render();
 	}
 	glPopMatrix();
 }

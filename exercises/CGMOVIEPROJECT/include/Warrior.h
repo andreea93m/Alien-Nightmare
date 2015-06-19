@@ -26,7 +26,7 @@ namespace AlienNightmare {
     public:
 	    Warrior(const Position &position, const Size &size, Scene *scene);
 
-	    virtual void render(float movieTime) override;
+	    virtual void render() override;
 
 	    void setSpeed(GLfloat speed);
 

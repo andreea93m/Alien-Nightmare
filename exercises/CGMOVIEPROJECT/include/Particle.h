@@ -33,6 +33,6 @@ namespace AlienNightmare {
 
 	    virtual void update();
 
-	    void render(float movieTime);
+	    void render();
     };
 }

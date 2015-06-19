@@ -30,17 +30,17 @@ AlienNightmare::Animal::Animal(const AlienNightmare::Position &position,
 	rightFrontLeg.setProperties(-30, -1);
 }
 
-void AlienNightmare::Animal::render(float movieTime) {
+void AlienNightmare::Animal::render() {
 	glPushMatrix();
 	{
 		moveToPosition();
 		glRotatef(walkingAngle, 0, 1, 0);
-		head.render(movieTime);
-		body.render(movieTime);
-		leftFrontLeg.render(movieTime);
-		rightFrontLeg.render(movieTime);
-		leftBackLeg.render(movieTime);
-		rightBackLeg.render(movieTime);
+		head.render();
+		body.render();
+		leftFrontLeg.render();
+		rightFrontLeg.render();
+		leftBackLeg.render();
+		rightBackLeg.render();
 
 	}
 	glPopMatrix();

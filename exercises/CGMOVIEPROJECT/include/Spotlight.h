@@ -19,7 +19,7 @@ namespace AlienNightmare {
     public:
 	    Spotlight(const Position &position, const Size &size);
 
-	    virtual void render(float movieTime) override;
+	    virtual void render() override;
 
 	    virtual void update() override;
     };

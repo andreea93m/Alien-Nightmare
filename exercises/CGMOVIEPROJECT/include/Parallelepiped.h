@@ -32,7 +32,7 @@ namespace AlienNightmare {
 
 	    void setProperties(GLfloat angle, GLfloat direction);
 
-	    virtual void render(float movieTime);
+	    virtual void render();
 
 	    virtual void update();
     };

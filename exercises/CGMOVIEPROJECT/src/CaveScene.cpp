@@ -16,16 +16,16 @@ AlienNightmare::CaveScene::CaveScene(Position position, Size size)
 	bat.setSpeed(.005);
 }
 
-void AlienNightmare::CaveScene::render(float movieTime) {
+void AlienNightmare::CaveScene::render() {
 	glPushMatrix();
 	{
 		moveToPosition();
 		drawWalls(0, 1, 0, 1);
-		fire.render(movieTime);
-		bat.render(movieTime);
-		denmark.render(movieTime);
-		germany.render(movieTime);
-		poland.render(movieTime);
+		fire.render();
+		bat.render();
+		denmark.render();
+		germany.render();
+		poland.render();
 		// drawFloor(0, 1, 0, 1);
 
 	}

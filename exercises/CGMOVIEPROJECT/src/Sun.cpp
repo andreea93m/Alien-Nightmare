@@ -13,7 +13,7 @@ AlienNightmare::Sun::Sun(const AlienNightmare::Position &position, const GLfloat
 	color[3] = 0;
 }
 
-void AlienNightmare::Sun::render(float movieTime) {
+void AlienNightmare::Sun::render() {
 	glPushMatrix();
 	{
 		moveToPosition();

@@ -32,7 +32,7 @@ namespace AlienNightmare {
     public:
 	    Animal(const AlienNightmare::Position &position, GLfloat sizeX, GLfloat sizeY, GLfloat sizeZ, Scene *scene);
 
-	    virtual void render(float movieTime);
+	    virtual void render();
 
 	    void setJump(GLfloat speed, GLfloat height, GLfloat walkingSpeed);
 

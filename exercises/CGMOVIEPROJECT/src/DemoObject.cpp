@@ -6,11 +6,11 @@
 
 AlienNightmare::DemoObject::DemoObject(Position position, Size size) : Object(position, size) { }
 
-void AlienNightmare::DemoObject::render(float movieTime) {
+void AlienNightmare::DemoObject::render() {
 	glPushMatrix();
 	{
 		moveToPosition();
-		glRotatef(movieTime * 0.05f, 0, 1, 0);
+//		glRotatef(movieTime * 0.05f, 0, 1, 0);
 
 		//       v3
 		//        *

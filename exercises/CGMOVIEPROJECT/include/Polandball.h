@@ -31,7 +31,7 @@ namespace AlienNightmare {
 
 	    void setJumpForward(GLfloat speed, Scene *scene);
 
-	    virtual void render(float movieTime);
+	    virtual void render();
 
 	    virtual void update();
     };

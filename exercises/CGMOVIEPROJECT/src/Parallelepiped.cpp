@@ -20,7 +20,7 @@ AlienNightmare::Parallelepiped::Parallelepiped(
 	texture = oogl::loadTexture(filename);
 }
 
-void AlienNightmare::Parallelepiped::render(float movieTime) {
+void AlienNightmare::Parallelepiped::render() {
 	glPushMatrix();
 	{
 

@@ -16,7 +16,7 @@ AlienNightmare::Fire::Fire(unsigned long count, const AlienNightmare::Position &
 	}
 }
 
-void AlienNightmare::Fire::render(float movieTime) {
+void AlienNightmare::Fire::render() {
 	glPushMatrix();
 	{
 		moveToPosition();
@@ -35,7 +35,7 @@ void AlienNightmare::Fire::render(float movieTime) {
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE);
 
 		for (int i = 0; i < particle.size(); i++) {
-			particle[i].render(movieTime);
+			particle[i].render();
 		}
 
 		glDisable(GL_BLEND);

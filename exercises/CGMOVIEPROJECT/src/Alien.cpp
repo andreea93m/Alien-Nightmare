@@ -15,7 +15,7 @@ AlienNightmare::Alien::Alien(const AlienNightmare::Position &position, const Ali
 /**
  * Render alien
  */
-void AlienNightmare::Alien::render(float movieTime) {
+void AlienNightmare::Alien::render() {
 	glPushMatrix();
 	{
 		moveToPosition();

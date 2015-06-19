@@ -14,7 +14,7 @@ namespace AlienNightmare {
     public:
 	    DemoObject(Position position, Size size);
 
-	    void render(float movieTime);
+	    void render();
 
 	    void update();
     };

@@ -17,7 +17,7 @@ AlienNightmare::Spotlight::Spotlight(const AlienNightmare::Position &position,
                                                                          spot_linear_attenuation(0.0),
                                                                          spot_quadratic_attenuation(0.0) { }
 
-void AlienNightmare::Spotlight::render(float movieTime) {
+void AlienNightmare::Spotlight::render() {
 	glPushMatrix();
 	{
 		moveToPosition();

@@ -25,7 +25,7 @@ namespace AlienNightmare {
     public:
 	    Bat(const Position &position, const Size &size);
 
-	    virtual void render(float movieTime) override;
+	    virtual void render() override;
 
 	    void setSpeed(GLfloat speed);
 

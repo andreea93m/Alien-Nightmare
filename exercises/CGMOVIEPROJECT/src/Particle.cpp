@@ -6,7 +6,7 @@ AlienNightmare::Particle::Particle(Fire *fire, GLfloat size) : Object(Position(f
 	update();
 }
 
-void AlienNightmare::Particle::render(float movieTime) {
+void AlienNightmare::Particle::render() {
 	glPushMatrix();
 	{
 		moveToPosition();

@@ -35,7 +35,7 @@ namespace AlienNightmare {
 
 	    Fire(unsigned long count, const Position &position, const Size &size);
 
-	    virtual void render(float movieTime);
+	    virtual void render();
 
 	    virtual void update();
 

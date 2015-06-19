@@ -14,7 +14,7 @@ AlienNightmare::Bat::Bat(const AlienNightmare::Position &position, const AlienNi
 	up = 1;
 }
 
-void AlienNightmare::Bat::render(float movieTime) {
+void AlienNightmare::Bat::render() {
 	glPushMatrix();
 	{
 //		position.y += movieTime * 0.001;

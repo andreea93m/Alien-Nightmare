@@ -15,7 +15,7 @@ AlienNightmare::Polandball::Polandball(GLfloat radius, GLfloat angle,
 	direction = -2;
 }
 
-void AlienNightmare::Polandball::render(float movieTime) {
+void AlienNightmare::Polandball::render() {
 	glPushMatrix();
 	{
 		moveToPosition();

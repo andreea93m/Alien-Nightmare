@@ -24,7 +24,7 @@ AlienNightmare::RoomScene::RoomScene(Position position, Size size)
 	polandballs.push_back(denmark);
 }
 
-void AlienNightmare::RoomScene::render(float movieTime) {
+void AlienNightmare::RoomScene::render() {
 	glPushMatrix();
 	{
 		moveToPosition();
@@ -33,16 +33,16 @@ void AlienNightmare::RoomScene::render(float movieTime) {
 		glEnable(GL_BLEND);
 		glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_COLOR);
 
-		alien.render(movieTime);
+		alien.render();
 
-		spotlight.render(movieTime);
+		spotlight.render();
 		drawFloor(0, 0, 1, 1);
 
 		glColor3f(1, 1, 1);
 
 		glDisable(GL_BLEND);
 		for (int i = 0; i < polandballs.size(); ++i) {
-			polandballs[i]->render(movieTime);
+			polandballs[i]->render();
 		}
 		glEnable(GL_BLEND);
 
