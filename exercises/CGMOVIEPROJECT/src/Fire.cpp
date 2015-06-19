@@ -6,7 +6,7 @@
 
 AlienNightmare::Fire::Fire(unsigned long count, const AlienNightmare::Position &position,
                            const AlienNightmare::Size &size)
-		: Object(position, size), slowdown(2000.0),
+		: Object(position, size), slowdown(0.000003),
 		  xNormalDistribution(0, (float) (size.width / 2.0)), zNormalDistribution(0, size.depth / 2.0),
 		  light_ambient({0.0, 0.0, 0.0, 1.0}), light_diffuse({1.0, 1.0, 0.0, 1.0}),
 		  light_specular({1.0, 1.0, 1.0, 1.0}), light_position({size.width / 2, size.height / 2, size.depth / 2, 1.0}) {
