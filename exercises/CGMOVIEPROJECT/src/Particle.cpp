@@ -11,8 +11,12 @@ void AlienNightmare::Particle::render() {
 	{
 		moveToPosition();
 
+		// As the particle is dying, it fades away
+		// This combination makes the particle yellow at the
+		// base of the fire and redder as it ascends
 		glColor4f(1.0, life, life / 4, life);
 
+		// Perform billboarding and render the particle
 		glBegin(GL_TRIANGLE_STRIP);
 		{
 			topRight = glm::vec3(position.x + size.width, position.y + size.height, size.depth);
@@ -20,6 +24,8 @@ void AlienNightmare::Particle::render() {
 			bottomRight = glm::vec3(position.x + size.width, position.y - size.height, size.depth);
 			bottomLeft = glm::vec3(position.x - size.width, position.y - size.height, size.depth);
 
+			// We use the camera's up and right vectors to adjust
+			// the position of the particle
 			topRight -= (Camera::right + Camera::up);
 			topLeft += (Camera::right - Camera::up);
 			bottomRight += (Camera::right + Camera::up);
@@ -50,14 +56,18 @@ void AlienNightmare::Particle::update(float delta) {
 	direction.y += delta * gravity.y;
 	direction.z += delta * gravity.z;
 
+	// Fade it away
 	life -= fade;
 
 	if (life < 0.0) {
+		// The particle is dead, we need to recycle it
 		life = 1.0;
 
+		// Generate the new position
 		fire->generateParticlePosition(this);
 		fade = generate(0.01, 0.05);
 
+		// Generate its direction
 		direction.x = fire->speed.x + generate(-5, 5);
 		direction.y = 0.0f;
 		direction.z = generate(-15, 15);
