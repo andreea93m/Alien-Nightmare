@@ -19,9 +19,8 @@ AlienNightmare::Bat::Bat(const AlienNightmare::Position &position, const AlienNi
 void AlienNightmare::Bat::render() {
 	glPushMatrix();
 	{
-//		position.y += movieTime * 0.001;
 		moveToPosition();
-
+		glRotatef(90,1,0,0);
 		glTranslatef(0, 1, 0);
 		glScalef(2, 2, 2);
 		model->textures[0]->bind(7);
@@ -40,10 +39,9 @@ void AlienNightmare::Bat::update(float delta) {
 		position.y -= 0.02 * delta * speed;
 	}
 
-	if (position.y > speed / (speed * 10) + initialPosition.y) { up = 0; }
-	if (position.y <= initialPosition.y) { up = 1; }
-
-	//glutPostRedisplay();
+	// change position on y axis to simulate flight
+	if (position.y > speed*30 + initialPosition.y) { up = 0; }
+	else { up = 1; }
 }
 
 void AlienNightmare::Bat::setSpeed(GLfloat speed) {
