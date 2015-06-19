@@ -11,20 +11,24 @@
 
 AlienNightmare::Parallelepiped::Parallelepiped(
 		const AlienNightmare::Position &position, GLfloat sizeX, GLfloat sizeY,
-		GLfloat sizeZ) :
+		GLfloat sizeZ, const std::string &filename) :
 		Object(position, Size(sizeX, sizeY, sizeZ)), initialPosition(position) {
 	angle = 0.0f;
 	speed = 0.0f;
 	direction = 0.0f;
 	rotationSpeed = 0.8;
+	texture = oogl::loadTexture(filename);
 }
 
 void AlienNightmare::Parallelepiped::render(float movieTime) {
 	glPushMatrix();
 	{
-		moveToPosition();
+
 
 		glRotatef(angle, 1, 0, 0);
+		moveToPosition();
+		texture->bind(50);
+		Shader::enableTexture(50);
 
 		static GLfloat n[6][3] = { { -1.0, 0.0, 0.0 }, { 0.0, 1.0, 0.0 }, { 1.0,
 				0.0, 0.0 }, { 0.0, -1.0, 0.0 }, { 0.0, 0.0, 1.0 }, { 0.0, 0.0,
@@ -46,12 +50,23 @@ void AlienNightmare::Parallelepiped::render(float movieTime) {
 		for (i = 5; i >= 0; i--) {
 			glBegin (GL_POLYGON);
 			glNormal3fv(&n[i][0]);
+			glTexCoord2f(1.0, 1.0);
+
 			glVertex3fv(&v[faces[i][0]][0]);
+			glTexCoord2f(0.0, 1.0);
+
 			glVertex3fv(&v[faces[i][1]][0]);
+			glTexCoord2f(0.0, 0.0);
+
 			glVertex3fv(&v[faces[i][2]][0]);
+			glTexCoord2f(1.0, 0.0);
+
 			glVertex3fv(&v[faces[i][3]][0]);
 			glEnd();
 		}
+		Shader::disableTexture();
+		texture->unbind();
+
 	}
 	glPopMatrix();
 }
@@ -68,11 +83,10 @@ void AlienNightmare::Parallelepiped::update() {
 		speed = -speed;
 	}
 	position.y += speed;
+
 	if (direction == 1) {
-//		position.z += speed;
 		if(angle > 30 || angle < -30)
 			rotationSpeed = -rotationSpeed;
-		std::cout<<rotationSpeed<<" "<<angle;
 		angle += rotationSpeed * 10;
 	}
 	else if(direction == -1){
@@ -80,6 +94,7 @@ void AlienNightmare::Parallelepiped::update() {
 			rotationSpeed = -rotationSpeed;
 		angle += rotationSpeed * 10;
 	}
+
 }
 
 void AlienNightmare::Parallelepiped::setProperties(GLfloat angle,

@@ -15,6 +15,8 @@
 #include "Scene.h"
 #include "Shader.h"
 #include "Object.h"
+#include "Polandball.h"
+
 #include "Parallelepiped.h"
 
 namespace AlienNightmare {
@@ -22,15 +24,17 @@ namespace AlienNightmare {
     private:
     	Position initialPosition;
 	    oogl::Texture *texture;
-	    GLfloat speed, maxHeight;
+	    GLfloat speed, maxHeight, walkingAngle, walkingSpeed, walkingDirection;
+	    Scene *scene;
 	    Parallelepiped body, leftFrontLeg, rightFrontLeg, leftBackLeg, rightBackLeg;
+	    Polandball head;
 
     public:
-	    Animal(const AlienNightmare::Position &position, GLfloat sizeX, GLfloat sizeY, GLfloat sizeZ);
+	    Animal(const AlienNightmare::Position &position, GLfloat sizeX, GLfloat sizeY, GLfloat sizeZ, Scene *scene);
 
 	    virtual void render(float movieTime);
 
-	    void setJump(GLfloat speed, GLfloat height);
+	    void setJump(GLfloat speed, GLfloat height, GLfloat walkingSpeed);
 
 	    virtual void update();
     };

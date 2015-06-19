@@ -15,6 +15,7 @@
 #include "Scene.h"
 #include "Shader.h"
 #include "Object.h"
+#include "Scene.h"
 
 namespace AlienNightmare {
     class Parallelepiped : public Object {
@@ -25,7 +26,7 @@ namespace AlienNightmare {
 	    oogl::Texture *texture;
 
     public:
-	    Parallelepiped(const AlienNightmare::Position &position, GLfloat sizeX, GLfloat sizeY, GLfloat sizeZ);
+	    Parallelepiped(const AlienNightmare::Position &position, GLfloat sizeX, GLfloat sizeY, GLfloat sizeZ, const std::string &filename);
 
 	    void setJump(GLfloat speed, GLfloat height);
 
