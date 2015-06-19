@@ -14,6 +14,9 @@ GLfloat AlienNightmare::Camera::horizontalAngle = (GLfloat) M_PI;
 float AlienNightmare::Camera::verticalAngle;
 
 void AlienNightmare::Camera::update(float delta) {
+	// Compute the new center position according to the angles
+	// vertical and horizontal angles (which were adjusted
+	// using the mouse)
 	Camera::center = glm::vec3(
 			cos(Camera::verticalAngle) * sin(Camera::horizontalAngle),
 			sin(Camera::verticalAngle),
@@ -26,8 +29,12 @@ void AlienNightmare::Camera::update(float delta) {
 			cos(Camera::horizontalAngle - M_PI / 2.0)
 	);
 
+	// The up vector is defined as the cross product between
+	// The right and the direction vector
 	Camera::up = glm::cross(Camera::right, Camera::center);
 
+	// Adjust the coordinates of the 'eye' acording to
+	// The vectors defined above, the speed along the axes and delta
 	Camera::eye += Camera::center * delta * Camera::moveZ;
 	Camera::eye += Camera::right * delta * Camera::moveX;
 

@@ -44,6 +44,19 @@ void AlienNightmare::Fire::render() {
 }
 
 void AlienNightmare::Fire::update(float delta) {
+	// Wiggle the position of the light
+	light_position[0] += delta * (rand() % 3);
+	if(abs(light_position[0] - size.width / 2) > 1.0)
+		light_position[0] = size.width /2;
+
+	light_position[1] += delta * (rand() % 3);
+	if(abs(light_position[1] - size.height / 2) > 1.0)
+		light_position[1] = size.height /2;
+
+	light_position[2] += delta * (rand() % 3);
+	if(abs(light_position[2] - size.depth / 2) > 1.0)
+		light_position[2] = size.depth /2;
+
 	for (int i = 0; i < particle.size(); i++) {
 		particle[i].update(delta);
 	}
