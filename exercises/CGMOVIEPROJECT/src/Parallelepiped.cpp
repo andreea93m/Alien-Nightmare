@@ -77,11 +77,16 @@ void AlienNightmare::Parallelepiped::setJump(GLfloat speed, GLfloat height) {
 }
 
 void AlienNightmare::Parallelepiped::update(float delta) {
-	if (speed
-			&& (position.y - initialPosition.y > maxHeight
-					|| position.y - initialPosition.y < 0)) {
+	if (speed && position.y - initialPosition.y > maxHeight) {
 		speed = -speed;
+		position.y = initialPosition.y + maxHeight;
 	}
+
+	if (speed && position.y - initialPosition.y < 0) {
+		speed = -speed;
+		position.y = initialPosition.y;
+	}
+
 	position.y += delta * speed;
 
 	if (direction == 1) {

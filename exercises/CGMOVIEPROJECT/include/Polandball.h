@@ -23,6 +23,7 @@ namespace AlienNightmare {
 	    GLfloat angle;
 	    GLfloat speed, maxHeight, forward_speed;
 	    oogl::Texture *texture;
+		bool isSpecular;
 
     public:
 	    Polandball(GLfloat radius, GLfloat angle, const std::string &fileName);

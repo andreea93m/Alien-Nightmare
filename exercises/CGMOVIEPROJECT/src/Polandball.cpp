@@ -9,9 +9,13 @@ AlienNightmare::Polandball::Polandball(GLfloat radius, GLfloat angle,
 		const std::string &filename) :
 		Object(Position(0, 0, 0), Size(radius, radius, radius)), initialPosition(
 				position), angle(angle), quadric(gluNewQuadric()), speed(0.0f), forward_speed(
-				0.0f) {
+				0.0f), isSpecular(false) {
 
 	texture = oogl::loadTexture(filename);
+
+	if (filename == "textures/cat_head.jpg")
+		isSpecular = true;
+
 	direction = -2;
 }
 
@@ -28,19 +32,34 @@ void AlienNightmare::Polandball::render() {
 		glRotatef(180, 0, 1, 0);
 		glRotatef(180 + angle, 0, 0, 1);
 
+		if (isSpecular) {
+			float specular[] = { 0.1f, 0.1f, 0.1f, 0.2f };
+			glMaterialfv(GL_FRONT, GL_SPECULAR, specular);
+			// glMaterialf(GL_FRONT, GL_SHININESS, 0.0);
+		}
+
 		gluQuadricTexture(quadric, 1);
 		gluSphere(quadric, size.width / 2, 10, 10);
 
 		Shader::disableTexture();
 		texture->unbind();
+
+		if (isSpecular) {
+			float specular2[] = { .0f, .0f, 0.0f, .0f };
+			glMaterialfv(GL_FRONT, GL_SPECULAR, specular2);
+		}
 	}
 	glPopMatrix();
 }
 
 void AlienNightmare::Polandball::update(float delta) {
-	if (speed
-			&& (position.y - initialPosition.y + size.height / 2 > maxHeight
-					|| position.y - initialPosition.y - size.height / 2 < 0)) {
+	if (speed && position.y - initialPosition.y + size.height / 2 > maxHeight) {
+		position.y = initialPosition.y + maxHeight - size.height / 2;
+		speed = -speed;
+	}
+
+	if (speed && position.y - initialPosition.y - size.height / 2 < 0) {
+		position.y = initialPosition.y + size.height / 2;
 		speed = -speed;
 	}
 
