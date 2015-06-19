@@ -32,9 +32,9 @@ void AlienNightmare::Bat::render() {
 
 void AlienNightmare::Bat::update(float delta) {
 	if(up == 1)
-		position.y+=speed;
+		position.y+=delta * speed;
 	else
-		position.y-=speed;
+		position.y-=delta * speed;
 
 	if(position.y > speed/(speed*10)+initialPosition.y)	up = 0;
 	if(position.y <= initialPosition.y)		up = 1;

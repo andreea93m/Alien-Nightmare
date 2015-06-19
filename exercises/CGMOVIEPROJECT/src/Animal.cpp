@@ -69,16 +69,16 @@ void AlienNightmare::Animal::update(float delta) {
 	rightFrontLeg.update(delta);
 	// go in front
 	if (walkingDirection == 1) {
-		position.z += walkingSpeed;
-		if (position.z + walkingSpeed > scene->size.depth - 1) {
+		position.z += delta * walkingSpeed;
+		if (position.z > scene->size.depth - 1) {
 			walkingAngle = -90;
 			walkingDirection = 0;
 		}
 	}
 //	 go left
 	else if (walkingDirection == 0) {
-		position.x -= walkingSpeed;
-		if (position.x - walkingSpeed < 1) {
+		position.x -= delta * walkingSpeed;
+		if (position.x < 1) {
 			walkingAngle = 180;
 			walkingDirection = -1;
 		}
@@ -86,16 +86,16 @@ void AlienNightmare::Animal::update(float delta) {
 	}
 	// go back
 	else if (walkingDirection == -1) {
-		position.z -= walkingSpeed;
-		if (position.z - walkingSpeed < 1) {
+		position.z -= delta * walkingSpeed;
+		if (position.z < 1) {
 			walkingAngle = 90;
 			walkingDirection = -2;
 		}
 	}
 	// go right
 	else if (walkingDirection == -2) {
-		position.x += walkingSpeed;
-		if (position.x + walkingSpeed > scene->size.width - 1) {
+		position.x += delta * walkingSpeed;
+		if (position.x > scene->size.width - 1) {
 			walkingAngle = 360;
 			walkingDirection = 1;
 		}

@@ -37,16 +37,16 @@ void AlienNightmare::Warrior::update(float delta) {
 
 	// go in front
 	if(direction == 1){
-		position.z+=speed;
-		if(position.z + speed > scene->size.depth - 1){
+		position.z+=delta * speed;
+		if(position.z > scene->size.depth - 1){
 			angle = -90;
 			direction = 0;
 		}
 	}
 	// go left
 	else if(direction == 0){
-		position.x-=speed;
-		if(position.x - speed < 1){
+		position.x-=delta * speed;
+		if(position.x < 1){
 			angle = 180;
 			direction = -1;
 		}
@@ -54,16 +54,16 @@ void AlienNightmare::Warrior::update(float delta) {
 	}
 	// go back
 	else if(direction == -1){
-		position.z-=speed;
-		if(position.z - speed < 1){
+		position.z-=delta * speed;
+		if(position.z  < 1){
 			angle = 90;
 			direction = -2;
 		}
 	}
 	// go right
 	else if(direction == -2){
-		position.x+=speed;
-		if(position.x + speed > scene->size.width - 1){
+		position.x+=delta * speed;
+		if(position.x  > scene->size.width - 1){
 			angle = 360;
 			direction = 1;
 		}

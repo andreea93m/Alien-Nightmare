@@ -82,17 +82,17 @@ void AlienNightmare::Parallelepiped::update(float delta) {
 					|| position.y - initialPosition.y < 0)) {
 		speed = -speed;
 	}
-	position.y += speed;
+	position.y += delta * speed;
 
 	if (direction == 1) {
 		if(angle > 30 || angle < -30)
 			rotationSpeed = -rotationSpeed;
-		angle += rotationSpeed * 10;
+		angle += delta * rotationSpeed * 10;
 	}
 	else if(direction == -1){
 		if(angle > 30 || angle < -30)
 			rotationSpeed = -rotationSpeed;
-		angle += rotationSpeed * 10;
+		angle += delta * rotationSpeed * 10;
 	}
 
 }
