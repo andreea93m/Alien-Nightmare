@@ -23,7 +23,6 @@ Developed as a group project for Computer Graphics (UE) at Johannes Kepler Unive
 - [x] Dark room
 - [x] Window
 - [x] Spotlight
-- [ ] Colored glass ball
 - [x] Jumping Polandballs
 - [x] Alien outside the window
 
