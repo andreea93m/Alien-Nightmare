@@ -42,6 +42,12 @@ int frameCounter = 0;
 bool useFreeCamera = true;
 bool wireframe = false;
 bool culling = false;
+int directionsX[] = {0, -1, 0, 1, 0, 1, 0, 0, -1};
+int directionsZ[] = {1, 0, 0, 0, 0, 0, 0, -1, 0};
+float t[] = {0.7, 0.5, 1.5, 0.8, 1.5, 1, 1.5, 0.7, 0.5 };
+float speed[] = {0.015, 0.015, 0.008, 0.008, 0.008, 0.008, 0.008, 0.015, 0.015};
+int nrMoves = 9;
+int p = 0, elapsedTime = 0;
 
 std::vector<Scene *> scenes;
 
@@ -52,7 +58,7 @@ void init() {
 	Shader::init();
 
 	Camera::eye.y = 5;
-	Camera::eye.z = 15;
+	Camera::eye.z = 65;
 	Camera::center.z = -1;
 
 	// you may adapt all this to your needs!
@@ -108,17 +114,27 @@ void setupViewMatrix() {
 		Camera::setViewMatrix();
 	}
 	else {
-		//TODO: animated camera (view matrix)
+		Camera::setViewMatrix();
 	}
 }
 
 void animatedCameraUpdate(float delta) {
-	//TODO: update or animate the variables of your animated camera in here, which then get used in the display() function
+		if(elapsedTime > t[p] * 3600){
+			elapsedTime = 0;
+			p++;
+		}
+		elapsedTime+=delta;
+		if(p<nrMoves){
+		Camera::move(directionsX[p],directionsZ[p], speed[p]);
+		Camera::update(delta);
+		}
+//TODO: update or animate the variables of your animated camera in here, which then get used in the display() function
 }
 
 void freeCameraUpdate(float delta) {
 	//TODO: update or animate the variables of your free camera in here, which then get used in the display() function
 	Camera::update(delta);
+
 }
 
 /**

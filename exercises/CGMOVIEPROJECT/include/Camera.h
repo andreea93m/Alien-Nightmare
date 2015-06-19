@@ -5,7 +5,7 @@
 #pragma once
 
 #include "include/Headers.h"
-
+#include <iostream>
 #define _USE_MATH_DEFINES
 
 #include <cmath>
@@ -19,6 +19,7 @@ namespace AlienNightmare {
 	    static const GLfloat mouseSensitivity;
 
 	    static GLfloat speed;
+	    static GLfloat animateSpeed;
 	    static GLfloat moveX, moveZ;
 
 	    static float horizontalAngle;
@@ -28,7 +29,7 @@ namespace AlienNightmare {
 	    static glm::vec3 eye, center, right, up;
 
 	    static void mouseMove(int dx, int dy);
-
+	    static void move(float directionX, float directionZ, float speed);
 	    static void update(float delta);
 
 	    static void keyboardDown(int key);
